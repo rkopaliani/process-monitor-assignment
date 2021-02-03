@@ -7,10 +7,13 @@
 
 import Foundation
 
-struct Process {
+struct ProcessInfo {
     let pid: pid_t
     let ppid: pid_t
     let uid: uid_t
     let path: String
+    
+    var bundleId: String?
+    var certificateTeamId: String?
 }
 
