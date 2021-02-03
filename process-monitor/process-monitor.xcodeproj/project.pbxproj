@@ -13,6 +13,7 @@
 		5E224CB725CADD4D007DAAAA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E224CB525CADD4D007DAAAA /* Main.storyboard */; };
 		5E224CC325CADD4D007DAAAA /* process_monitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E224CC225CADD4D007DAAAA /* process_monitorTests.swift */; };
 		5E224CCE25CADD4D007DAAAA /* process_monitorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E224CCD25CADD4D007DAAAA /* process_monitorUITests.swift */; };
+		5E224CED25CAE6EB007DAAAA /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E224CEC25CAE6EB007DAAAA /* Process.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		5E224CC925CADD4D007DAAAA /* process-monitorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "process-monitorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E224CCD25CADD4D007DAAAA /* process_monitorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = process_monitorUITests.swift; sourceTree = "<group>"; };
 		5E224CCF25CADD4D007DAAAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E224CEC25CAE6EB007DAAAA /* Process.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				5E224CB525CADD4D007DAAAA /* Main.storyboard */,
 				5E224CB825CADD4D007DAAAA /* Info.plist */,
 				5E224CB925CADD4D007DAAAA /* process_monitor.entitlements */,
+				5E224CEC25CAE6EB007DAAAA /* Process.swift */,
 			);
 			path = "process-monitor";
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 			files = (
 				5E224CB225CADD4A007DAAAA /* ViewController.swift in Sources */,
 				5E224CB025CADD4A007DAAAA /* AppDelegate.swift in Sources */,
+				5E224CED25CAE6EB007DAAAA /* Process.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
