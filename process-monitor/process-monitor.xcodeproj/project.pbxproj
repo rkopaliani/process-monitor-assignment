@@ -14,6 +14,7 @@
 		5E224CC325CADD4D007DAAAA /* process_monitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E224CC225CADD4D007DAAAA /* process_monitorTests.swift */; };
 		5E224CCE25CADD4D007DAAAA /* process_monitorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E224CCD25CADD4D007DAAAA /* process_monitorUITests.swift */; };
 		5E224CED25CAE6EB007DAAAA /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E224CEC25CAE6EB007DAAAA /* Process.swift */; };
+		5E55B6C425CD6DFC0066859A /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B6C325CD6DFC0066859A /* WindowController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,8 +36,8 @@
 
 /* Begin PBXFileReference section */
 		5E224CAC25CADD4A007DAAAA /* process-monitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "process-monitor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5E224CAF25CADD4A007DAAAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5E224CB125CADD4A007DAAAA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5E224CAF25CADD4A007DAAAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Sources/AppDelegate.swift; sourceTree = "<group>"; };
+		5E224CB125CADD4A007DAAAA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Sources/ViewController.swift; sourceTree = "<group>"; };
 		5E224CB325CADD4D007DAAAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5E224CB625CADD4D007DAAAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5E224CB825CADD4D007DAAAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,7 +48,8 @@
 		5E224CC925CADD4D007DAAAA /* process-monitorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "process-monitorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E224CCD25CADD4D007DAAAA /* process_monitorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = process_monitorUITests.swift; sourceTree = "<group>"; };
 		5E224CCF25CADD4D007DAAAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5E224CEC25CAE6EB007DAAAA /* Process.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
+		5E224CEC25CAE6EB007DAAAA /* Process.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Process.swift; path = Sources/Process.swift; sourceTree = "<group>"; };
+		5E55B6C325CD6DFC0066859A /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WindowController.swift; path = Sources/WindowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				5E224CB825CADD4D007DAAAA /* Info.plist */,
 				5E224CB925CADD4D007DAAAA /* process_monitor.entitlements */,
 				5E224CEC25CAE6EB007DAAAA /* Process.swift */,
+				5E55B6C325CD6DFC0066859A /* WindowController.swift */,
 			);
 			path = "process-monitor";
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E224CB225CADD4A007DAAAA /* ViewController.swift in Sources */,
+				5E55B6C425CD6DFC0066859A /* WindowController.swift in Sources */,
 				5E224CB025CADD4A007DAAAA /* AppDelegate.swift in Sources */,
 				5E224CED25CAE6EB007DAAAA /* Process.swift in Sources */,
 			);
