@@ -52,7 +52,7 @@
 		5E55B6C325CD6DFC0066859A /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		5E55B6D525CD76CE0066859A /* WindowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowViewController.swift; sourceTree = "<group>"; };
 		5E55B6DA25CD76E10066859A /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
-		5E55B6F625CDA1080066859A /* ProcessDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProcessDetailsViewController.swift; path = "../Source/Process Details/ProcessDetailsViewController.swift"; sourceTree = "<group>"; };
+		5E55B6F625CDA1080066859A /* ProcessDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessDetailsViewController.swift; sourceTree = "<group>"; };
 		5E55B70725CDA1910066859A /* ProcessesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessesListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -150,7 +150,8 @@
 			children = (
 				5E55B6F625CDA1080066859A /* ProcessDetailsViewController.swift */,
 			);
-			path = "Process Details";
+			name = "Process Details";
+			path = "Source/Process Details";
 			sourceTree = "<group>";
 		};
 		5E55B70625CDA1910066859A /* Processes List */ = {
