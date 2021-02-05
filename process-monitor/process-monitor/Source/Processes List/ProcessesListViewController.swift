@@ -9,7 +9,7 @@ import Cocoa
 
 final class ProcessesListViewController: NSViewController {
 
-    @IBOutlet private weak var tableView: NSTableView!
+    @IBOutlet private weak var outineView: NSOutlineView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
