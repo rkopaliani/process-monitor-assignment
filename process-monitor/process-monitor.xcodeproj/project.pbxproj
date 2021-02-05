@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		5E224CB025CADD4A007DAAAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E224CAF25CADD4A007DAAAA /* AppDelegate.swift */; };
-		5E224CB225CADD4A007DAAAA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E224CB125CADD4A007DAAAA /* ViewController.swift */; };
 		5E224CB425CADD4D007DAAAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E224CB325CADD4D007DAAAA /* Assets.xcassets */; };
 		5E224CB725CADD4D007DAAAA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E224CB525CADD4D007DAAAA /* Main.storyboard */; };
 		5E224CC325CADD4D007DAAAA /* process_monitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E224CC225CADD4D007DAAAA /* process_monitorTests.swift */; };
 		5E224CCE25CADD4D007DAAAA /* process_monitorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E224CCD25CADD4D007DAAAA /* process_monitorUITests.swift */; };
-		5E224CED25CAE6EB007DAAAA /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E224CEC25CAE6EB007DAAAA /* Process.swift */; };
+		5E55B6C425CD6DFC0066859A /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B6C325CD6DFC0066859A /* WindowController.swift */; };
+		5E55B6D625CD76CE0066859A /* WindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B6D525CD76CE0066859A /* WindowViewController.swift */; };
+		5E55B6DB25CD76E10066859A /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B6DA25CD76E10066859A /* SplitViewController.swift */; };
+		5E55B6F725CDA1080066859A /* ProcessDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B6F625CDA1080066859A /* ProcessDetailsViewController.swift */; };
+		5E55B70825CDA1910066859A /* ProcessesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B70725CDA1910066859A /* ProcessesListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,8 +38,7 @@
 
 /* Begin PBXFileReference section */
 		5E224CAC25CADD4A007DAAAA /* process-monitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "process-monitor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5E224CAF25CADD4A007DAAAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5E224CB125CADD4A007DAAAA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5E224CAF25CADD4A007DAAAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Source/AppDelegate.swift; sourceTree = "<group>"; };
 		5E224CB325CADD4D007DAAAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5E224CB625CADD4D007DAAAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5E224CB825CADD4D007DAAAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,7 +49,11 @@
 		5E224CC925CADD4D007DAAAA /* process-monitorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "process-monitorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E224CCD25CADD4D007DAAAA /* process_monitorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = process_monitorUITests.swift; sourceTree = "<group>"; };
 		5E224CCF25CADD4D007DAAAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5E224CEC25CAE6EB007DAAAA /* Process.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
+		5E55B6C325CD6DFC0066859A /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
+		5E55B6D525CD76CE0066859A /* WindowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowViewController.swift; sourceTree = "<group>"; };
+		5E55B6DA25CD76E10066859A /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
+		5E55B6F625CDA1080066859A /* ProcessDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProcessDetailsViewController.swift; path = "../Source/Process Details/ProcessDetailsViewController.swift"; sourceTree = "<group>"; };
+		5E55B70725CDA1910066859A /* ProcessesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessesListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,12 +105,13 @@
 			isa = PBXGroup;
 			children = (
 				5E224CAF25CADD4A007DAAAA /* AppDelegate.swift */,
-				5E224CB125CADD4A007DAAAA /* ViewController.swift */,
 				5E224CB325CADD4D007DAAAA /* Assets.xcassets */,
 				5E224CB525CADD4D007DAAAA /* Main.storyboard */,
 				5E224CB825CADD4D007DAAAA /* Info.plist */,
 				5E224CB925CADD4D007DAAAA /* process_monitor.entitlements */,
-				5E224CEC25CAE6EB007DAAAA /* Process.swift */,
+				5E55B70625CDA1910066859A /* Processes List */,
+				5E55B6FC25CDA1150066859A /* Process Details */,
+				5E55B6D125CD76BF0066859A /* Main Window */,
 			);
 			path = "process-monitor";
 			sourceTree = "<group>";
@@ -125,6 +132,34 @@
 				5E224CCF25CADD4D007DAAAA /* Info.plist */,
 			);
 			path = "process-monitorUITests";
+			sourceTree = "<group>";
+		};
+		5E55B6D125CD76BF0066859A /* Main Window */ = {
+			isa = PBXGroup;
+			children = (
+				5E55B6C325CD6DFC0066859A /* WindowController.swift */,
+				5E55B6D525CD76CE0066859A /* WindowViewController.swift */,
+				5E55B6DA25CD76E10066859A /* SplitViewController.swift */,
+			);
+			name = "Main Window";
+			path = "Source/Main Window";
+			sourceTree = "<group>";
+		};
+		5E55B6FC25CDA1150066859A /* Process Details */ = {
+			isa = PBXGroup;
+			children = (
+				5E55B6F625CDA1080066859A /* ProcessDetailsViewController.swift */,
+			);
+			path = "Process Details";
+			sourceTree = "<group>";
+		};
+		5E55B70625CDA1910066859A /* Processes List */ = {
+			isa = PBXGroup;
+			children = (
+				5E55B70725CDA1910066859A /* ProcessesListViewController.swift */,
+			);
+			name = "Processes List";
+			path = "Source/Processes List";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,9 +291,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E224CB225CADD4A007DAAAA /* ViewController.swift in Sources */,
+				5E55B70825CDA1910066859A /* ProcessesListViewController.swift in Sources */,
+				5E55B6DB25CD76E10066859A /* SplitViewController.swift in Sources */,
+				5E55B6F725CDA1080066859A /* ProcessDetailsViewController.swift in Sources */,
+				5E55B6D625CD76CE0066859A /* WindowViewController.swift in Sources */,
+				5E55B6C425CD6DFC0066859A /* WindowController.swift in Sources */,
 				5E224CB025CADD4A007DAAAA /* AppDelegate.swift in Sources */,
-				5E224CED25CAE6EB007DAAAA /* Process.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
