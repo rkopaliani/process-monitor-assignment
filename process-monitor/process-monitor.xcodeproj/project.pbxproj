@@ -16,6 +16,7 @@
 		5E55B6C425CD6DFC0066859A /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B6C325CD6DFC0066859A /* WindowController.swift */; };
 		5E55B6D625CD76CE0066859A /* WindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B6D525CD76CE0066859A /* WindowViewController.swift */; };
 		5E55B6DB25CD76E10066859A /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B6DA25CD76E10066859A /* SplitViewController.swift */; };
+		5E55B6E525CD8F8F0066859A /* ProcessesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B6E425CD8F8F0066859A /* ProcessesListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		5E55B6C325CD6DFC0066859A /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		5E55B6D525CD76CE0066859A /* WindowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowViewController.swift; sourceTree = "<group>"; };
 		5E55B6DA25CD76E10066859A /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
+		5E55B6E425CD8F8F0066859A /* ProcessesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessesListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				5E224CB825CADD4D007DAAAA /* Info.plist */,
 				5E224CB925CADD4D007DAAAA /* process_monitor.entitlements */,
 				5E224CEC25CAE6EB007DAAAA /* Process.swift */,
+				5E55B6E925CD8FAB0066859A /* ProcessesList */,
 				5E55B6D125CD76BF0066859A /* Main Window */,
 			);
 			path = "process-monitor";
@@ -140,6 +143,14 @@
 			);
 			name = "Main Window";
 			path = "Source/Main Window";
+			sourceTree = "<group>";
+		};
+		5E55B6E925CD8FAB0066859A /* ProcessesList */ = {
+			isa = PBXGroup;
+			children = (
+				5E55B6E425CD8F8F0066859A /* ProcessesListViewController.swift */,
+			);
+			path = ProcessesList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,6 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E55B6E525CD8F8F0066859A /* ProcessesListViewController.swift in Sources */,
 				5E55B6DB25CD76E10066859A /* SplitViewController.swift in Sources */,
 				5E55B6D625CD76CE0066859A /* WindowViewController.swift in Sources */,
 				5E55B6C425CD6DFC0066859A /* WindowController.swift in Sources */,
