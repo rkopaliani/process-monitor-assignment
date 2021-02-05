@@ -9,7 +9,7 @@
         <!--Window Controller-->
         <scene sceneID="yBT-bQ-Ll0">
             <objects>
-                <windowController id="dRK-Rk-MUJ" sceneMemberID="viewController">
+                <windowController id="dRK-Rk-MUJ" customClass="WindowController" customModule="process_monitor" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="7Qj-8e-Ubl">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -24,17 +24,75 @@
                         </connections>
                     </window>
                     <connections>
-                        <segue destination="fJg-nP-eDc" kind="relationship" relationship="window.shadowedContentViewController" id="zkb-tI-EOh"/>
+                        <segue destination="Na4-2A-oYL" kind="relationship" relationship="window.shadowedContentViewController" id="sfs-eg-hpQ"/>
                     </connections>
                 </windowController>
                 <customObject id="gOO-IP-Evw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-821" y="-111"/>
+            <point key="canvasLocation" x="-1376" y="-113"/>
+        </scene>
+        <!--Window View Controller-->
+        <scene sceneID="Weh-lU-1Lg">
+            <objects>
+                <viewController id="Na4-2A-oYL" customClass="WindowViewController" customModule="process_monitor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="vdN-Vh-BvT">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Iob-Y2-I8G">
+                                <rect key="frame" x="0.0" y="38" width="450" height="262"/>
+                                <connections>
+                                    <segue destination="fJg-nP-eDc" kind="embed" id="gwY-8j-srm"/>
+                                </connections>
+                            </containerView>
+                            <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="7rQ-Po-ErX">
+                                <rect key="frame" x="0.0" y="35" width="450" height="5"/>
+                            </box>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="WuL-Tc-UbV" userLabel="Buttons Container View">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="37"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GiQ-mv-UG7">
+                                        <rect key="frame" x="14" y="1" width="81" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="83m-cI-2zn">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="GiQ-mv-UG7" firstAttribute="leading" secondItem="WuL-Tc-UbV" secondAttribute="leading" constant="20" id="9qm-en-mbt"/>
+                                    <constraint firstItem="GiQ-mv-UG7" firstAttribute="centerY" secondItem="WuL-Tc-UbV" secondAttribute="centerY" id="AXz-OL-zpq"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GiQ-mv-UG7" secondAttribute="trailing" constant="20" symbolic="YES" id="JE4-jI-Xpi"/>
+                                    <constraint firstAttribute="bottom" secondItem="GiQ-mv-UG7" secondAttribute="bottom" constant="8" id="fM2-sL-DGp"/>
+                                </constraints>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Iob-Y2-I8G" firstAttribute="top" secondItem="vdN-Vh-BvT" secondAttribute="top" id="0L6-B3-IDe"/>
+                            <constraint firstAttribute="trailing" secondItem="Iob-Y2-I8G" secondAttribute="trailing" id="5X5-vd-EcV"/>
+                            <constraint firstAttribute="trailing" secondItem="WuL-Tc-UbV" secondAttribute="trailing" id="Lf0-W2-Sqn"/>
+                            <constraint firstItem="7rQ-Po-ErX" firstAttribute="bottom" secondItem="WuL-Tc-UbV" secondAttribute="top" id="M10-Al-rgm"/>
+                            <constraint firstItem="7rQ-Po-ErX" firstAttribute="top" secondItem="Iob-Y2-I8G" secondAttribute="bottom" id="MKS-1L-EAF"/>
+                            <constraint firstItem="WuL-Tc-UbV" firstAttribute="leading" secondItem="vdN-Vh-BvT" secondAttribute="leading" id="ZZ9-iM-EwE"/>
+                            <constraint firstItem="Iob-Y2-I8G" firstAttribute="leading" secondItem="vdN-Vh-BvT" secondAttribute="leading" id="cXd-eT-dje"/>
+                            <constraint firstAttribute="bottom" secondItem="WuL-Tc-UbV" secondAttribute="bottom" id="eBX-PI-WUL"/>
+                            <constraint firstAttribute="trailing" secondItem="7rQ-Po-ErX" secondAttribute="trailing" id="hgB-fl-WVs"/>
+                            <constraint firstItem="7rQ-Po-ErX" firstAttribute="leading" secondItem="vdN-Vh-BvT" secondAttribute="leading" id="y3d-t2-f4Z"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="Iob-Y2-I8G" id="6wK-BE-eKE"/>
+                        <outlet property="killButton" destination="GiQ-mv-UG7" id="dbV-SJ-Se6"/>
+                    </connections>
+                </viewController>
+                <customObject id="TzY-uX-DKU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-731" y="-107"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="JWN-lA-evW">
             <objects>
-                <splitViewController id="fJg-nP-eDc" sceneMemberID="viewController">
+                <splitViewController id="fJg-nP-eDc" customClass="SplitViewController" customModule="process_monitor" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem canCollapse="YES" holdingPriority="260" behavior="sidebar" id="kBG-Y5-wDH"/>
                         <splitViewItem id="ElY-KC-Jtu"/>

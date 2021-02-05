@@ -7,4 +7,5 @@
 
 import Cocoa
 
-final class WindowController: NSWindowController {}
+final class WindowController: NSWindowController {
+}

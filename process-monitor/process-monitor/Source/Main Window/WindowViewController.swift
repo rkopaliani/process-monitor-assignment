@@ -9,9 +9,11 @@ import Cocoa
 
 final class WindowViewController: NSViewController {
 
+    @IBOutlet private weak var killButton: NSButton!
+    @IBOutlet private weak var containerView: NSView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
     }
     
 }
