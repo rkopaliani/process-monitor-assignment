@@ -10,9 +10,11 @@ import XCTest
 
 class process_monitor_tests: XCTestCase {
     
-    let sut: ProcessMonitor = ProcessMonitor()
+    var sut: ProcessMonitor!
 
     override func setUpWithError() throws {
+        let dispatch: DispatchMonitorEvent = {_ in }
+        sut = ProcessMonitor(with: dispatch)
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 

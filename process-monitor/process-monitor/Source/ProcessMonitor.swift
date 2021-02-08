@@ -17,7 +17,6 @@ typealias DispatchMonitorEvent = (ProcessMonitorEvent) -> Void
 final class ProcessMonitor {
     
     private let dispatch: DispatchMonitorEvent
-    
     init(with dispatch: @escaping DispatchMonitorEvent) {
         self.dispatch = dispatch
     }
