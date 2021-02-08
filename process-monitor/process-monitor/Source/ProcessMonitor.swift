@@ -22,5 +22,5 @@ final class ProcessMonitor {
         self.dispatch = dispatch
     }
     
-    private(set) var processes:[Process] = []
+    private(set) var processes: [Process] = []
 }

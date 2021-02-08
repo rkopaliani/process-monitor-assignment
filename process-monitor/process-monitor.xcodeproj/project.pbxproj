@@ -58,9 +58,9 @@
 		5E224CCF25CADD4D007DAAAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E4CFCC925D14A5000C263B9 /* process_monitor_tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = process_monitor_tests.swift; sourceTree = "<group>"; };
 		5E4CFCCE25D14A6F00C263B9 /* ProcessMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProcessMonitor.swift; path = Source/ProcessMonitor.swift; sourceTree = "<group>"; };
-		5E4CFCD325D154B700C263B9 /* NSObjectProtocol+KVOExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "NSObjectProtocol+KVOExtensions.swift"; path = "Source/NSObjectProtocol+KVOExtensions.swift"; sourceTree = "<group>"; };
+		5E4CFCD325D154B700C263B9 /* NSObjectProtocol+KVOExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObjectProtocol+KVOExtensions.swift"; sourceTree = "<group>"; };
 		5E4CFCF025D16BCC00C263B9 /* EventDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EventDispatcher.swift; path = Source/EventDispatcher.swift; sourceTree = "<group>"; };
-		5E4CFCF525D16CAD00C263B9 /* WeakArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeakArray.swift; path = Source/WeakArray.swift; sourceTree = "<group>"; };
+		5E4CFCF525D16CAD00C263B9 /* WeakArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakArray.swift; sourceTree = "<group>"; };
 		5E4CFCFA25D16D0E00C263B9 /* event_dispatcher_tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = event_dispatcher_tests.swift; sourceTree = "<group>"; };
 		5E55B6C325CD6DFC0066859A /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		5E55B6D525CD76CE0066859A /* WindowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowViewController.swift; sourceTree = "<group>"; };
@@ -129,9 +129,9 @@
 				5E55B6FC25CDA1150066859A /* Process Details */,
 				5E55B6D125CD76BF0066859A /* Main Window */,
 				5E4CFCCE25D14A6F00C263B9 /* ProcessMonitor.swift */,
-				5E4CFCD325D154B700C263B9 /* NSObjectProtocol+KVOExtensions.swift */,
+				5E4CFD0B25D17FCE00C263B9 /* Extensions */,
 				5E4CFCF025D16BCC00C263B9 /* EventDispatcher.swift */,
-				5E4CFCF525D16CAD00C263B9 /* WeakArray.swift */,
+				5E4CFD0F25D17FDA00C263B9 /* Helpers */,
 			);
 			path = "process-monitor";
 			sourceTree = "<group>";
@@ -154,6 +154,24 @@
 				5E224CCF25CADD4D007DAAAA /* Info.plist */,
 			);
 			path = "process-monitorUITests";
+			sourceTree = "<group>";
+		};
+		5E4CFD0B25D17FCE00C263B9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5E4CFCD325D154B700C263B9 /* NSObjectProtocol+KVOExtensions.swift */,
+			);
+			name = Extensions;
+			path = Source/Extensions;
+			sourceTree = "<group>";
+		};
+		5E4CFD0F25D17FDA00C263B9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5E4CFCF525D16CAD00C263B9 /* WeakArray.swift */,
+			);
+			name = Helpers;
+			path = Source/Helpers;
 			sourceTree = "<group>";
 		};
 		5E55B6D125CD76BF0066859A /* Main Window */ = {
