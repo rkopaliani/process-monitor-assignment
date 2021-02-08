@@ -12,25 +12,15 @@ enum ProcessMonitorEvent {
     case failure(Error)
 }
 
-protocol ProcessMonitorEventHandler: EventHandlerType {
-    
-}
+typealias DispatchMonitorEvent = (ProcessMonitorEvent) -> Void
 
 final class ProcessMonitor {
     
-//    let eventsDispatcher: EventDispatcher<ProcessMonitorEventHandler>
-//    init(with dispatcher: EventDispatcher<ProcessMonitorEventHandler>) {
-//        self.eventsDispatcher = dispatcher
-//    }
+    private let dispatch: DispatchMonitorEvent
+    
+    init(with dispatch: @escaping DispatchMonitorEvent) {
+        self.dispatch = dispatch
+    }
     
     private(set) var processes:[Process] = []
-//    private(set) var delegates = NSHashTable<ProcessMonitorDelegate>(options: NSHashTableWeakMemory)
-//    
-//    func addDelegate(_ delegate: ProcessMonitorDelegate) {
-//        delegates.add(delegate)
-//    }
-//    
-//    func removeDelegate(_ delegate: ProcessMonitorDelegate) {
-//        delegates.remove(delegate)
-//    }
 }

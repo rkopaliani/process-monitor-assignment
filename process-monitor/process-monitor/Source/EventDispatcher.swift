@@ -12,12 +12,13 @@ protocol EventHandler {
     func handle(_ event: Event)
 }
 
-protocol EventDispatcherType {
+protocol EventDispatcherType: AnyObject {
     associatedtype Event
     func dispatch(_ event: Event)
 }
 
 typealias EventHandlerType = EventHandler & Equatable & AnyObject
+
 final class EventDispatcher<Handler: EventHandlerType>: EventDispatcherType {
     //ToDo: replace array with set, it should not be a bottleneck, but set makes sense much more here
     //ToDo: might be good idea to add sync queue for add/delete methods
