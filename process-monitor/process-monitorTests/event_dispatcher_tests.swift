@@ -49,4 +49,18 @@ class event_dispatcher_tests: XCTestCase {
         sut.dispatch(input)
         XCTAssertEqual(mockHandler.count, 1)
     }
+    
+    func testThatEventDispatcherDoesNotRemoveHandlerTwice() {
+        let mockHandler = MockEventHandler()
+        let anotherHandler = MockEventHandler()
+        sut.add(mockHandler)
+        sut.add(anotherHandler)
+
+        sut.delete(mockHandler)
+        sut.delete(mockHandler)
+        
+        let input = 1
+        sut.dispatch(input)
+        XCTAssertEqual(anotherHandler.event, input)
+    }
 }
