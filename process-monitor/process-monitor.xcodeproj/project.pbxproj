@@ -11,6 +11,8 @@
 		5E224CB425CADD4D007DAAAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E224CB325CADD4D007DAAAA /* Assets.xcassets */; };
 		5E224CB725CADD4D007DAAAA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E224CB525CADD4D007DAAAA /* Main.storyboard */; };
 		5E224CCE25CADD4D007DAAAA /* process_monitorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E224CCD25CADD4D007DAAAA /* process_monitorUITests.swift */; };
+		5E4CFCCA25D14A5000C263B9 /* process_monitor_tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4CFCC925D14A5000C263B9 /* process_monitor_tests.swift */; };
+		5E4CFCCF25D14A6F00C263B9 /* ProcessMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4CFCCE25D14A6F00C263B9 /* ProcessMonitor.swift */; };
 		5E55B6C425CD6DFC0066859A /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B6C325CD6DFC0066859A /* WindowController.swift */; };
 		5E55B6D625CD76CE0066859A /* WindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B6D525CD76CE0066859A /* WindowViewController.swift */; };
 		5E55B6DB25CD76E10066859A /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B6DA25CD76E10066859A /* SplitViewController.swift */; };
@@ -50,6 +52,8 @@
 		5E224CC925CADD4D007DAAAA /* process-monitorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "process-monitorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E224CCD25CADD4D007DAAAA /* process_monitorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = process_monitorUITests.swift; sourceTree = "<group>"; };
 		5E224CCF25CADD4D007DAAAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E4CFCC925D14A5000C263B9 /* process_monitor_tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = process_monitor_tests.swift; sourceTree = "<group>"; };
+		5E4CFCCE25D14A6F00C263B9 /* ProcessMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProcessMonitor.swift; path = Source/ProcessMonitor.swift; sourceTree = "<group>"; };
 		5E55B6C325CD6DFC0066859A /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		5E55B6D525CD76CE0066859A /* WindowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowViewController.swift; sourceTree = "<group>"; };
 		5E55B6DA25CD76E10066859A /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 				5E55B70625CDA1910066859A /* Processes List */,
 				5E55B6FC25CDA1150066859A /* Process Details */,
 				5E55B6D125CD76BF0066859A /* Main Window */,
+				5E4CFCCE25D14A6F00C263B9 /* ProcessMonitor.swift */,
 			);
 			path = "process-monitor";
 			sourceTree = "<group>";
@@ -125,6 +130,7 @@
 			children = (
 				5E224CC425CADD4D007DAAAA /* Info.plist */,
 				5E55B72025CDB4D50066859A /* processes_list_view_model_tests.swift */,
+				5E4CFCC925D14A5000C263B9 /* process_monitor_tests.swift */,
 			);
 			path = "process-monitorTests";
 			sourceTree = "<group>";
@@ -305,6 +311,7 @@
 				5E55B6D625CD76CE0066859A /* WindowViewController.swift in Sources */,
 				5E55B6C425CD6DFC0066859A /* WindowController.swift in Sources */,
 				5E55B72825CDBA5C0066859A /* ProcessesListViewState.swift in Sources */,
+				5E4CFCCF25D14A6F00C263B9 /* ProcessMonitor.swift in Sources */,
 				5E224CB025CADD4A007DAAAA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,6 +320,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E4CFCCA25D14A5000C263B9 /* process_monitor_tests.swift in Sources */,
 				5E55B72125CDB4D50066859A /* processes_list_view_model_tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
