@@ -12,9 +12,11 @@ protocol EventHandler {
     func handle(_ event: Event)
 }
 
-
-final class EventDispatcher<Handler: EventHandler & Equatable & AnyObject> {
+typealias EventHandlerType = EventHandler & Equatable & AnyObject
+final class EventDispatcher<Handler: EventHandlerType> {
     //ToDo: replace array with set, it should not be a bottleneck, but set makes sense much more here
+    //ToDo: might be good idea to add sync queue for add/delete methods
+    
     private var handlers: WeakArray<Handler> = WeakArray([])
     
     func add(_ handler: Handler) {
