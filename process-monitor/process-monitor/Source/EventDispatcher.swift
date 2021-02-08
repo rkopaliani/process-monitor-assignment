@@ -13,10 +13,11 @@ protocol EventHandler {
 }
 
 
-final class EventDispatcher<Handler: AnyObject & EventHandler> {
+final class EventDispatcher<Handler: EventHandler & Equatable & AnyObject> {
     private var handlers: WeakArray<Handler> = WeakArray([])
     
     func add(_ handler: Handler) {
+        guard !handlers.contains(where: { $0 == handler }) else { return }
         handlers.append(handler)
     }
     
