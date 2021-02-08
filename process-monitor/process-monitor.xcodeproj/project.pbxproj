@@ -10,13 +10,21 @@
 		5E224CB025CADD4A007DAAAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E224CAF25CADD4A007DAAAA /* AppDelegate.swift */; };
 		5E224CB425CADD4D007DAAAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E224CB325CADD4D007DAAAA /* Assets.xcassets */; };
 		5E224CB725CADD4D007DAAAA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E224CB525CADD4D007DAAAA /* Main.storyboard */; };
-		5E224CC325CADD4D007DAAAA /* process_monitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E224CC225CADD4D007DAAAA /* process_monitorTests.swift */; };
 		5E224CCE25CADD4D007DAAAA /* process_monitorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E224CCD25CADD4D007DAAAA /* process_monitorUITests.swift */; };
+		5E4CFCCA25D14A5000C263B9 /* process_monitor_tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4CFCC925D14A5000C263B9 /* process_monitor_tests.swift */; };
+		5E4CFCCF25D14A6F00C263B9 /* ProcessMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4CFCCE25D14A6F00C263B9 /* ProcessMonitor.swift */; };
+		5E4CFCD425D154B700C263B9 /* NSObjectProtocol+KVOExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4CFCD325D154B700C263B9 /* NSObjectProtocol+KVOExtensions.swift */; };
+		5E4CFCF125D16BCC00C263B9 /* EventDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4CFCF025D16BCC00C263B9 /* EventDispatcher.swift */; };
+		5E4CFCF625D16CAD00C263B9 /* WeakArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4CFCF525D16CAD00C263B9 /* WeakArray.swift */; };
+		5E4CFCFB25D16D0E00C263B9 /* event_dispatcher_tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4CFCFA25D16D0E00C263B9 /* event_dispatcher_tests.swift */; };
 		5E55B6C425CD6DFC0066859A /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B6C325CD6DFC0066859A /* WindowController.swift */; };
 		5E55B6D625CD76CE0066859A /* WindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B6D525CD76CE0066859A /* WindowViewController.swift */; };
 		5E55B6DB25CD76E10066859A /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B6DA25CD76E10066859A /* SplitViewController.swift */; };
 		5E55B6F725CDA1080066859A /* ProcessDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B6F625CDA1080066859A /* ProcessDetailsViewController.swift */; };
 		5E55B70825CDA1910066859A /* ProcessesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B70725CDA1910066859A /* ProcessesListViewController.swift */; };
+		5E55B71C25CDB4AB0066859A /* ProcessesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B71B25CDB4AB0066859A /* ProcessesListViewModel.swift */; };
+		5E55B72125CDB4D50066859A /* processes_list_view_model_tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B72025CDB4D50066859A /* processes_list_view_model_tests.swift */; };
+		5E55B72825CDBA5C0066859A /* ProcessesListViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B72725CDBA5C0066859A /* ProcessesListViewState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,16 +52,24 @@
 		5E224CB825CADD4D007DAAAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E224CB925CADD4D007DAAAA /* process_monitor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = process_monitor.entitlements; sourceTree = "<group>"; };
 		5E224CBE25CADD4D007DAAAA /* process-monitorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "process-monitorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5E224CC225CADD4D007DAAAA /* process_monitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = process_monitorTests.swift; sourceTree = "<group>"; };
 		5E224CC425CADD4D007DAAAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E224CC925CADD4D007DAAAA /* process-monitorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "process-monitorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E224CCD25CADD4D007DAAAA /* process_monitorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = process_monitorUITests.swift; sourceTree = "<group>"; };
 		5E224CCF25CADD4D007DAAAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E4CFCC925D14A5000C263B9 /* process_monitor_tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = process_monitor_tests.swift; sourceTree = "<group>"; };
+		5E4CFCCE25D14A6F00C263B9 /* ProcessMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProcessMonitor.swift; path = Source/ProcessMonitor.swift; sourceTree = "<group>"; };
+		5E4CFCD325D154B700C263B9 /* NSObjectProtocol+KVOExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "NSObjectProtocol+KVOExtensions.swift"; path = "Source/NSObjectProtocol+KVOExtensions.swift"; sourceTree = "<group>"; };
+		5E4CFCF025D16BCC00C263B9 /* EventDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EventDispatcher.swift; path = Source/EventDispatcher.swift; sourceTree = "<group>"; };
+		5E4CFCF525D16CAD00C263B9 /* WeakArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeakArray.swift; path = Source/WeakArray.swift; sourceTree = "<group>"; };
+		5E4CFCFA25D16D0E00C263B9 /* event_dispatcher_tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = event_dispatcher_tests.swift; sourceTree = "<group>"; };
 		5E55B6C325CD6DFC0066859A /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		5E55B6D525CD76CE0066859A /* WindowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowViewController.swift; sourceTree = "<group>"; };
 		5E55B6DA25CD76E10066859A /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		5E55B6F625CDA1080066859A /* ProcessDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessDetailsViewController.swift; sourceTree = "<group>"; };
 		5E55B70725CDA1910066859A /* ProcessesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessesListViewController.swift; sourceTree = "<group>"; };
+		5E55B71B25CDB4AB0066859A /* ProcessesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessesListViewModel.swift; sourceTree = "<group>"; };
+		5E55B72025CDB4D50066859A /* processes_list_view_model_tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = processes_list_view_model_tests.swift; sourceTree = "<group>"; };
+		5E55B72725CDBA5C0066859A /* ProcessesListViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessesListViewState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +128,10 @@
 				5E55B70625CDA1910066859A /* Processes List */,
 				5E55B6FC25CDA1150066859A /* Process Details */,
 				5E55B6D125CD76BF0066859A /* Main Window */,
+				5E4CFCCE25D14A6F00C263B9 /* ProcessMonitor.swift */,
+				5E4CFCD325D154B700C263B9 /* NSObjectProtocol+KVOExtensions.swift */,
+				5E4CFCF025D16BCC00C263B9 /* EventDispatcher.swift */,
+				5E4CFCF525D16CAD00C263B9 /* WeakArray.swift */,
 			);
 			path = "process-monitor";
 			sourceTree = "<group>";
@@ -119,8 +139,10 @@
 		5E224CC125CADD4D007DAAAA /* process-monitorTests */ = {
 			isa = PBXGroup;
 			children = (
-				5E224CC225CADD4D007DAAAA /* process_monitorTests.swift */,
 				5E224CC425CADD4D007DAAAA /* Info.plist */,
+				5E4CFCFA25D16D0E00C263B9 /* event_dispatcher_tests.swift */,
+				5E55B72025CDB4D50066859A /* processes_list_view_model_tests.swift */,
+				5E4CFCC925D14A5000C263B9 /* process_monitor_tests.swift */,
 			);
 			path = "process-monitorTests";
 			sourceTree = "<group>";
@@ -158,6 +180,8 @@
 			isa = PBXGroup;
 			children = (
 				5E55B70725CDA1910066859A /* ProcessesListViewController.swift */,
+				5E55B71B25CDB4AB0066859A /* ProcessesListViewModel.swift */,
+				5E55B72725CDBA5C0066859A /* ProcessesListViewState.swift */,
 			);
 			name = "Processes List";
 			path = "Source/Processes List";
@@ -292,11 +316,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E4CFCD425D154B700C263B9 /* NSObjectProtocol+KVOExtensions.swift in Sources */,
+				5E4CFCF625D16CAD00C263B9 /* WeakArray.swift in Sources */,
 				5E55B70825CDA1910066859A /* ProcessesListViewController.swift in Sources */,
+				5E55B71C25CDB4AB0066859A /* ProcessesListViewModel.swift in Sources */,
 				5E55B6DB25CD76E10066859A /* SplitViewController.swift in Sources */,
 				5E55B6F725CDA1080066859A /* ProcessDetailsViewController.swift in Sources */,
 				5E55B6D625CD76CE0066859A /* WindowViewController.swift in Sources */,
+				5E4CFCF125D16BCC00C263B9 /* EventDispatcher.swift in Sources */,
 				5E55B6C425CD6DFC0066859A /* WindowController.swift in Sources */,
+				5E55B72825CDBA5C0066859A /* ProcessesListViewState.swift in Sources */,
+				5E4CFCCF25D14A6F00C263B9 /* ProcessMonitor.swift in Sources */,
 				5E224CB025CADD4A007DAAAA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,7 +335,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E224CC325CADD4D007DAAAA /* process_monitorTests.swift in Sources */,
+				5E4CFCCA25D14A5000C263B9 /* process_monitor_tests.swift in Sources */,
+				5E55B72125CDB4D50066859A /* processes_list_view_model_tests.swift in Sources */,
+				5E4CFCFB25D16D0E00C263B9 /* event_dispatcher_tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
