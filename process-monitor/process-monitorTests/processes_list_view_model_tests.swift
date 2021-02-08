@@ -1,14 +1,13 @@
 //
-//  process_monitorTests.swift
+//  processes_list_view_model_tests.swift
 //  process-monitorTests
 //
-//  Created by Roman Kopaliani on 03.02.2021.
+//  Created by Roman Kopaliani on 05.02.2021.
 //
 
 import XCTest
-@testable import process_monitor
 
-class process_monitorTests: XCTestCase {
+class processes_list_view_model_tests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
