@@ -16,7 +16,11 @@ protocol EventHandler {
 final class EventDispatcher<Handler: AnyObject & EventHandler> {
     private var handlers: WeakArray<Handler> = WeakArray([])
     
+    func add(_ handler: Handler) {
+        handlers.append(handler)
+    }
+    
     func dispatch(_ event: Handler.Event) {
-        
+        handlers.forEach { $0?.handle(event) }
     }
 }

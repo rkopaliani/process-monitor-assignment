@@ -28,6 +28,7 @@ class event_dispatcher_tests: XCTestCase {
     func testThatEventDispatcherDispatchEvent() {
         let mockHandler = MockEventHandler()
         let input = 2
+        sut.add(mockHandler)
         sut.dispatch(input)
         XCTAssertEqual(mockHandler.event, input)
     }
