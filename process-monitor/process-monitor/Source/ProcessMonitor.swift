@@ -7,20 +7,20 @@
 
 import Foundation
 
-@objc protocol ProcessMonitorDelegate {
+protocol ProcessMonitorDelegate {
     
 }
 
 final class ProcessMonitor {
-        
+    
     private(set) var processes:[Process] = []
-    private(set) var delegates = NSHashTable<ProcessMonitorDelegate>(options: NSHashTableWeakMemory)
-    
-    func addDelegate(_ delegate: ProcessMonitorDelegate) {
-        delegates.add(delegate)
-    }
-    
-    func removeDelegate(_ delegate: ProcessMonitorDelegate) {
-        delegates.remove(delegate)
-    }
+//    private(set) var delegates = NSHashTable<ProcessMonitorDelegate>(options: NSHashTableWeakMemory)
+//    
+//    func addDelegate(_ delegate: ProcessMonitorDelegate) {
+//        delegates.add(delegate)
+//    }
+//    
+//    func removeDelegate(_ delegate: ProcessMonitorDelegate) {
+//        delegates.remove(delegate)
+//    }
 }
