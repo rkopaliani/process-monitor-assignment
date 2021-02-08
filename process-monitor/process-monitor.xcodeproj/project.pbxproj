@@ -16,6 +16,7 @@
 		5E4CFCD425D154B700C263B9 /* NSObjectProtocol+KVOExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4CFCD325D154B700C263B9 /* NSObjectProtocol+KVOExtensions.swift */; };
 		5E4CFCF125D16BCC00C263B9 /* EventDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4CFCF025D16BCC00C263B9 /* EventDispatcher.swift */; };
 		5E4CFCF625D16CAD00C263B9 /* WeakArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4CFCF525D16CAD00C263B9 /* WeakArray.swift */; };
+		5E4CFCFB25D16D0E00C263B9 /* event_dispatcher_tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4CFCFA25D16D0E00C263B9 /* event_dispatcher_tests.swift */; };
 		5E55B6C425CD6DFC0066859A /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B6C325CD6DFC0066859A /* WindowController.swift */; };
 		5E55B6D625CD76CE0066859A /* WindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B6D525CD76CE0066859A /* WindowViewController.swift */; };
 		5E55B6DB25CD76E10066859A /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B6DA25CD76E10066859A /* SplitViewController.swift */; };
@@ -60,6 +61,7 @@
 		5E4CFCD325D154B700C263B9 /* NSObjectProtocol+KVOExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "NSObjectProtocol+KVOExtensions.swift"; path = "Source/NSObjectProtocol+KVOExtensions.swift"; sourceTree = "<group>"; };
 		5E4CFCF025D16BCC00C263B9 /* EventDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EventDispatcher.swift; path = Source/EventDispatcher.swift; sourceTree = "<group>"; };
 		5E4CFCF525D16CAD00C263B9 /* WeakArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeakArray.swift; path = Source/WeakArray.swift; sourceTree = "<group>"; };
+		5E4CFCFA25D16D0E00C263B9 /* event_dispatcher_tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = event_dispatcher_tests.swift; sourceTree = "<group>"; };
 		5E55B6C325CD6DFC0066859A /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		5E55B6D525CD76CE0066859A /* WindowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowViewController.swift; sourceTree = "<group>"; };
 		5E55B6DA25CD76E10066859A /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				5E224CC425CADD4D007DAAAA /* Info.plist */,
+				5E4CFCFA25D16D0E00C263B9 /* event_dispatcher_tests.swift */,
 				5E55B72025CDB4D50066859A /* processes_list_view_model_tests.swift */,
 				5E4CFCC925D14A5000C263B9 /* process_monitor_tests.swift */,
 			);
@@ -334,6 +337,7 @@
 			files = (
 				5E4CFCCA25D14A5000C263B9 /* process_monitor_tests.swift in Sources */,
 				5E55B72125CDB4D50066859A /* processes_list_view_model_tests.swift in Sources */,
+				5E4CFCFB25D16D0E00C263B9 /* event_dispatcher_tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

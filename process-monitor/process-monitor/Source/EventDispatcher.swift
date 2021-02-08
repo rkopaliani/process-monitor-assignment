@@ -13,6 +13,10 @@ protocol EventHandler {
 }
 
 
-class EventDispatcher {
+final class EventDispatcher<Handler: AnyObject & EventHandler> {
+    private var handlers: WeakArray<Handler> = WeakArray([])
     
+    func dispatch(_ event: Handler.Event) {
+        
+    }
 }

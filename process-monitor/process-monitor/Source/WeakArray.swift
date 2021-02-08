@@ -7,7 +7,7 @@
 
 import Foundation
 
-final fileprivate class WeakBox<T:AnyObject> {
+final fileprivate class WeakBox<T: AnyObject> {
     weak var unbox: T?
     init(_ value: T?) {
         unbox = value
