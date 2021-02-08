@@ -7,14 +7,20 @@
 
 import Foundation
 
-final fileprivate class WeakBox<T: AnyObject> {
+final fileprivate class WeakBox<T: AnyObject & Equatable> {
     weak var unbox: T?
     init(_ value: T?) {
         unbox = value
     }
 }
 
-struct WeakArray<T: AnyObject> {
+extension WeakBox: Equatable {
+    static func == (lhs: WeakBox<T>, rhs: WeakBox<T>) -> Bool {
+        return lhs.unbox == rhs.unbox
+    }
+}
+
+struct WeakArray<T: AnyObject & Equatable> {
     private var items: [WeakBox<T>] = []
 
     init(_ elements: [T]) {
@@ -45,4 +51,8 @@ extension WeakArray: Collection {
     func index(after idx: Int) -> Int {
         return items.index(after: idx)
     }
+}
+
+extension WeakArray {
+    
 }
