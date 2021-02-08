@@ -7,11 +7,21 @@
 
 import Foundation
 
-protocol ProcessMonitorDelegate {
+enum ProcessMonitorEvent {
+    case update
+    case failure(Error)
+}
+
+protocol ProcessMonitorEventHandler: EventHandlerType {
     
 }
 
 final class ProcessMonitor {
+    
+//    let eventsDispatcher: EventDispatcher<ProcessMonitorEventHandler>
+//    init(with dispatcher: EventDispatcher<ProcessMonitorEventHandler>) {
+//        self.eventsDispatcher = dispatcher
+//    }
     
     private(set) var processes:[Process] = []
 //    private(set) var delegates = NSHashTable<ProcessMonitorDelegate>(options: NSHashTableWeakMemory)

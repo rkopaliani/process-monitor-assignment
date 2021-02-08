@@ -8,10 +8,6 @@
 import XCTest
 @testable import process_monitor
 
-class MockDelegate: NSObject, ProcessMonitorDelegate {
-    
-}
-
 class process_monitor_tests: XCTestCase {
     
     let sut: ProcessMonitor = ProcessMonitor()
