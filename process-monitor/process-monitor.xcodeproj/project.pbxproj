@@ -25,6 +25,8 @@
 		5E55B71C25CDB4AB0066859A /* ProcessesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B71B25CDB4AB0066859A /* ProcessesListViewModel.swift */; };
 		5E55B72125CDB4D50066859A /* processes_list_view_model_tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B72025CDB4D50066859A /* processes_list_view_model_tests.swift */; };
 		5E55B72825CDBA5C0066859A /* ProcessesListViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B72725CDBA5C0066859A /* ProcessesListViewState.swift */; };
+		5EBAC38D25D18E2A00106D5B /* ApplicationsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBAC38C25D18E2A00106D5B /* ApplicationsObserver.swift */; };
+		5EBAC39825D18FE400106D5B /* applications_observer_tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBAC39725D18FE400106D5B /* applications_observer_tests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,8 @@
 		5E55B71B25CDB4AB0066859A /* ProcessesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessesListViewModel.swift; sourceTree = "<group>"; };
 		5E55B72025CDB4D50066859A /* processes_list_view_model_tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = processes_list_view_model_tests.swift; sourceTree = "<group>"; };
 		5E55B72725CDBA5C0066859A /* ProcessesListViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessesListViewState.swift; sourceTree = "<group>"; };
+		5EBAC38C25D18E2A00106D5B /* ApplicationsObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationsObserver.swift; path = Source/ApplicationsObserver.swift; sourceTree = "<group>"; };
+		5EBAC39725D18FE400106D5B /* applications_observer_tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = applications_observer_tests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,9 +132,10 @@
 				5E55B70625CDA1910066859A /* Processes List */,
 				5E55B6FC25CDA1150066859A /* Process Details */,
 				5E55B6D125CD76BF0066859A /* Main Window */,
-				5E4CFCCE25D14A6F00C263B9 /* ProcessMonitor.swift */,
 				5E4CFD0B25D17FCE00C263B9 /* Extensions */,
 				5E4CFCF025D16BCC00C263B9 /* EventDispatcher.swift */,
+				5E4CFCCE25D14A6F00C263B9 /* ProcessMonitor.swift */,
+				5EBAC38C25D18E2A00106D5B /* ApplicationsObserver.swift */,
 				5E4CFD0F25D17FDA00C263B9 /* Helpers */,
 			);
 			path = "process-monitor";
@@ -143,6 +148,7 @@
 				5E4CFCFA25D16D0E00C263B9 /* event_dispatcher_tests.swift */,
 				5E55B72025CDB4D50066859A /* processes_list_view_model_tests.swift */,
 				5E4CFCC925D14A5000C263B9 /* process_monitor_tests.swift */,
+				5EBAC39725D18FE400106D5B /* applications_observer_tests.swift */,
 			);
 			path = "process-monitorTests";
 			sourceTree = "<group>";
@@ -344,6 +350,7 @@
 				5E4CFCF125D16BCC00C263B9 /* EventDispatcher.swift in Sources */,
 				5E55B6C425CD6DFC0066859A /* WindowController.swift in Sources */,
 				5E55B72825CDBA5C0066859A /* ProcessesListViewState.swift in Sources */,
+				5EBAC38D25D18E2A00106D5B /* ApplicationsObserver.swift in Sources */,
 				5E4CFCCF25D14A6F00C263B9 /* ProcessMonitor.swift in Sources */,
 				5E224CB025CADD4A007DAAAA /* AppDelegate.swift in Sources */,
 			);
@@ -353,6 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EBAC39825D18FE400106D5B /* applications_observer_tests.swift in Sources */,
 				5E4CFCCA25D14A5000C263B9 /* process_monitor_tests.swift in Sources */,
 				5E55B72125CDB4D50066859A /* processes_list_view_model_tests.swift in Sources */,
 				5E4CFCFB25D16D0E00C263B9 /* event_dispatcher_tests.swift in Sources */,

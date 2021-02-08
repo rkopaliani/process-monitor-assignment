@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AppKit
 
 enum ProcessMonitorEvent {
     case update
@@ -16,10 +17,14 @@ typealias DispatchMonitorEvent = (ProcessMonitorEvent) -> Void
 
 final class ProcessMonitor {
     
-    private let dispatch: DispatchMonitorEvent
-    init(with dispatch: @escaping DispatchMonitorEvent) {
-        self.dispatch = dispatch
-    }
-    
-    private(set) var processes: [Process] = []
+//    private let dispatch: DispatchMonitorEvent
+//    private let appObserver: ApplicationsObserverType
+//    
+//    init(with appObserver: ApplicationsObserverType, dispatch: @escaping DispatchMonitorEvent) {
+//        self.dispatch = dispatch
+//        self.appObserver = appObserver
+//    }
+//    
+//    private(set) var processes: [Process] = []
 }
+
