@@ -27,6 +27,7 @@
 		5E55B72825CDBA5C0066859A /* ProcessesListViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B72725CDBA5C0066859A /* ProcessesListViewState.swift */; };
 		5EBAC38D25D18E2A00106D5B /* ApplicationsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBAC38C25D18E2A00106D5B /* ApplicationsObserver.swift */; };
 		5EBAC39825D18FE400106D5B /* applications_observer_tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBAC39725D18FE400106D5B /* applications_observer_tests.swift */; };
+		5EBAC3B025D28E8600106D5B /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBAC3AF25D28E8600106D5B /* Process.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		5E55B72725CDBA5C0066859A /* ProcessesListViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessesListViewState.swift; sourceTree = "<group>"; };
 		5EBAC38C25D18E2A00106D5B /* ApplicationsObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationsObserver.swift; path = Source/ApplicationsObserver.swift; sourceTree = "<group>"; };
 		5EBAC39725D18FE400106D5B /* applications_observer_tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = applications_observer_tests.swift; sourceTree = "<group>"; };
+		5EBAC3AF25D28E8600106D5B /* Process.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Process.swift; path = Source/Process.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 				5E4CFD0B25D17FCE00C263B9 /* Extensions */,
 				5E4CFCF025D16BCC00C263B9 /* EventDispatcher.swift */,
 				5E4CFCCE25D14A6F00C263B9 /* ProcessMonitor.swift */,
+				5EBAC3AF25D28E8600106D5B /* Process.swift */,
 				5EBAC38C25D18E2A00106D5B /* ApplicationsObserver.swift */,
 				5E4CFD0F25D17FDA00C263B9 /* Helpers */,
 			);
@@ -353,6 +356,7 @@
 				5EBAC38D25D18E2A00106D5B /* ApplicationsObserver.swift in Sources */,
 				5E4CFCCF25D14A6F00C263B9 /* ProcessMonitor.swift in Sources */,
 				5E224CB025CADD4A007DAAAA /* AppDelegate.swift in Sources */,
+				5EBAC3B025D28E8600106D5B /* Process.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

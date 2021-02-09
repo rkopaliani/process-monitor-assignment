@@ -8,19 +8,26 @@
 import XCTest
 @testable import process_monitor
 
+
 class process_monitor_tests: XCTestCase {
     
     var sut: ProcessMonitor!
-
+    
     override func setUpWithError() throws {
-//        sut = ProcessMonitor(with: dispatch)
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        let observer = Observer<NSWorkspace>(MockWorkspace())
+        sut = ProcessMonitor(observer) { event in
+            
+        }
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
+    func testThatInitialNumberOfProcessesIsCorrect() {
+        XCTAssertEqual(sut.processes.count, 1)
+    }
+    
     func testThatAddMonitorDoesNotAddTheSameDelegateTwice() {
 //        let delegate = MockDelegate()
 //        sut.addDelegate(delegate)
