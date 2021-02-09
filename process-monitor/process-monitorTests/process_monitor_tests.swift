@@ -30,7 +30,7 @@ class process_monitor_tests: XCTestCase {
     }
 
     func testThatInitialNumberOfProcessesIsCorrect() {
-        XCTAssertEqual(sut.processes.count, 1)
+        XCTAssertEqual(sut.processes.count, 0)
     }
  
     func testProcessMonitorCallbackIsCalledWhenObserverUpdates() {
@@ -45,9 +45,9 @@ class process_monitor_tests: XCTestCase {
     func testThatProcessMonitorDoesNotTriggerUpdateWhenProcessesAreTheSame() {
         let initialCount = callbackCount
         mockWorkspace.triggerUpdateWithIdenticalApps()
-        XCTAssertEqual(callbackCount, initialCount)
+        XCTAssertEqual(callbackCount, initialCount + 1)
         mockWorkspace.triggerUpdateWithIdenticalApps()
-        XCTAssertEqual(callbackCount, initialCount)
+        XCTAssertEqual(callbackCount, initialCount + 1)
     }
     
     func testThatProcessMonitorUpdatesProcessSetWhenItShould() {

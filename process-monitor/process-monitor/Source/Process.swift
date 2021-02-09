@@ -21,14 +21,22 @@ struct ProcessInfo {
 extension ProcessInfo: Hashable {}
 
 extension ProcessInfo {
-    init(_ runningApplication: NSRunningApplication) {
-        self.pid = runningApplication.processIdentifier
-        self.ppid = runningApplication.processIdentifier
-        self.uid = 0
-        self.path = runningApplication.bundleURL?.absoluteString ?? ""
-        self.bundleId = runningApplication.bundleIdentifier
+    init?(_ app: NSRunningApplication) {
+        var kinfo = kinfo_proc()
+        var size  = MemoryLayout<kinfo_proc>.stride
+        var mib: [Int32] = [CTL_KERN, KERN_PROC, KERN_PROC_PID, app.processIdentifier]
+        
+        guard sysctl(&mib, u_int(mib.count), &kinfo, &size, nil, 0) == 0 else {
+            fatalError("Something went wrong. Abort. Check this later")
+            return nil
+        }
+
+        self.pid = app.processIdentifier
+        self.ppid = kinfo.kp_eproc.e_ppid
+        self.uid = kinfo.kp_eproc.e_ucred.cr_uid
+
+        self.bundleId = app.bundleIdentifier
+        self.path = app.bundleURL?.absoluteString ?? ""
         self.certificateTeamId = "cert"
     }
 }
-
-

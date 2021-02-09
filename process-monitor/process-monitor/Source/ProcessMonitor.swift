@@ -33,11 +33,9 @@ final class ProcessMonitor {
 
 extension ProcessMonitor {
     private func handle(_ update: [NSRunningApplication]) {
-        let updateProcess = Set(update.map(ProcessInfo.init))
+        let updateProcess = Set(update.compactMap(ProcessInfo.init))
         guard processes != updateProcess else { return }
         processes = updateProcess
         callback(.update)
     }
 }
-
-

@@ -11,7 +11,7 @@ import XCTest
 class MockWorkspace: NSWorkspace {
     var mockUpdate: Bool = false
     
-    private var _runingApps = [NSRunningApplication()]
+    private var _runingApps: [NSRunningApplication] = []
     func triggerUpdateWithIdenticalApps() {
         self.willChangeValue(forKey: "runningApplications")
         if mockUpdate {
@@ -69,7 +69,7 @@ class applications_observer_tests: XCTestCase {
                 XCTAssertEqual(value.count, 3)
                 updatedValueExpectation.fulfill()
             } else {
-                XCTAssertEqual(value.count, 1)
+                XCTAssertEqual(value.count, 0)
                 initialValueExpectation.fulfill()
             }
         }
