@@ -22,12 +22,13 @@ final class ProcessMonitor {
     init(_ observer: Observer<NSWorkspace>, callback: @escaping ProcessMonitorCallback) {
         self.callback = callback
         self.observer = observer
-        observer.subscribe(\.runningApplications) { value in
-            
+        observer.subscribe(\.runningApplications) { [weak self] value in
+            guard let self = self else { return }
+            self.processes = value.map(ProcessInfo.init)
         }
     }
     
-    private(set) var processes: [Process] = []
+    private(set) var processes: [ProcessInfo] = []
 }
 
 extension ProcessMonitor {}
