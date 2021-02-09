@@ -28,6 +28,7 @@
 		5EBAC38D25D18E2A00106D5B /* ApplicationsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBAC38C25D18E2A00106D5B /* ApplicationsObserver.swift */; };
 		5EBAC39825D18FE400106D5B /* applications_observer_tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBAC39725D18FE400106D5B /* applications_observer_tests.swift */; };
 		5EBAC3B025D28E8600106D5B /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBAC3AF25D28E8600106D5B /* Process.swift */; };
+		5EBAC3B825D2CAAE00106D5B /* EventHandlingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBAC3B725D2CAAE00106D5B /* EventHandlingViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		5EBAC38C25D18E2A00106D5B /* ApplicationsObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationsObserver.swift; path = Source/ApplicationsObserver.swift; sourceTree = "<group>"; };
 		5EBAC39725D18FE400106D5B /* applications_observer_tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = applications_observer_tests.swift; sourceTree = "<group>"; };
 		5EBAC3AF25D28E8600106D5B /* Process.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Process.swift; path = Source/Process.swift; sourceTree = "<group>"; };
+		5EBAC3B725D2CAAE00106D5B /* EventHandlingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHandlingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 				5E55B6C325CD6DFC0066859A /* WindowController.swift */,
 				5E55B6D525CD76CE0066859A /* WindowViewController.swift */,
 				5E55B6DA25CD76E10066859A /* SplitViewController.swift */,
+				5EBAC3B725D2CAAE00106D5B /* EventHandlingViewModel.swift */,
 			);
 			name = "Main Window";
 			path = "Source/Main Window";
@@ -345,6 +348,7 @@
 			files = (
 				5E4CFCD425D154B700C263B9 /* NSObjectProtocol+KVOExtensions.swift in Sources */,
 				5E4CFCF625D16CAD00C263B9 /* WeakArray.swift in Sources */,
+				5EBAC3B825D2CAAE00106D5B /* EventHandlingViewModel.swift in Sources */,
 				5E55B70825CDA1910066859A /* ProcessesListViewController.swift in Sources */,
 				5E55B71C25CDB4AB0066859A /* ProcessesListViewModel.swift in Sources */,
 				5E55B6DB25CD76E10066859A /* SplitViewController.swift in Sources */,

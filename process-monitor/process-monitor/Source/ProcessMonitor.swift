@@ -21,9 +21,9 @@ final class ProcessMonitor {
     init(_ observer: Observer<NSWorkspace>, callback: @escaping ProcessMonitorCallback) {
         self.callback = callback
         self.observer = observer
-        observer.subscribe(\.runningApplications) { [weak self] value in
+        observer.subscribe(\.runningApplications) { [weak self] update in
             guard let self = self else { return }
-            self.handle(value)
+            self.process(update)
         }
     }
     
@@ -31,7 +31,7 @@ final class ProcessMonitor {
 }
 
 extension ProcessMonitor {
-    private func handle(_ update: [NSRunningApplication]) {
+    private func process(_ update: [NSRunningApplication]) {
         let updateProcess = Set(update.compactMap(ProcessInfo.init))
         guard processes != updateProcess else { return }
         processes = updateProcess

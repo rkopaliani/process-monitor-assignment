@@ -9,51 +9,52 @@ import Cocoa
 
 final class ProcessesListViewController: NSViewController {
 
-    @IBOutlet private weak var outineView: NSOutlineView!
+    @IBOutlet private weak var tableView: NSTableView!
+    
+    var viewModel: ProcessesListViewModel? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        outineView.dataSource = self
-        outineView.delegate = self
-        
-        let center = NSWorkspace.shared.notificationCenter
-        let runningApps = NSWorkspace.shared.runningApplications
-        
-        center.addObserver(self, selector: #selector(appLaunched(_:)), name: NSWorkspace.willLaunchApplicationNotification, object: nil)
-        center.addObserver(self, selector: #selector(appTerminated(_:)), name: NSWorkspace.didTerminateApplicationNotification, object: nil)
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.reloadData()
     }
-    
-    @objc func appLaunched(_ n: Notification) {
-        print(n)
-        let runningApps = NSWorkspace.shared.runningApplications
-        print(runningApps)
-    }
-    
-    @objc func appTerminated(_ n: Notification) {
-        print(n)
-    }
-
 }
 
-extension ProcessesListViewController: NSOutlineViewDataSource {
-    func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
-        return 0
+extension ProcessesListViewController: NSTableViewDataSource {
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        viewModel?.processes.count ?? 0
     }
     
-    func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
-         return false
-    }
+    func tableView(_ tableView: NSTableView,
+                   viewFor tableColumn: NSTableColumn?,
+                   row: Int) -> NSView? {
+        guard let columnId = tableColumn?.identifier else { return nil }
+        guard let process = viewModel?.processes[row] else { return nil }
     
-    func outlineView(_ outlineView: NSOutlineView, isGroupItem item: Any) -> Bool {
-        return false
-    }
-    
-    func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
+        switch columnId.rawValue {
+        case "nameCell":
+            let cell = tableView.makeView(withIdentifier: columnId, owner: self) as! NSTableCellView
+            cell.textField?.stringValue = "\(process.pid)"
+        case "userCell":
+            let cell = tableView.makeView(withIdentifier: columnId, owner: self) as! NSTableCellView
+            cell.textField?.stringValue = "\(process.uid)"
+        case "pathCell":
+            let cell = tableView.makeView(withIdentifier: columnId, owner: self) as! NSTableCellView
+            cell.textField?.stringValue = "\(process.path)"
+        default:
+            fatalError("Should not happen")
+        }
+        
         return nil
     }
 }
 
-extension ProcessesListViewController: NSOutlineViewDelegate {
+extension ProcessesListViewController: NSTableViewDelegate {
     
 }
