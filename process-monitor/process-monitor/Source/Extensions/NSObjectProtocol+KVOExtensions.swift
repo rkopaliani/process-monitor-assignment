@@ -9,8 +9,8 @@ import Foundation
 
 extension NSObjectProtocol where Self: NSObject {
     func observe<Value>(_ keyPath: KeyPath<Self, Value>, onChange: @escaping (Value) -> ()) -> NSKeyValueObservation {
-        return observe(keyPath, options: [.initial, .new]) { _, change in
-            // TODO: change.newValue should never be `nil`, but when observing an optional property that's set to `nil`, then change.newValue is `nil` instead of `Optional(nil)`. This is the bug report for this: https://bugs.swift.org/browse/SR-6066
+        return observe(keyPath, options: [.initial, .old, .new]) { _, change in
+            let initial = change.oldValue
             guard let newValue = change.newValue else { return }
             onChange(newValue)
         }

@@ -23,17 +23,20 @@ extension ProcessInfo: Hashable {}
 
 extension ProcessInfo {
     init?(_ app: NSRunningApplication) {
+        
         guard let ppid = fetchPid(for: app.processIdentifier),
               let uid = fetchUid(for: app.processIdentifier) else {
+            print("bail")
             return nil
         }
+        
         self.pid = app.processIdentifier
         self.ppid = ppid
         self.uid = uid
-
         self.bundleId = app.bundleIdentifier
         self.path = app.bundleURL?.absoluteString ?? ""
         self.certificateTeamId = "cert"
+        print("ProcessID \(pid), user \(self.uid) bunldeId \(String(describing: self.bundleId)), path\(self.path)")
     }
 }
 
