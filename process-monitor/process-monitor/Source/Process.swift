@@ -7,6 +7,7 @@
 
 import Foundation
 import AppKit
+import Darwin
 
 struct ProcessInfo {
     let pid: pid_t
@@ -36,7 +37,8 @@ extension ProcessInfo {
     }
 }
 
-func fetchPid(for pid: pid_t) -> pid_t? {
+
+fileprivate func fetchPid(for pid: pid_t) -> pid_t? {
     var kinfo = kinfo_proc()
     var size  = MemoryLayout<kinfo_proc>.stride
     var mib: [Int32] = [CTL_KERN, KERN_PROC, KERN_PROC_PID, pid]
@@ -49,7 +51,7 @@ func fetchPid(for pid: pid_t) -> pid_t? {
     return kinfo.kp_eproc.e_ppid
 }
 
-func fetchUid(for pid: pid_t) -> uid_t? {
+fileprivate func fetchUid(for pid: pid_t) -> uid_t? {
     var kinfo = kinfo_proc()
     var size  = MemoryLayout<kinfo_proc>.stride
     var mib: [Int32] = [CTL_KERN, KERN_PROC, KERN_PROC_PID, pid]
@@ -62,4 +64,30 @@ func fetchUid(for pid: pid_t) -> uid_t? {
     return kinfo.kp_eproc.e_ucred.cr_uid
 }
 
-
+//
+//fileprivate func fetchPath(for pid: pid_t) -> String? {
+//    // Allocate a buffer to store the name
+//      let nameBuffer = UnsafeMutablePointer<UInt8>.allocate(capacity: Int(MAXPATHLEN))
+//      defer {
+//          nameBuffer.deallocate()
+//      }
+//
+//      // Now get and print the name. Not all processes return a name here...
+//      let nameLength = proc_name(pid, nameBuffer, UInt32(MAXPATHLEN))
+//      if nameLength > 0 {
+//          let name = String(cString: nameBuffer)
+//          print("  name=\(name)")
+//      }
+//
+//      // ...so also get the process' path
+//      let pathBuffer = UnsafeMutablePointer<UInt8>.allocate(capacity: Int(MAXPATHLEN))
+//      defer {
+//          pathBuffer.deallocate()
+//      }
+//    let pathLength = Darwin.proc_pidpath(pid, pathBuffer, UInt32(MAXPATHLEN))
+//      if pathLength > 0 {
+//          let path = String(cString: pathBuffer)
+//          print("  path=\(path)")
+//      }
+//    return
+//}
