@@ -18,9 +18,9 @@ typealias DispatchMonitorEvent = (ProcessMonitorEvent) -> Void
 final class ProcessMonitor {
     
     private let dispatch: DispatchMonitorEvent
-    private let observer: Observer<NSWorkspace, [NSRunningApplication]>
+    private let observer: Observer<NSWorkspace>
     private var processes: [Any] = []
-    init(_ observer: Observer<NSWorkspace, [NSRunningApplication]>, dispatch: @escaping DispatchMonitorEvent) {
+    init(_ observer: Observer<NSWorkspace>, dispatch: @escaping DispatchMonitorEvent) {
         self.dispatch = dispatch
         self.observer = observer
     }

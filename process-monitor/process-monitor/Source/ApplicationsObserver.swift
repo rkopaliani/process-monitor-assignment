@@ -38,7 +38,7 @@ final class ApplicationsObserver {
     }
 }
 
-final class Observer<Root: NSObject, Value> {
+final class Observer<Root: NSObject> {
     
     let root: Root
     init(_ root: Root) {

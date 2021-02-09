@@ -8,18 +8,6 @@
 import XCTest
 @testable import process_monitor
 
-class MockApplicationsObserverDelegate {
-    var didReceiveUpdate: Bool = false
-    var applications: [NSRunningApplication] = []
-}
-
-extension MockApplicationsObserverDelegate: ApplicationsObserverDelegate {
-    func applicationsObserver(_ observer: ApplicationsObserver, didObserve update: [NSRunningApplication]) {
-        didReceiveUpdate = true
-        applications = update
-    }
-}
-
 class MockWorkspace: NSWorkspace {
     var mockUpdate: Bool = false
     
@@ -42,35 +30,39 @@ class MockWorkspace: NSWorkspace {
 
 class applications_observer_tests: XCTestCase {
 
-    var sut: ApplicationsObserver!
-    var mockDelegate: MockApplicationsObserverDelegate!
+    var sut: Observer<MockWorkspace>!
     var mockWorkspace: MockWorkspace!
     
     override func setUpWithError() throws {
-        mockDelegate = MockApplicationsObserverDelegate()
         mockWorkspace = MockWorkspace()
-        sut = ApplicationsObserver(with: mockDelegate, workspace: mockWorkspace)
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        sut = Observer(mockWorkspace)
     }
     
     func testThatApplicationObserverFiresDelegateCallbackOnUpdate() {
+        let expectation = XCTestExpectation(description: "Callback on change is called")
+        sut.subscribe(\.runningApplications) { value in
+            expectation.fulfill()
+        }
         mockWorkspace.triggerUpdate()
-        XCTAssertTrue(mockDelegate.didReceiveUpdate)
+        wait(for: [expectation], timeout: 0.1)
     }
     
     func testThatApplicationObserverForwardsUpdate() {
-        let initialValue = mockDelegate.applications
-        XCTAssertEqual(initialValue.count, 1)
+        let initialValueExpectation = XCTestExpectation(description: "Return 1 app on subsribe")
+        let updatedValueExpectation = XCTestExpectation(description: "Return 3 app on first update")
+        var didUpdate = false
+        sut.subscribe(\.runningApplications) { value in
+            if didUpdate {
+                XCTAssertEqual(value.count, 3)
+                updatedValueExpectation.fulfill()
+            } else {
+                XCTAssertEqual(value.count, 1)
+                initialValueExpectation.fulfill()
+            }
+        }
         
+        didUpdate = true
         mockWorkspace.triggerUpdate()
-        let firstUpdate = mockDelegate.applications
-        XCTAssertEqual(firstUpdate.count, 3)
-        
-        mockWorkspace.mockUpdate = true
-        mockWorkspace.triggerUpdate()
-        XCTAssertEqual(mockDelegate.applications.count, 2)
+        wait(for: [initialValueExpectation, updatedValueExpectation], timeout: 0.2)
     }
 }
