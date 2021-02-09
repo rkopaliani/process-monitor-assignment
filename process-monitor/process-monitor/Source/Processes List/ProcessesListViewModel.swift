@@ -12,9 +12,10 @@ final class ProcessesListViewModel: EventHandlingViewModel {
     private let monitor: ProcessMonitor
     init(with monitor: ProcessMonitor) {
         self.monitor = monitor
+        self.processes = Array(monitor.processes)
     }
     
-    private(set) var processes: [ProcessInfo] = []
+    private(set) var processes: [ProcessInfo]
     
     override func handle(_ event: ProcessMonitorEvent) {
         switch event {
