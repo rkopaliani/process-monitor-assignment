@@ -29,6 +29,7 @@
 		5EBAC39825D18FE400106D5B /* applications_observer_tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBAC39725D18FE400106D5B /* applications_observer_tests.swift */; };
 		5EBAC3B025D28E8600106D5B /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBAC3AF25D28E8600106D5B /* Process.swift */; };
 		5EBAC3B825D2CAAE00106D5B /* EventHandlingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBAC3B725D2CAAE00106D5B /* EventHandlingViewModel.swift */; };
+		5EBAC3C925D2F39F00106D5B /* process_list_view_model_tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBAC3C825D2F39E00106D5B /* process_list_view_model_tests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		5EBAC39725D18FE400106D5B /* applications_observer_tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = applications_observer_tests.swift; sourceTree = "<group>"; };
 		5EBAC3AF25D28E8600106D5B /* Process.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Process.swift; path = Source/Process.swift; sourceTree = "<group>"; };
 		5EBAC3B725D2CAAE00106D5B /* EventHandlingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHandlingViewModel.swift; sourceTree = "<group>"; };
+		5EBAC3C825D2F39E00106D5B /* process_list_view_model_tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = process_list_view_model_tests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 				5E55B72025CDB4D50066859A /* processes_list_view_model_tests.swift */,
 				5E4CFCC925D14A5000C263B9 /* process_monitor_tests.swift */,
 				5EBAC39725D18FE400106D5B /* applications_observer_tests.swift */,
+				5EBAC3C825D2F39E00106D5B /* process_list_view_model_tests.swift */,
 			);
 			path = "process-monitorTests";
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EBAC39825D18FE400106D5B /* applications_observer_tests.swift in Sources */,
+				5EBAC3C925D2F39F00106D5B /* process_list_view_model_tests.swift in Sources */,
 				5E4CFCCA25D14A5000C263B9 /* process_monitor_tests.swift in Sources */,
 				5E55B72125CDB4D50066859A /* processes_list_view_model_tests.swift in Sources */,
 				5E4CFCFB25D16D0E00C263B9 /* event_dispatcher_tests.swift in Sources */,

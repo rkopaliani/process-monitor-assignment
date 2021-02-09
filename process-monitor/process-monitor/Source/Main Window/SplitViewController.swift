@@ -24,7 +24,7 @@ final class SplitViewController: NSSplitViewController {
         eventsDispatcher = EventDispatcher<EventHandlingViewModel>()
         observer = Observer(NSWorkspace.shared)
         processMonitor = ProcessMonitor(observer, callback: eventsDispatcher.dispatch)
-        let listViewModel = ProcessesListViewModel(with: processMonitor)
+        let listViewModel = ProcessesListViewModel(with: Array(processMonitor.processes))
         listViewController.viewModel = listViewModel
         eventsDispatcher.add(listViewModel)
     }

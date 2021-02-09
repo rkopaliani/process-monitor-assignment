@@ -9,18 +9,17 @@ import Foundation
 
 final class ProcessesListViewModel: EventHandlingViewModel {
 
-    private let monitor: ProcessMonitor
-    init(with monitor: ProcessMonitor) {
-        self.monitor = monitor
-        self.processes = Array(monitor.processes)
+    init(with processes: [ProcessInfo]) {
+        self.processes = processes
     }
     
     private(set) var processes: [ProcessInfo]
     
     override func handle(_ event: ProcessMonitorEvent) {
         switch event {
-        case .update:
-            processes = Array(monitor.processes)
+        case .update(let added, let removed):
+            processes = processes.filter({ removed.contains($0 )})
+            processes.append(contentsOf: added)
         case .failure(let error):
             fatalError("Bam \(error)")
         }
