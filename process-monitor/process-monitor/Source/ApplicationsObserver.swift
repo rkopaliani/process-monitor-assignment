@@ -8,36 +8,6 @@
 import Foundation
 import AppKit
 
-protocol ApplicationsObserverDelegate: AnyObject {
-    func applicationsObserver(_ observer: ApplicationsObserver,
-                              didObserve update: [NSRunningApplication])
-}
-
-final class ApplicationsObserver {
-
-    private(set) weak var delegate: ApplicationsObserverDelegate?
-    init(with delegate: ApplicationsObserverDelegate) {
-        self.delegate = delegate
-    }
-    
-    private var observation: NSKeyValueObservation?
-    
-    func subscribe(_ workspace: NSWorkspace) {
-        self.observation = workspace.observe(\.runningApplications, onChange: { [weak self] apps in
-            guard let self = self else  { return }
-            self.delegate?.applicationsObserver(self, didObserve: apps)
-        })
-    }
-    
-    func unsubscribe() {
-        observation?.invalidate()
-    }
-    
-    deinit {
-        unsubscribe()
-    }
-}
-
 final class Observer<Root: NSObject> {
     
     let root: Root
