@@ -8,15 +8,25 @@
 import Foundation
 
 extension NSObjectProtocol where Self: NSObject {
-    func observe<Value>(_ keyPath: KeyPath<Self, Value>, onChange: @escaping (Value) -> ()) -> NSKeyValueObservation {
+    func observe<Value>(_ keyPath: KeyPath<Self, Value>, onChange: @escaping (Value?, Value?) -> ()) -> NSKeyValueObservation {
         return observe(keyPath, options: [.initial, .old, .new]) { _, change in
-            let initial = change.oldValue
-            guard let newValue = change.newValue else { return }
-            onChange(newValue)
+            var added: Value?
+            var removed: Value?
+            
+            switch change.kind {
+            case .setting:
+                added = change.newValue
+            case .insertion:
+                added = change.newValue
+            case .removal:
+                removed = change.oldValue
+            case .replacement:
+                removed = change.oldValue
+            @unknown default:
+                fatalError()
+            }
+            
+            onChange(added, removed)
         }
-    }
-
-    func bind<Value, Target>(_ sourceKeyPath: KeyPath<Self, Value>, to target: Target, at targetKeyPath: ReferenceWritableKeyPath<Target, Value>) -> NSKeyValueObservation {
-        return observe(sourceKeyPath) { target[keyPath: targetKeyPath] = $0 }
     }
 }

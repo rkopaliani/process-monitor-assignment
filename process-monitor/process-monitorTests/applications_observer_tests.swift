@@ -9,12 +9,12 @@ import XCTest
 @testable import process_monitor
 
 class MockWorkspace: NSWorkspace {
-    var mockUpdate: Bool = false
+    var simulateUpdate: Bool = false
     
-    private var _runingApps: [NSRunningApplication] = []
+    private var _runingApps: [NSRunningApplication] = [NSRunningApplication()]
     func triggerUpdateWithIdenticalApps() {
         self.willChangeValue(forKey: "runningApplications")
-        if mockUpdate {
+        if !simulateUpdate {
             _runingApps = [NSRunningApplication(), NSRunningApplication()]
         } else {
             _runingApps = [NSRunningApplication(), NSRunningApplication(), NSRunningApplication()]
@@ -26,7 +26,7 @@ class MockWorkspace: NSWorkspace {
     
     func triggerUpdateWithDifferentApps() {
         self.willChangeValue(forKey: "runningApplications")
-        if mockUpdate {
+        if !simulateUpdate {
             _runingApps = [NSWorkspace.shared.runningApplications.first!]
         } else {
             _runingApps = [NSWorkspace.shared.runningApplications.first!,
@@ -53,7 +53,7 @@ class applications_observer_tests: XCTestCase {
     
     func testThatApplicationObserverFiresDelegateCallbackOnUpdate() {
         let expectation = XCTestExpectation(description: "Callback on change is called")
-        sut.subscribe(\.runningApplications) { value in
+        sut.subscribe(\.runningApplications) { added, removed in
             expectation.fulfill()
         }
         mockWorkspace.triggerUpdateWithIdenticalApps()
@@ -62,14 +62,15 @@ class applications_observer_tests: XCTestCase {
     
     func testThatApplicationObserverForwardsUpdate() {
         let initialValueExpectation = XCTestExpectation(description: "Return 1 app on subsribe")
-        let updatedValueExpectation = XCTestExpectation(description: "Return 3 app on first update")
+        let updatedValueExpectation = XCTestExpectation(description: "Return 2 app on first update")
         var didUpdate = false
-        sut.subscribe(\.runningApplications) { value in
+        sut.subscribe(\.runningApplications) { added, removed  in
+            
             if didUpdate {
-                XCTAssertEqual(value.count, 3)
+                XCTAssertEqual(added!.count, 2)
                 updatedValueExpectation.fulfill()
             } else {
-                XCTAssertEqual(value.count, 0)
+                XCTAssertEqual(added!.count, 1)
                 initialValueExpectation.fulfill()
             }
         }
