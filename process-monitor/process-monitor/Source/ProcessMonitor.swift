@@ -13,17 +13,29 @@ enum ProcessMonitorEvent {
     case failure(Error)
 }
 
-typealias DispatchMonitorEvent = (ProcessMonitorEvent) -> Void
+typealias ProcessMonitorCallback = (ProcessMonitorEvent) -> Void
 
 final class ProcessMonitor {
     
-    private let dispatch: DispatchMonitorEvent
+    private let callback: ProcessMonitorCallback
     private let observer: Observer<NSWorkspace>
-    private var processes: [Any] = []
-    init(_ observer: Observer<NSWorkspace>, dispatch: @escaping DispatchMonitorEvent) {
-        self.dispatch = dispatch
+    init(_ observer: Observer<NSWorkspace>, callback: @escaping ProcessMonitorCallback) {
+        self.callback = callback
         self.observer = observer
+        observer.subscribe(\.runningApplications) { [weak self] value in
+            guard let self = self else { return }
+            self.handle(value)
+        }
     }
+    
+    private(set) var processes: Set<ProcessInfo> = []
 }
 
-
+extension ProcessMonitor {
+    private func handle(_ update: [NSRunningApplication]) {
+        let updateProcess = Set(update.compactMap(ProcessInfo.init))
+        guard processes != updateProcess else { return }
+        processes = updateProcess
+        callback(.update)
+    }
+}
