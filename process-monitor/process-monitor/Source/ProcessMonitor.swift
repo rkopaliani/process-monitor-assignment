@@ -24,15 +24,6 @@ final class ProcessMonitor {
         self.dispatch = dispatch
         self.observer = observer
     }
-    
-    
-//    private let appObserver: ApplicationsObserverType
-//
-//    init(with appObserver: ApplicationsObserverType, dispatch: @escaping DispatchMonitorEvent) {
-//        self.dispatch = dispatch
-//        self.appObserver = appObserver
-//    }
-//
-//    private(set) var processes: [Process] = []
 }
+
 
