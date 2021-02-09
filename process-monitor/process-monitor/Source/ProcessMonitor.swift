@@ -24,13 +24,20 @@ final class ProcessMonitor {
         self.observer = observer
         observer.subscribe(\.runningApplications) { [weak self] value in
             guard let self = self else { return }
-            self.processes = Set(value.map(ProcessInfo.init))
+            self.handle(value)
         }
     }
     
     private(set) var processes: Set<ProcessInfo> = []
 }
 
-extension ProcessMonitor {}
+extension ProcessMonitor {
+    private func handle(_ update: [NSRunningApplication]) {
+        let updateProcess = Set(update.map(ProcessInfo.init))
+        guard processes != updateProcess else { return }
+        processes = updateProcess
+        callback(.update)
+    }
+}
 
 

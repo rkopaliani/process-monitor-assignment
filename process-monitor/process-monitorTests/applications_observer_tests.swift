@@ -12,12 +12,25 @@ class MockWorkspace: NSWorkspace {
     var mockUpdate: Bool = false
     
     private var _runingApps = [NSRunningApplication()]
-    func triggerUpdate() {
+    func triggerUpdateWithIdenticalApps() {
         self.willChangeValue(forKey: "runningApplications")
         if mockUpdate {
             _runingApps = [NSRunningApplication(), NSRunningApplication()]
         } else {
             _runingApps = [NSRunningApplication(), NSRunningApplication(), NSRunningApplication()]
+        }
+        
+        self.didChangeValue(forKey: "runningApplications")
+    }
+    
+    
+    func triggerUpdateWithDifferentApps() {
+        self.willChangeValue(forKey: "runningApplications")
+        if mockUpdate {
+            _runingApps = [NSWorkspace.shared.runningApplications.first!]
+        } else {
+            _runingApps = [NSWorkspace.shared.runningApplications.first!,
+                           NSWorkspace.shared.runningApplications.last!]
         }
         
         self.didChangeValue(forKey: "runningApplications")
@@ -43,7 +56,7 @@ class applications_observer_tests: XCTestCase {
         sut.subscribe(\.runningApplications) { value in
             expectation.fulfill()
         }
-        mockWorkspace.triggerUpdate()
+        mockWorkspace.triggerUpdateWithIdenticalApps()
         wait(for: [expectation], timeout: 0.1)
     }
     
@@ -62,7 +75,7 @@ class applications_observer_tests: XCTestCase {
         }
         
         didUpdate = true
-        mockWorkspace.triggerUpdate()
+        mockWorkspace.triggerUpdateWithIdenticalApps()
         wait(for: [initialValueExpectation, updatedValueExpectation], timeout: 0.2)
     }
 }
