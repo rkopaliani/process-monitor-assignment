@@ -8,10 +8,9 @@
 import Foundation
 
 final class ProcessesListViewModel {
-    
-    private(set) var processes:Set<Process>
-    
-    init() {
-        self.processes = Set()
+
+    private let monitor: ProcessMonitor
+    init(with monitor: ProcessMonitor) {
+        self.monitor = monitor
     }
 }

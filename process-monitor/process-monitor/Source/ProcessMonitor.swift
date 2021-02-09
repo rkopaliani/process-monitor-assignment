@@ -16,7 +16,6 @@ enum ProcessMonitorEvent {
 typealias ProcessMonitorCallback = (ProcessMonitorEvent) -> Void
 
 final class ProcessMonitor {
-    
     private let callback: ProcessMonitorCallback
     private let observer: Observer<NSWorkspace>
     init(_ observer: Observer<NSWorkspace>, callback: @escaping ProcessMonitorCallback) {

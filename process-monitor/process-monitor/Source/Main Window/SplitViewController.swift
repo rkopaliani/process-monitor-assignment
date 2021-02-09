@@ -11,6 +11,8 @@ final class SplitViewController: NSSplitViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
     }
     
 }
