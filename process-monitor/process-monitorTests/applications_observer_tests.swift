@@ -14,7 +14,7 @@ class MockApplicationsObserverDelegate {
 }
 
 extension MockApplicationsObserverDelegate: ApplicationsObserverDelegate {
-    func applicationsObserver(_ observer: ApplicationsObserver, didObserveUpdate update: [NSRunningApplication]) {
+    func applicationsObserver(_ observer: ApplicationsObserver, didObserve update: [NSRunningApplication]) {
         didReceiveUpdate = true
         applications = update
     }
@@ -26,7 +26,12 @@ class MockWorkspace: NSWorkspace {
     private var _runingApps = [NSRunningApplication()]
     func triggerUpdate() {
         self.willChangeValue(forKey: "runningApplications")
-        _runingApps = [NSRunningApplication(), NSRunningApplication()]
+        if mockUpdate {
+            _runingApps = [NSRunningApplication(), NSRunningApplication()]
+        } else {
+            _runingApps = [NSRunningApplication(), NSRunningApplication(), NSRunningApplication()]
+        }
+        
         self.didChangeValue(forKey: "runningApplications")
     }
     
@@ -53,9 +58,19 @@ class applications_observer_tests: XCTestCase {
     
     func testThatApplicationObserverFiresDelegateCallbackOnUpdate() {
         mockWorkspace.triggerUpdate()
-        let output = mockDelegate.applications
-        XCTAssertNotEqual(output.count, 0)
-        XCTAssertEqual(output.count, 2)
+        XCTAssertTrue(mockDelegate.didReceiveUpdate)
     }
     
+    func testThatApplicationObserverForwardsUpdate() {
+        let initialValue = mockDelegate.applications
+        XCTAssertEqual(initialValue.count, 1)
+        
+        mockWorkspace.triggerUpdate()
+        let firstUpdate = mockDelegate.applications
+        XCTAssertEqual(firstUpdate.count, 3)
+        
+        mockWorkspace.mockUpdate = true
+        mockWorkspace.triggerUpdate()
+        XCTAssertEqual(mockDelegate.applications.count, 2)
+    }
 }

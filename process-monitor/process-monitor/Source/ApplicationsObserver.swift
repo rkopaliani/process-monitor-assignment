@@ -8,49 +8,54 @@
 import Foundation
 import AppKit
 
-typealias ApplicationsUpdate = ([NSRunningApplication]) -> ()
-protocol ObserverType: AnyObject {
-    func start()
-    func stop()
-}
-
 protocol ApplicationsObserverDelegate: AnyObject {
-    func applicationsObserver(_ observer: ApplicationsObserver, didObserveUpdate update: [NSRunningApplication])
+    func applicationsObserver(_ observer: ApplicationsObserver,
+                              didObserve update: [NSRunningApplication])
 }
 
 final class ApplicationsObserver {
 
-    private weak var delegate: ApplicationsObserverDelegate?
-    private var observation: NSKeyValueObservation?
-    init(with delegate: ApplicationsObserverDelegate, workspace: NSWorkspace) {
+    private(set) weak var delegate: ApplicationsObserverDelegate?
+    init(with delegate: ApplicationsObserverDelegate) {
         self.delegate = delegate
+    }
+    
+    private var observation: NSKeyValueObservation?
+    
+    func subscribe(_ workspace: NSWorkspace) {
         self.observation = workspace.observe(\.runningApplications, onChange: { [weak self] apps in
             guard let self = self else  { return }
-            self.delegate?.applicationsObserver(self, didObserveUpdate: apps)
+            self.delegate?.applicationsObserver(self, didObserve: apps)
         })
     }
     
-//    let update: ApplicationsUpdate
-//    init(_ update: @escaping ApplicationsUpdate) {
-//        self.update = update
-//    }
-//
-//    private var observation: NSKeyValueObservation?
-//
-//    deinit {
-//        stop()
-//    }
+    func unsubscribe() {
+        observation?.invalidate()
+    }
+    
+    deinit {
+        unsubscribe()
+    }
 }
 
-//extension ApplicationsObserver: ObserverType {
-//    func start() {
-//        observation = NSWorkspace.shared.observe(\.runningApplications, onChange: { [weak self] runningApplucations in
-//            guard let self = self else  { return }
-//            self.update(runningApplucations)
-//        })
-//    }
-//
-//    func stop() {
-//        observation?.invalidate()
-//    }
-//}
+final class Observer<Root: NSObject, Value> {
+    
+    let root: Root
+    init(_ root: Root) {
+        self.root = root
+    }
+    
+    private var observation: NSKeyValueObservation?
+    
+    func subscribe<Value>(_ keypath: KeyPath<Root, Value>, onChange: @escaping (Value) -> ()) {
+        observation = root.observe(keypath, onChange: onChange)
+    }
+    
+    func unsubscribe() {
+        observation?.invalidate()
+    }
+    
+    deinit {
+        unsubscribe()
+    }
+}
