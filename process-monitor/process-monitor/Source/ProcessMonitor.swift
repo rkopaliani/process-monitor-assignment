@@ -24,11 +24,11 @@ final class ProcessMonitor {
         self.observer = observer
         observer.subscribe(\.runningApplications) { [weak self] value in
             guard let self = self else { return }
-            self.processes = value.map(ProcessInfo.init)
+            self.processes = Set(value.map(ProcessInfo.init))
         }
     }
     
-    private(set) var processes: [ProcessInfo] = []
+    private(set) var processes: Set<ProcessInfo> = []
 }
 
 extension ProcessMonitor {}

@@ -18,6 +18,8 @@ struct ProcessInfo {
     var certificateTeamId: String?
 }
 
+extension ProcessInfo: Hashable {}
+
 extension ProcessInfo {
     init(_ runningApplication: NSRunningApplication) {
         self.pid = runningApplication.processIdentifier
