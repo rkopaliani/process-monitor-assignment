@@ -26,6 +26,8 @@
 		5E55B72125CDB4D50066859A /* processes_list_view_model_tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B72025CDB4D50066859A /* processes_list_view_model_tests.swift */; };
 		5E55B72825CDBA5C0066859A /* ProcessesListViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B72725CDBA5C0066859A /* ProcessesListViewState.swift */; };
 		5E7DC31A25D3E4A100FCE57F /* NSViewController+Instaniate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7DC31925D3E4A100FCE57F /* NSViewController+Instaniate.swift */; };
+		5E7DC32225D3FB9100FCE57F /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7DC32125D3FB9100FCE57F /* TableViewDataSource.swift */; };
+		5E7DC32725D3FBEC00FCE57F /* table_view_datasource_tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7DC32625D3FBEC00FCE57F /* table_view_datasource_tests.swift */; };
 		5EBAC38D25D18E2A00106D5B /* ApplicationsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBAC38C25D18E2A00106D5B /* ApplicationsObserver.swift */; };
 		5EBAC39825D18FE400106D5B /* applications_observer_tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBAC39725D18FE400106D5B /* applications_observer_tests.swift */; };
 		5EBAC3B025D28E8600106D5B /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBAC3AF25D28E8600106D5B /* Process.swift */; };
@@ -77,6 +79,8 @@
 		5E55B72025CDB4D50066859A /* processes_list_view_model_tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = processes_list_view_model_tests.swift; sourceTree = "<group>"; };
 		5E55B72725CDBA5C0066859A /* ProcessesListViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessesListViewState.swift; sourceTree = "<group>"; };
 		5E7DC31925D3E4A100FCE57F /* NSViewController+Instaniate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSViewController+Instaniate.swift"; sourceTree = "<group>"; };
+		5E7DC32125D3FB9100FCE57F /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
+		5E7DC32625D3FBEC00FCE57F /* table_view_datasource_tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = table_view_datasource_tests.swift; sourceTree = "<group>"; };
 		5EBAC38C25D18E2A00106D5B /* ApplicationsObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationsObserver.swift; path = Source/ApplicationsObserver.swift; sourceTree = "<group>"; };
 		5EBAC39725D18FE400106D5B /* applications_observer_tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = applications_observer_tests.swift; sourceTree = "<group>"; };
 		5EBAC3AF25D28E8600106D5B /* Process.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Process.swift; path = Source/Process.swift; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 				5E4CFCC925D14A5000C263B9 /* process_monitor_tests.swift */,
 				5EBAC39725D18FE400106D5B /* applications_observer_tests.swift */,
 				5EBAC3C825D2F39E00106D5B /* process_list_view_model_tests.swift */,
+				5E7DC32625D3FBEC00FCE57F /* table_view_datasource_tests.swift */,
 			);
 			path = "process-monitorTests";
 			sourceTree = "<group>";
@@ -218,6 +223,7 @@
 				5E55B70725CDA1910066859A /* ProcessesListViewController.swift */,
 				5E55B71B25CDB4AB0066859A /* ProcessesListViewModel.swift */,
 				5E55B72725CDBA5C0066859A /* ProcessesListViewState.swift */,
+				5E7DC32125D3FB9100FCE57F /* TableViewDataSource.swift */,
 			);
 			name = "Processes List";
 			path = "Source/Processes List";
@@ -354,6 +360,7 @@
 			files = (
 				5E4CFCD425D154B700C263B9 /* NSObjectProtocol+KVOExtensions.swift in Sources */,
 				5E4CFCF625D16CAD00C263B9 /* WeakArray.swift in Sources */,
+				5E7DC32225D3FB9100FCE57F /* TableViewDataSource.swift in Sources */,
 				5EBAC3B825D2CAAE00106D5B /* EventHandlingViewModel.swift in Sources */,
 				5E55B70825CDA1910066859A /* ProcessesListViewController.swift in Sources */,
 				5E55B71C25CDB4AB0066859A /* ProcessesListViewModel.swift in Sources */,
@@ -377,6 +384,7 @@
 			files = (
 				5EBAC39825D18FE400106D5B /* applications_observer_tests.swift in Sources */,
 				5EBAC3C925D2F39F00106D5B /* process_list_view_model_tests.swift in Sources */,
+				5E7DC32725D3FBEC00FCE57F /* table_view_datasource_tests.swift in Sources */,
 				5E4CFCCA25D14A5000C263B9 /* process_monitor_tests.swift in Sources */,
 				5E55B72125CDB4D50066859A /* processes_list_view_model_tests.swift in Sources */,
 				5E4CFCFB25D16D0E00C263B9 /* event_dispatcher_tests.swift in Sources */,
