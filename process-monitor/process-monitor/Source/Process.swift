@@ -14,14 +14,25 @@ struct ProcessData {
     let pid: pid_t
     let ppid: pid_t
     let uid: uid_t
-    let path: String
+    let path: URL
     
+    var name: String?
     var bundleId: String?
     var certificateTeamId: String?
     
     var signingInfo: SigningInfo?
 }
 
+extension ProcessData {
+    var displayName: String {
+        if let name = name { return name }
+        return FileManager.default.displayName(atPath: path.absoluteString)
+    }
+    
+    var displayPath: String {
+        return path.standardizedFileURL.path
+    }
+}
 
 extension ProcessData: Hashable {}
 
@@ -35,8 +46,9 @@ extension ProcessData {
         self.pid = app.processIdentifier
         self.ppid = ppid
         self.uid = uid
+        self.name = app.localizedName
         self.bundleId = app.bundleIdentifier
-        self.path = app.bundleURL?.absoluteString ?? ""
+        self.path = app.executableURL!
         self.certificateTeamId = "cert"
         self.signingInfo = CodeSigningInfoExtractor.extract(for: self.pid)
     }

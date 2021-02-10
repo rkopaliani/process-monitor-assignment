@@ -7,11 +7,16 @@
 
 import Cocoa
 
+protocol ProcessesListViewControllerDelegate: AnyObject {
+    func processList(_ sender: ProcessesListViewController, didSelect process: ProcessData)
+}
+
 final class ProcessesListViewController: NSViewController, StoryboardInstantiatable {
 
     //TODO: Force unwrapping is unfortunate here. With Storyboard + < macOS 15.0 that's quickiest way, but it's dirty.
     var viewModel: ProcessesListViewModel!
-
+    weak var delegate: ProcessesListViewControllerDelegate?
+    
     @IBOutlet private weak var tableView: NSTableView!
     
     override func viewDidLoad() {
@@ -45,7 +50,7 @@ extension ProcessesListViewController: NSTableViewDataSource {
             return cell
         case "pathCell":
             let cell = tableView.makeView(withIdentifier: columnId, owner: self) as! NSTableCellView
-            cell.textField?.stringValue = "\(process.path)"
+            cell.textField?.stringValue = process.displayPath
             return cell
         default:
             fatalError("Unexpected columnId \(columnId.rawValue)")
@@ -54,5 +59,8 @@ extension ProcessesListViewController: NSTableViewDataSource {
 }
 
 extension ProcessesListViewController: NSTableViewDelegate {
-    
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        let index = tableView.selectedRow
+        delegate?.processList(self, didSelect: viewModel.sortedProcesses[index])
+    }
 }
