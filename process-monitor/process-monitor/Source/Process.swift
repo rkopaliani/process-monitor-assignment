@@ -18,16 +18,17 @@ struct ProcessData {
     
     var bundleId: String?
     var certificateTeamId: String?
+    
+    var signingInfo: SigningInfo?
 }
+
 
 extension ProcessData: Hashable {}
 
 extension ProcessData {
     init?(_ app: NSRunningApplication) {
-        
-        guard let ppid = fetchPid(for: app.processIdentifier),
-              let uid = fetchUid(for: app.processIdentifier) else {
-            print("bail")
+        guard let ppid = ProcessDataFetcher.fetchPid(for: app.processIdentifier),
+              let uid = ProcessDataFetcher.fetchUid(for: app.processIdentifier) else {
             return nil
         }
         
@@ -37,61 +38,133 @@ extension ProcessData {
         self.bundleId = app.bundleIdentifier
         self.path = app.bundleURL?.absoluteString ?? ""
         self.certificateTeamId = "cert"
-        print("ProcessID \(pid), user \(self.uid) bunldeId \(String(describing: self.bundleId)), path\(self.path)")
+        self.signingInfo = CodeSigningInfoExtractor.extract(for: self.pid)
+    }
+}
+
+enum CodeSigner {
+    case apple
+    case appstore
+    case developer
+    case adHoc
+}
+
+struct SigningInfo: Hashable {
+    let codeSigner: CodeSigner
+    var teamIdentifier: String?
+    var signingIdentifier: String?
+}
+
+
+fileprivate struct ProcessDataFetcher {
+    //TODO: not the best idea to call sysctl two times for no reason at all. Return tuple with pid and uid.
+    static func fetchPid(for pid: pid_t) -> pid_t? {
+        var kinfo = kinfo_proc()
+        var size  = MemoryLayout<kinfo_proc>.stride
+        var mib: [Int32] = [CTL_KERN, KERN_PROC, KERN_PROC_PID, pid]
+        
+        guard sysctl(&mib, u_int(mib.count), &kinfo, &size, nil, 0) == 0 else {
+            print("Something went wrong in sysctl on parentPid.")
+            return nil
+        }
+        
+        return kinfo.kp_eproc.e_ppid
+    }
+
+    static func fetchUid(for pid: pid_t) -> uid_t? {
+        var kinfo = kinfo_proc()
+        var size  = MemoryLayout<kinfo_proc>.stride
+        var mib: [Int32] = [CTL_KERN, KERN_PROC, KERN_PROC_PID, pid]
+        
+        guard sysctl(&mib, u_int(mib.count), &kinfo, &size, nil, 0) == 0 else {
+            print("Something went wrong in sysctl on uid.")
+            return nil
+        }
+        
+        return kinfo.kp_eproc.e_ucred.cr_uid
     }
 }
 
 
-fileprivate func fetchPid(for pid: pid_t) -> pid_t? {
-    var kinfo = kinfo_proc()
-    var size  = MemoryLayout<kinfo_proc>.stride
-    var mib: [Int32] = [CTL_KERN, KERN_PROC, KERN_PROC_PID, pid]
+fileprivate struct CodeSigningInfoExtractor {
     
-    guard sysctl(&mib, u_int(mib.count), &kinfo, &size, nil, 0) == 0 else {
-        print("Something went wrong in sysctl on parentPid.")
-        return nil
+    //TODO: it's not thread safe, though thread-safety better be ensured on a callers site
+    static var appleSecRequirement: SecRequirement? = {
+        var isApple: SecRequirement?
+        SecRequirementCreateWithString("anchor apple" as CFString,
+                                       SecCSFlags(rawValue: 0),
+                                       &isApple)
+        return isApple
+    }()
+    
+    static var appStoreSecRequirement: SecRequirement? = {
+        var requirement: SecRequirement?
+        SecRequirementCreateWithString("anchor apple generic and certificate leaf [subject.CN] = \"Apple Mac OS Application Signing\"" as CFString,
+                                       SecCSFlags(rawValue: 0),
+                                       &requirement)
+        return requirement
+    }()
+
+    static var developerSecRequirement: SecRequirement? = {
+        var requirement: SecRequirement?
+        SecRequirementCreateWithString("anchor apple generic" as CFString,
+                                       SecCSFlags(rawValue: 0),
+                                       &requirement)
+        return requirement
+    }()
+
+    
+    static func extract(for pid: pid_t) -> SigningInfo? {
+        var status: OSStatus = -1
+        var dynamicCode: SecCode?
+        /*
+            Get SecCode for a running process
+         **/
+        status = SecCodeCopyGuestWithAttributes(nil,
+                                                [kSecGuestAttributePid : pid] as CFDictionary,
+                                                SecCSFlags([]),
+                                                &dynamicCode)
+        guard status == errSecSuccess, let unwrappedDynamicCode = dynamicCode else { return nil }
+        
+        /*
+            Perform dynamic validation of a SecCode
+         **/
+        status = SecCodeCheckValidity(unwrappedDynamicCode, SecCSFlags([]), nil)
+        guard status == errSecSuccess else { return nil }
+        
+        /*
+            Get code signer. It's not required, but we have to show something
+            when for example there is no code signing info with adHoc
+         **/
+        let codeSigner = extractCodeSigner(unwrappedDynamicCode, flags: SecCSFlags([]))
+        
+        /*
+            Cast dynamic code to static code
+         **/
+        var signingInfo: CFDictionary?
+        var staticCode: SecStaticCode?
+        status = SecCodeCopyStaticCode(unwrappedDynamicCode, SecCSFlags([]), &staticCode)
+        guard status == errSecSuccess, let unwrappedStaticCode = staticCode else { return nil }
+
+        /*
+            Finally get signing dictionary
+         **/
+        status = SecCodeCopySigningInformation(unwrappedStaticCode,
+                                               SecCSFlags(rawValue: kSecCSSigningInformation),
+                                               &signingInfo)
+        guard status == errSecSuccess,
+              let castedSigningInfo = signingInfo as? Dictionary<AnyHashable, Any>
+        else { return nil }
+
+        return SigningInfo(codeSigner: codeSigner,
+                           teamIdentifier: castedSigningInfo[kSecCodeInfoTeamIdentifier] as? String,
+                           signingIdentifier: castedSigningInfo[kSecCodeInfoIdentifier] as? String)
     }
     
-    return kinfo.kp_eproc.e_ppid
-}
-
-fileprivate func fetchUid(for pid: pid_t) -> uid_t? {
-    var kinfo = kinfo_proc()
-    var size  = MemoryLayout<kinfo_proc>.stride
-    var mib: [Int32] = [CTL_KERN, KERN_PROC, KERN_PROC_PID, pid]
-    
-    guard sysctl(&mib, u_int(mib.count), &kinfo, &size, nil, 0) == 0 else {
-        print("Something went wrong in sysctl on uid.")
-        return nil
+    static func extractCodeSigner(_ code: SecCode, flags: SecCSFlags) -> CodeSigner {
+        if SecCodeCheckValidity(code, flags, appleSecRequirement) == errSecSuccess { return .apple }
+        else if SecCodeCheckValidity(code, flags, appStoreSecRequirement) == errSecSuccess { return .appstore }
+        else if SecCodeCheckValidity(code, flags, developerSecRequirement) == errSecSuccess { return .developer }
+        return .adHoc
     }
-    
-    return kinfo.kp_eproc.e_ucred.cr_uid
 }
-
-//
-//fileprivate func fetchPath(for pid: pid_t) -> String? {
-//    // Allocate a buffer to store the name
-//      let nameBuffer = UnsafeMutablePointer<UInt8>.allocate(capacity: Int(MAXPATHLEN))
-//      defer {
-//          nameBuffer.deallocate()
-//      }
-//
-//      // Now get and print the name. Not all processes return a name here...
-//      let nameLength = proc_name(pid, nameBuffer, UInt32(MAXPATHLEN))
-//      if nameLength > 0 {
-//          let name = String(cString: nameBuffer)
-//          print("  name=\(name)")
-//      }
-//
-//      // ...so also get the process' path
-//      let pathBuffer = UnsafeMutablePointer<UInt8>.allocate(capacity: Int(MAXPATHLEN))
-//      defer {
-//          pathBuffer.deallocate()
-//      }
-//    let pathLength = Darwin.proc_pidpath(pid, pathBuffer, UInt32(MAXPATHLEN))
-//      if pathLength > 0 {
-//          let path = String(cString: pathBuffer)
-//          print("  path=\(path)")
-//      }
-//    return
-//}
