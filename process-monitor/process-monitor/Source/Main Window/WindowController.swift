@@ -9,7 +9,7 @@ import Cocoa
 
 final class WindowController: NSWindowController {
     
-    override func windowDidLoad() {
+    override func windowDidLoad() {        
         let windowViewController = WindowViewController.instaniate { _ in }
         contentViewController = windowViewController
     }

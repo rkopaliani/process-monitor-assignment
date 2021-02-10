@@ -29,7 +29,7 @@ final class ProcessDetailsViewModel: EventHandlingViewModel {
             pid = "PID: \(process.pid)"
             ppid = "PPID: \(process.ppid)"
             path = process.displayPath
-            team = process.certificateTeamId ?? ""
+            team = process.signingInfo?.teamIdentifier ?? ""
             bundleId = process.bundleId ?? ""
             delegate?.processDetailsDidUpdate(self)
         }

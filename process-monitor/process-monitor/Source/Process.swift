@@ -18,7 +18,6 @@ struct ProcessData {
     
     var name: String?
     var bundleId: String?
-    var certificateTeamId: String?
     
     var signingInfo: SigningInfo?
 }
@@ -49,7 +48,6 @@ extension ProcessData {
         self.name = app.localizedName
         self.bundleId = app.bundleIdentifier
         self.path = app.executableURL!
-        self.certificateTeamId = "cert"
         self.signingInfo = CodeSigningInfoExtractor.extract(for: self.pid)
     }
 }

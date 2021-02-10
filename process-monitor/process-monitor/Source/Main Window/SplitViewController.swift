@@ -10,22 +10,19 @@ import Cocoa
 
 final class SplitViewController: NSSplitViewController, StoryboardInstantiatable {
 
-    var eventsDispatcher: EventDispatcher<EventHandlingViewModel>!
-    var processMonitor: ProcessMonitor!
-    var observer: Observer<NSWorkspace>!
-    
+    var viewModel: SplitViewModel!
     var listViewController: ProcessesListViewController?
     var detailsViewController: ProcessDetailsViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        observer = Observer(NSWorkspace.shared)
-        eventsDispatcher = EventDispatcher<EventHandlingViewModel>()
-        processMonitor = ProcessMonitor(observer, callback: eventsDispatcher.dispatch)
+//        observer = Observer(NSWorkspace.shared)
+//        eventsDispatcher = EventDispatcher<EventHandlingViewModel>()
+//        processMonitor = ProcessMonitor(observer, callback: eventsDispatcher.dispatch)
         
-        let listViewModel = ProcessesListViewModel(with: processMonitor.processes)
-        eventsDispatcher.add(listViewModel)
+        let listViewModel = ProcessesListViewModel(with: viewModel.processMonitor.processes)
+        viewModel.dispatcher.add(listViewModel)
 
         let listViewController = ProcessesListViewController.instaniate { $0.viewModel = listViewModel }
         listViewController.delegate = self
