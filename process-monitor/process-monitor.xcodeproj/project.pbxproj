@@ -25,6 +25,7 @@
 		5E55B71C25CDB4AB0066859A /* ProcessesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B71B25CDB4AB0066859A /* ProcessesListViewModel.swift */; };
 		5E55B72125CDB4D50066859A /* processes_list_view_model_tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B72025CDB4D50066859A /* processes_list_view_model_tests.swift */; };
 		5E55B72825CDBA5C0066859A /* ProcessesListViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B72725CDBA5C0066859A /* ProcessesListViewState.swift */; };
+		5E7DC31A25D3E4A100FCE57F /* NSViewController+Instaniate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7DC31925D3E4A100FCE57F /* NSViewController+Instaniate.swift */; };
 		5EBAC38D25D18E2A00106D5B /* ApplicationsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBAC38C25D18E2A00106D5B /* ApplicationsObserver.swift */; };
 		5EBAC39825D18FE400106D5B /* applications_observer_tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBAC39725D18FE400106D5B /* applications_observer_tests.swift */; };
 		5EBAC3B025D28E8600106D5B /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBAC3AF25D28E8600106D5B /* Process.swift */; };
@@ -75,6 +76,7 @@
 		5E55B71B25CDB4AB0066859A /* ProcessesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessesListViewModel.swift; sourceTree = "<group>"; };
 		5E55B72025CDB4D50066859A /* processes_list_view_model_tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = processes_list_view_model_tests.swift; sourceTree = "<group>"; };
 		5E55B72725CDBA5C0066859A /* ProcessesListViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessesListViewState.swift; sourceTree = "<group>"; };
+		5E7DC31925D3E4A100FCE57F /* NSViewController+Instaniate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSViewController+Instaniate.swift"; sourceTree = "<group>"; };
 		5EBAC38C25D18E2A00106D5B /* ApplicationsObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationsObserver.swift; path = Source/ApplicationsObserver.swift; sourceTree = "<group>"; };
 		5EBAC39725D18FE400106D5B /* applications_observer_tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = applications_observer_tests.swift; sourceTree = "<group>"; };
 		5EBAC3AF25D28E8600106D5B /* Process.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Process.swift; path = Source/Process.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				5E4CFCD325D154B700C263B9 /* NSObjectProtocol+KVOExtensions.swift */,
+				5E7DC31925D3E4A100FCE57F /* NSViewController+Instaniate.swift */,
 			);
 			name = Extensions;
 			path = Source/Extensions;
@@ -354,6 +357,7 @@
 				5EBAC3B825D2CAAE00106D5B /* EventHandlingViewModel.swift in Sources */,
 				5E55B70825CDA1910066859A /* ProcessesListViewController.swift in Sources */,
 				5E55B71C25CDB4AB0066859A /* ProcessesListViewModel.swift in Sources */,
+				5E7DC31A25D3E4A100FCE57F /* NSViewController+Instaniate.swift in Sources */,
 				5E55B6DB25CD76E10066859A /* SplitViewController.swift in Sources */,
 				5E55B6F725CDA1080066859A /* ProcessDetailsViewController.swift in Sources */,
 				5E55B6D625CD76CE0066859A /* WindowViewController.swift in Sources */,

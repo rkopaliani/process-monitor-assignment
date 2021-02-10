@@ -23,27 +23,21 @@
                             <outlet property="delegate" destination="dRK-Rk-MUJ" id="uga-Ed-WgT"/>
                         </connections>
                     </window>
-                    <connections>
-                        <segue destination="Na4-2A-oYL" kind="relationship" relationship="window.shadowedContentViewController" id="sfs-eg-hpQ"/>
-                    </connections>
                 </windowController>
                 <customObject id="gOO-IP-Evw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1376" y="-113"/>
+            <point key="canvasLocation" x="-1359" y="-70"/>
         </scene>
         <!--Window View Controller-->
         <scene sceneID="Weh-lU-1Lg">
             <objects>
-                <viewController id="Na4-2A-oYL" customClass="WindowViewController" customModule="process_monitor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WindowViewController" id="Na4-2A-oYL" customClass="WindowViewController" customModule="process_monitor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="vdN-Vh-BvT">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Iob-Y2-I8G">
                                 <rect key="frame" x="0.0" y="38" width="450" height="262"/>
-                                <connections>
-                                    <segue destination="fJg-nP-eDc" kind="embed" id="gwY-8j-srm"/>
-                                </connections>
                             </containerView>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="7rQ-Po-ErX">
                                 <rect key="frame" x="0.0" y="35" width="450" height="5"/>
@@ -87,33 +81,25 @@
                 </viewController>
                 <customObject id="TzY-uX-DKU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-731" y="-107"/>
+            <point key="canvasLocation" x="-717" y="-70"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="JWN-lA-evW">
             <objects>
-                <splitViewController id="fJg-nP-eDc" customClass="SplitViewController" customModule="process_monitor" customModuleProvider="target" sceneMemberID="viewController">
-                    <splitViewItems>
-                        <splitViewItem canCollapse="YES" holdingPriority="260" behavior="sidebar" id="kBG-Y5-wDH"/>
-                        <splitViewItem id="ElY-KC-Jtu"/>
-                    </splitViewItems>
+                <splitViewController storyboardIdentifier="SplitViewController" id="fJg-nP-eDc" customClass="SplitViewController" customModule="process_monitor" customModuleProvider="target" sceneMemberID="viewController">
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="uwi-fo-92r">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </splitView>
-                    <connections>
-                        <segue destination="1qR-Sb-PCV" kind="relationship" relationship="splitItems" id="C8q-TI-i5i"/>
-                        <segue destination="age-HH-6Qm" kind="relationship" relationship="splitItems" id="BS4-Y8-URb"/>
-                    </connections>
                 </splitViewController>
                 <customObject id="UcB-Ci-Sfc" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-129" y="-107"/>
+            <point key="canvasLocation" x="-27" y="-70"/>
         </scene>
         <!--Processes List View Controller-->
         <scene sceneID="PwP-Zr-jbd">
             <objects>
-                <viewController id="1qR-Sb-PCV" customClass="ProcessesListViewController" customModule="process_monitor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProcessesListViewController" id="1qR-Sb-PCV" customClass="ProcessesListViewController" customModule="process_monitor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="VJ5-TP-byC">
                         <rect key="frame" x="0.0" y="0.0" width="273" height="358"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -231,7 +217,7 @@
                                         </tableView>
                                     </subviews>
                                 </clipView>
-                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.78947368421052633" horizontal="YES" id="GtK-mz-W5r">
+                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="GtK-mz-W5r">
                                     <rect key="frame" x="1" y="341" width="271" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -263,7 +249,7 @@
         <!--Process Details View Controller-->
         <scene sceneID="8B7-e8-UPI">
             <objects>
-                <viewController id="age-HH-6Qm" customClass="ProcessDetailsViewController" customModule="process_monitor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProcessDetailsViewController" id="age-HH-6Qm" customClass="ProcessDetailsViewController" customModule="process_monitor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="BjX-MC-j9D">
                         <rect key="frame" x="0.0" y="0.0" width="302" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>

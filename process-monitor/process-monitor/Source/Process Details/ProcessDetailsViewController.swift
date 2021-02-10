@@ -7,7 +7,7 @@
 
 import Cocoa
 
-class ProcessDetailsViewController: NSViewController {
+final class ProcessDetailsViewController: NSViewController, StoryboardInstantiatable {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -7,13 +7,15 @@
 
 import Cocoa
 
-final class WindowViewController: NSViewController {
+final class WindowViewController: NSViewController, StoryboardInstantiatable {
 
     @IBOutlet private weak var killButton: NSButton!
     @IBOutlet private weak var containerView: NSView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let splitViewController = SplitViewController.instaniate { _ in }
+        embed(splitViewController, in: containerView)
     }
-    
 }

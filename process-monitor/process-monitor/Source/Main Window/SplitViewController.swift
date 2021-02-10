@@ -8,24 +8,26 @@
 import Cocoa
 
 
-final class SplitViewController: NSSplitViewController {
+final class SplitViewController: NSSplitViewController, StoryboardInstantiatable {
 
     var eventsDispatcher: EventDispatcher<EventHandlingViewModel>!
     var processMonitor: ProcessMonitor!
     var observer: Observer<NSWorkspace>!
-    
-    var listViewController: ProcessesListViewController {
-        return self.splitViewItems.first?.viewController as! ProcessesListViewController
-    }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        eventsDispatcher = EventDispatcher<EventHandlingViewModel>()
+
         observer = Observer(NSWorkspace.shared)
+        eventsDispatcher = EventDispatcher<EventHandlingViewModel>()
         processMonitor = ProcessMonitor(observer, callback: eventsDispatcher.dispatch)
+        
         let listViewModel = ProcessesListViewModel(with: processMonitor.processes)
-        listViewController.viewModel = listViewModel
         eventsDispatcher.add(listViewModel)
+
+        let listViewController = ProcessesListViewController.instaniate { $0.viewModel = listViewModel }
+        addSplitViewItem(NSSplitViewItem(contentListWithViewController: listViewController))
+        
+        let detailsViewController = ProcessDetailsViewController.instaniate { _ in }
+        addSplitViewItem(NSSplitViewItem(contentListWithViewController: detailsViewController))
     }
 }
