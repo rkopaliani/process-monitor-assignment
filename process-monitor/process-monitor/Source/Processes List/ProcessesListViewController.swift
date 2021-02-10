@@ -45,7 +45,7 @@ extension ProcessesListViewController: NSTableViewDataSource {
             return cell
         case "pathCell":
             let cell = tableView.makeView(withIdentifier: columnId, owner: self) as! NSTableCellView
-            cell.textField?.stringValue = "\(process.path)"
+            cell.textField?.stringValue = process.displayPath
             return cell
         default:
             fatalError("Unexpected columnId \(columnId.rawValue)")
