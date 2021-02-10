@@ -93,18 +93,10 @@
         <scene sceneID="JWN-lA-evW">
             <objects>
                 <splitViewController id="fJg-nP-eDc" customClass="SplitViewController" customModule="process_monitor" customModuleProvider="target" sceneMemberID="viewController">
-                    <splitViewItems>
-                        <splitViewItem canCollapse="YES" holdingPriority="260" behavior="sidebar" id="kBG-Y5-wDH"/>
-                        <splitViewItem id="ElY-KC-Jtu"/>
-                    </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="uwi-fo-92r">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </splitView>
-                    <connections>
-                        <segue destination="1qR-Sb-PCV" kind="relationship" relationship="splitItems" id="C8q-TI-i5i"/>
-                        <segue destination="age-HH-6Qm" kind="relationship" relationship="splitItems" id="BS4-Y8-URb"/>
-                    </connections>
                 </splitViewController>
                 <customObject id="UcB-Ci-Sfc" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -113,7 +105,7 @@
         <!--Processes List View Controller-->
         <scene sceneID="PwP-Zr-jbd">
             <objects>
-                <viewController id="1qR-Sb-PCV" customClass="ProcessesListViewController" customModule="process_monitor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProcessesListViewController" id="1qR-Sb-PCV" customClass="ProcessesListViewController" customModule="process_monitor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="VJ5-TP-byC">
                         <rect key="frame" x="0.0" y="0.0" width="273" height="358"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -231,7 +223,7 @@
                                         </tableView>
                                     </subviews>
                                 </clipView>
-                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.78947368421052633" horizontal="YES" id="GtK-mz-W5r">
+                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="GtK-mz-W5r">
                                     <rect key="frame" x="1" y="341" width="271" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>

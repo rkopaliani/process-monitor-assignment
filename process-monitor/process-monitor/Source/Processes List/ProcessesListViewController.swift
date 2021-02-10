@@ -11,11 +11,7 @@ final class ProcessesListViewController: NSViewController, StoryboardInstantiata
 
     @IBOutlet private weak var tableView: NSTableView!
         
-    var viewModel: ProcessesListViewModel? {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    var viewModel: ProcessesListViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +24,7 @@ final class ProcessesListViewController: NSViewController, StoryboardInstantiata
 
 extension ProcessesListViewController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        viewModel?.sortedProcesses.count ?? 0
+        viewModel.sortedProcesses.count
     }
     
     func tableView(_ tableView: NSTableView,

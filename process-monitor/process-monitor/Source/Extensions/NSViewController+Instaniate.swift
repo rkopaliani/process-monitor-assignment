@@ -32,6 +32,10 @@ extension StoryboardInstantiatable where Self: NSObject {
 }
 
 extension StoryboardInstantiatable where Self: NSViewController {
+    static var storyboardIdentifier: String {
+        return String(describing: Self.self)
+    }
+
     static func instaniate(_ configuration: (Self) -> ()) -> Self {
         guard let viewController = storyboard.instantiateController(withIdentifier: storyboardIdentifier) as? Self
         else { fatalError("Wronf instaniation class for view controller: \(String(describing: Self.self))")}
