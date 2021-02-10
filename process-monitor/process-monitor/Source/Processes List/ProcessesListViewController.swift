@@ -7,10 +7,10 @@
 
 import Cocoa
 
-final class ProcessesListViewController: NSViewController {
+final class ProcessesListViewController: NSViewController, StoryboardInstantiatable {
 
     @IBOutlet private weak var tableView: NSTableView!
-    
+        
     var viewModel: ProcessesListViewModel? {
         didSet {
             tableView.reloadData()
