@@ -9,9 +9,10 @@ import Cocoa
 
 final class ProcessesListViewController: NSViewController, StoryboardInstantiatable {
 
-    @IBOutlet private weak var tableView: NSTableView!
-        
+    //TODO: Force unwrapping is unfortunate here. With Storyboard + < macOS 15.0 that's quickiest way, but it's dirty.
     var viewModel: ProcessesListViewModel!
+
+    @IBOutlet private weak var tableView: NSTableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
