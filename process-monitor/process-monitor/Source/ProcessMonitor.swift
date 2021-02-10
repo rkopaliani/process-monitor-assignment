@@ -9,7 +9,7 @@ import Foundation
 import AppKit
 
 enum ProcessMonitorEvent {
-    case update(added: [ProcessInfo], removed:[ProcessInfo])
+    case update(added: [ProcessData], removed:[ProcessData])
     case failure(error: Error)
 }
 
@@ -27,17 +27,17 @@ final class ProcessMonitor {
         }
     }
     
-    private(set) var processes: Set<ProcessInfo> = []
+    private(set) var processes: Set<ProcessData> = []
 }
 
 extension ProcessMonitor {
     private func process(_ added: [NSRunningApplication]?, removed: [NSRunningApplication]?) {
         let addedSet = Set
-            .compactSet(from: added, transform: ProcessInfo.init)
+            .compactSet(from: added, transform: ProcessData.init)
             .subtracting(processes)
         
         let removedSet = Set
-            .compactSet(from: removed, transform: ProcessInfo.init)
+            .compactSet(from: removed, transform: ProcessData.init)
             .intersection(processes)
         
         guard addedSet.count > 0 || removedSet.count > 0 else {  return }

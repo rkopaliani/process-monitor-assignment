@@ -28,14 +28,14 @@ final class ProcessesListViewController: NSViewController {
 
 extension ProcessesListViewController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        viewModel?.processes.count ?? 0
+        viewModel?.sortedProcesses.count ?? 0
     }
     
     func tableView(_ tableView: NSTableView,
                    viewFor tableColumn: NSTableColumn?,
                    row: Int) -> NSView? {
         guard let columnId = tableColumn?.identifier else { return nil }
-        guard let process = viewModel?.processes[row] else { return nil }
+        guard let process = viewModel?.sortedProcesses[row] else { return nil }
     
         switch columnId.rawValue {
         case "nameCell":

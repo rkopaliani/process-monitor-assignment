@@ -9,7 +9,7 @@ import Foundation
 import AppKit
 import Darwin
 
-struct ProcessInfo {
+struct ProcessData {
     let pid: pid_t
     let ppid: pid_t
     let uid: uid_t
@@ -19,9 +19,9 @@ struct ProcessInfo {
     var certificateTeamId: String?
 }
 
-extension ProcessInfo: Hashable {}
+extension ProcessData: Hashable {}
 
-extension ProcessInfo {
+extension ProcessData {
     init?(_ app: NSRunningApplication) {
         
         guard let ppid = fetchPid(for: app.processIdentifier),
