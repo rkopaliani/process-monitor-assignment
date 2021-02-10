@@ -255,7 +255,7 @@
         <!--Process Details View Controller-->
         <scene sceneID="8B7-e8-UPI">
             <objects>
-                <viewController id="age-HH-6Qm" customClass="ProcessDetailsViewController" customModule="process_monitor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProcessDetailsViewController" id="age-HH-6Qm" customClass="ProcessDetailsViewController" customModule="process_monitor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="BjX-MC-j9D">
                         <rect key="frame" x="0.0" y="0.0" width="302" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>

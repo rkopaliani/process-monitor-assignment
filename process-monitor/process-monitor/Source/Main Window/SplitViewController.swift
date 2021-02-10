@@ -26,5 +26,8 @@ final class SplitViewController: NSSplitViewController {
 
         let listViewController = ProcessesListViewController.instaniate { $0.viewModel = listViewModel }
         addSplitViewItem(NSSplitViewItem(contentListWithViewController: listViewController))
+        
+        let detailsViewController = ProcessDetailsViewController.instaniate { _ in }
+        addSplitViewItem(NSSplitViewItem(contentListWithViewController: detailsViewController))
     }
 }
