@@ -7,7 +7,7 @@
 
 import Cocoa
 
-final class WindowViewController: NSViewController {
+final class WindowViewController: NSViewController, StoryboardInstantiatable {
 
     @IBOutlet private weak var killButton: NSButton!
     @IBOutlet private weak var containerView: NSView!

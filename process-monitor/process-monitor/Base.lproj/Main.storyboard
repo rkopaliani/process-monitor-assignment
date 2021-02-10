@@ -23,18 +23,15 @@
                             <outlet property="delegate" destination="dRK-Rk-MUJ" id="uga-Ed-WgT"/>
                         </connections>
                     </window>
-                    <connections>
-                        <segue destination="Na4-2A-oYL" kind="relationship" relationship="window.shadowedContentViewController" id="sfs-eg-hpQ"/>
-                    </connections>
                 </windowController>
                 <customObject id="gOO-IP-Evw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1355" y="-76"/>
+            <point key="canvasLocation" x="-1359" y="-70"/>
         </scene>
         <!--Window View Controller-->
         <scene sceneID="Weh-lU-1Lg">
             <objects>
-                <viewController id="Na4-2A-oYL" customClass="WindowViewController" customModule="process_monitor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WindowViewController" id="Na4-2A-oYL" customClass="WindowViewController" customModule="process_monitor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="vdN-Vh-BvT">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>

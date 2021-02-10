@@ -8,4 +8,9 @@
 import Cocoa
 
 final class WindowController: NSWindowController {
+    
+    override func windowDidLoad() {
+        let windowViewController = WindowViewController.instaniate { _ in }
+        contentViewController = windowViewController
+    }
 }
