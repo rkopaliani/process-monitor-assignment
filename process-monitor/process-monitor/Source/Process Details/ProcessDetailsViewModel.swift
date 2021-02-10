@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ProcessDetailsViewModelDelegate: AnyObject {
-    func processDetailsViewModelDidUpdate(_ viewModel: ProcessDetailsViewModel)
+    func processDetailsDidUpdate(_ viewModel: ProcessDetailsViewModel)
 }
 
 final class ProcessDetailsViewModel: EventHandlingViewModel {
@@ -31,7 +31,7 @@ final class ProcessDetailsViewModel: EventHandlingViewModel {
             path = process.displayPath
             team = process.certificateTeamId ?? ""
             bundleId = process.bundleId ?? ""
-            delegate?.processDetailsViewModelDidUpdate(self)
+            delegate?.processDetailsDidUpdate(self)
         }
     }
     

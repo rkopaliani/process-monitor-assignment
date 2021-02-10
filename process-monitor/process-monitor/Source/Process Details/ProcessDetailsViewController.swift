@@ -9,7 +9,11 @@ import Cocoa
 
 final class ProcessDetailsViewController: NSViewController, StoryboardInstantiatable {
 
-    var viewModel: ProcessDetailsViewModel!
+    var viewModel: ProcessDetailsViewModel! {
+        didSet {
+            viewModel.delegate = self
+        }
+    }
     
     @IBOutlet weak var processNameLabel: NSTextField!
     @IBOutlet weak var pidLabel: NSTextField!
@@ -34,7 +38,7 @@ final class ProcessDetailsViewController: NSViewController, StoryboardInstantiat
 }
 
 extension ProcessDetailsViewController: ProcessDetailsViewModelDelegate {
-    func processDetailsViewModelDidUpdate(_ viewModel: ProcessDetailsViewModel) {
+    func processDetailsDidUpdate(_ viewModel: ProcessDetailsViewModel) {
         applyViewModelChanges()
     }
 }
