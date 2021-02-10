@@ -17,7 +17,8 @@ final class Observer<Root: NSObject> {
     
     private var observation: NSKeyValueObservation?
     
-    func subscribe<Value>(_ keypath: KeyPath<Root, Value>, onChange: @escaping (Value) -> ()) {
+    func subscribe<Value>(_ keypath: KeyPath<Root, Value>,
+                          onChange: @escaping (Value?, Value?) -> ()) {
         observation = root.observe(keypath, onChange: onChange)
     }
     

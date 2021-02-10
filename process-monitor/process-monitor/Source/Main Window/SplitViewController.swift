@@ -7,10 +7,25 @@
 
 import Cocoa
 
+
 final class SplitViewController: NSSplitViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    var eventsDispatcher: EventDispatcher<EventHandlingViewModel>!
+    var processMonitor: ProcessMonitor!
+    var observer: Observer<NSWorkspace>!
+    
+    var listViewController: ProcessesListViewController {
+        return self.splitViewItems.first?.viewController as! ProcessesListViewController
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        eventsDispatcher = EventDispatcher<EventHandlingViewModel>()
+        observer = Observer(NSWorkspace.shared)
+        processMonitor = ProcessMonitor(observer, callback: eventsDispatcher.dispatch)
+        let listViewModel = ProcessesListViewModel(with: processMonitor.processes)
+        listViewController.viewModel = listViewModel
+        eventsDispatcher.add(listViewModel)
+    }
 }

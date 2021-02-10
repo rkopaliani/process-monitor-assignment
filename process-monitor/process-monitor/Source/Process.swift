@@ -9,7 +9,8 @@ import Foundation
 import AppKit
 import Darwin
 
-struct ProcessInfo {
+//TODO: Bad name, but ProcessInfo is already occupied, think about more if there is some time
+struct ProcessData {
     let pid: pid_t
     let ppid: pid_t
     let uid: uid_t
@@ -19,21 +20,24 @@ struct ProcessInfo {
     var certificateTeamId: String?
 }
 
-extension ProcessInfo: Hashable {}
+extension ProcessData: Hashable {}
 
-extension ProcessInfo {
+extension ProcessData {
     init?(_ app: NSRunningApplication) {
+        
         guard let ppid = fetchPid(for: app.processIdentifier),
               let uid = fetchUid(for: app.processIdentifier) else {
+            print("bail")
             return nil
         }
+        
         self.pid = app.processIdentifier
         self.ppid = ppid
         self.uid = uid
-
         self.bundleId = app.bundleIdentifier
         self.path = app.bundleURL?.absoluteString ?? ""
         self.certificateTeamId = "cert"
+        print("ProcessID \(pid), user \(self.uid) bunldeId \(String(describing: self.bundleId)), path\(self.path)")
     }
 }
 
