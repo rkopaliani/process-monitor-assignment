@@ -8,7 +8,7 @@
 import Cocoa
 
 
-final class SplitViewController: NSSplitViewController {
+final class SplitViewController: NSSplitViewController, StoryboardInstantiatable {
 
     var eventsDispatcher: EventDispatcher<EventHandlingViewModel>!
     var processMonitor: ProcessMonitor!

@@ -41,9 +41,6 @@
                         <subviews>
                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Iob-Y2-I8G">
                                 <rect key="frame" x="0.0" y="38" width="450" height="262"/>
-                                <connections>
-                                    <segue destination="fJg-nP-eDc" kind="embed" id="gwY-8j-srm"/>
-                                </connections>
                             </containerView>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="7rQ-Po-ErX">
                                 <rect key="frame" x="0.0" y="35" width="450" height="5"/>
@@ -92,7 +89,7 @@
         <!--Split View Controller-->
         <scene sceneID="JWN-lA-evW">
             <objects>
-                <splitViewController id="fJg-nP-eDc" customClass="SplitViewController" customModule="process_monitor" customModuleProvider="target" sceneMemberID="viewController">
+                <splitViewController storyboardIdentifier="SplitViewController" id="fJg-nP-eDc" customClass="SplitViewController" customModule="process_monitor" customModuleProvider="target" sceneMemberID="viewController">
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="uwi-fo-92r">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>

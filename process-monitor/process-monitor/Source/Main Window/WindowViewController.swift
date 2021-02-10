@@ -14,6 +14,8 @@ final class WindowViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let splitViewController = SplitViewController.instaniate { _ in }
+        embed(splitViewController, in: containerView)
     }
-    
 }
