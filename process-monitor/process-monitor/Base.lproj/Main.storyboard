@@ -29,7 +29,7 @@
                 </windowController>
                 <customObject id="gOO-IP-Evw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1376" y="-113"/>
+            <point key="canvasLocation" x="-1355" y="-76"/>
         </scene>
         <!--Window View Controller-->
         <scene sceneID="Weh-lU-1Lg">
@@ -87,7 +87,7 @@
                 </viewController>
                 <customObject id="TzY-uX-DKU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-731" y="-107"/>
+            <point key="canvasLocation" x="-717" y="-70"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="JWN-lA-evW">
@@ -100,7 +100,7 @@
                 </splitViewController>
                 <customObject id="UcB-Ci-Sfc" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-129" y="-107"/>
+            <point key="canvasLocation" x="-27" y="-70"/>
         </scene>
         <!--Processes List View Controller-->
         <scene sceneID="PwP-Zr-jbd">

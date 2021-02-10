@@ -43,3 +43,24 @@ extension StoryboardInstantiatable where Self: NSViewController {
         return viewController
     }
 }
+
+extension NSViewController {
+    func embed(_ childViewController: NSViewController, in container: NSView) {
+        addChild(childViewController)
+        let embeddingView = childViewController.view
+        embeddingView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(embeddingView)
+        NSLayoutConstraint.activate(embeddingView.constraintsAnchoringTo(boundsOf: container))
+    }
+}
+
+extension NSView {
+    func constraintsAnchoringTo(boundsOf view: NSView) -> [NSLayoutConstraint] {
+        return [
+            topAnchor.constraint(equalTo: view.topAnchor),
+            leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            view.bottomAnchor.constraint(equalTo: bottomAnchor),
+            view.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ]
+    }
+}
