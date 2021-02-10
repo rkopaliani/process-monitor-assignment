@@ -9,6 +9,7 @@ import Foundation
 import AppKit
 import Darwin
 
+//TODO: Bad name, but ProcessInfo is already occupied, think about more if there is some time
 struct ProcessData {
     let pid: pid_t
     let ppid: pid_t
