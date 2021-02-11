@@ -13,6 +13,7 @@ final class WindowController: NSWindowController {
 
     override func windowDidLoad() {
         window?.title = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as! String
+        window?.minSize = NSMakeSize(600, 600)
         
         let monitoringDispatcher = EventDispatcher<MonitorEventObserver>()
         let displayEventDispatcher = EventDispatcher<DisplayEventObserver>()

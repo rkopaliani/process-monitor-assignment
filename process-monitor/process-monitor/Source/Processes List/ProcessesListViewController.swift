@@ -38,6 +38,7 @@ final class ProcessesListViewController: NSViewController, StoryboardInstantiata
     override func viewDidLoad() {
         super.viewDidLoad()
         localize()
+        updateSelection()
     }
     
     private func handle(_ update: ListDiff) {
@@ -62,6 +63,10 @@ final class ProcessesListViewController: NSViewController, StoryboardInstantiata
                                                  comment: "Path Column Header"),
                                for: .path,
                                in: tableView)
+    }
+    
+    private func updateSelection() {
+        viewModel.didSelect(viewModel.sortedProcesses[tableView.selectedRow])
     }
 }
 
@@ -100,6 +105,6 @@ extension ProcessesListViewController: NSTableViewDataSource {
 
 extension ProcessesListViewController: NSTableViewDelegate {
     func tableViewSelectionDidChange(_ notification: Notification) {
-        viewModel.didSelect(viewModel.sortedProcesses[tableView.selectedRow])
+        updateSelection()
     }
 }
