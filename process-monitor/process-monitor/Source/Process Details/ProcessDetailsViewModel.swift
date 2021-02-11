@@ -15,8 +15,8 @@ final class ProcessDetailsViewModel {
     
     weak var delegate: ProcessDetailsViewModelDelegate?
     
-    let displayObserver: ProcessDisplayEventObserver!
-    init(observer: ProcessDisplayEventObserver) {
+    let displayObserver: DisplayEventObserver!
+    init(observer: DisplayEventObserver) {
         self.displayObserver = observer
         displayObserver.onReceivedEvent = handle
     }

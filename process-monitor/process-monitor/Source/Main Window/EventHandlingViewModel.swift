@@ -23,5 +23,5 @@ extension EventObserver: Equatable {
     }
 }
 
-typealias ProcessMonitorEventObserver = EventObserver<ProcessMonitorEvent>
-typealias ProcessDisplayEventObserver = EventObserver<ProcessDisplayEvent>
+typealias MonitorEventObserver = EventObserver<ProcessMonitorEvent>
+typealias DisplayEventObserver = EventObserver<ProcessDisplayEvent>

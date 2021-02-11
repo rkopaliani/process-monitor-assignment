@@ -12,11 +12,11 @@ enum ProcessDisplayEvent {
 }
 
 final class SplitViewModel {
-    let monitorEventsDispatcher: EventDispatcher<ProcessMonitorEventObserver>
+    let monitorEventsDispatcher: EventDispatcher<MonitorEventObserver>
     let processMonitor: ProcessMonitor
     
     init(monitor: ProcessMonitor,
-         monitorEventsDispatcher: EventDispatcher<ProcessMonitorEventObserver>) {
+         monitorEventsDispatcher: EventDispatcher<MonitorEventObserver>) {
         self.monitorEventsDispatcher = monitorEventsDispatcher
         self.processMonitor = monitor
     }

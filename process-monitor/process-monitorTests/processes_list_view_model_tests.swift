@@ -23,13 +23,13 @@ class MockProcessesListViewModelDelegate: ProcessesListViewModelDelegate {
 class processes_list_view_model_tests: XCTestCase {
 
     var sut: ProcessesListViewModel!
-    var observer: ProcessMonitorEventObserver!
+    var observer: MonitorEventObserver!
     
     override func setUpWithError() throws {
         let foo = ProcessData(pid: 2, ppid: 1, uid:0 , path: URL(fileURLWithPath: "Library/foo/path"), bundleId: "foo.bundle")
         let bar = ProcessData(pid: 3, ppid: 1, uid:501 , path: URL(fileURLWithPath: "/Library/bar/path"), bundleId: "bar.bundle")
 
-        observer = ProcessMonitorEventObserver()
+        observer = MonitorEventObserver()
         sut = ProcessesListViewModel(with: Set([bar, foo]), monitorObserver: observer)
     }
 

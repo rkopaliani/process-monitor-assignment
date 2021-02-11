@@ -16,8 +16,8 @@ final class WindowViewModel {
     weak var delegate: WindowViewModelDelegate?
     
     let monitor: ProcessMonitor
-    let eventsDispatcher: EventDispatcher<ProcessMonitorEventObserver>
-    init(monitor: ProcessMonitor, dispatcher: EventDispatcher<ProcessMonitorEventObserver>) {
+    let eventsDispatcher: EventDispatcher<MonitorEventObserver>
+    init(monitor: ProcessMonitor, dispatcher: EventDispatcher<MonitorEventObserver>) {
         self.monitor = monitor
         self.eventsDispatcher = dispatcher
     }
