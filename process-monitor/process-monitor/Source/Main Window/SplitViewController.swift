@@ -16,10 +16,6 @@ final class SplitViewController: NSSplitViewController, StoryboardInstantiatable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        observer = Observer(NSWorkspace.shared)
-//        eventsDispatcher = EventDispatcher<EventHandlingViewModel>()
-//        processMonitor = ProcessMonitor(observer, callback: eventsDispatcher.dispatch)
         
         let listViewModel = ProcessesListViewModel(with: viewModel.processMonitor.processes)
         viewModel.dispatcher.add(listViewModel)

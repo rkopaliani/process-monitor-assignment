@@ -47,7 +47,7 @@ extension ProcessData {
         self.uid = uid
         self.name = app.localizedName
         self.bundleId = app.bundleIdentifier
-        self.path = app.executableURL!
+        self.path = app.executableURL ?? URL(fileURLWithPath: "")
         self.signingInfo = CodeSigningInfoExtractor.extract(for: self.pid)
     }
 }
