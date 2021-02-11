@@ -103,7 +103,7 @@ fileprivate struct ProcessDataFetcher {
 
 fileprivate struct CodeSigningInfoExtractor {
     
-    //TODO: it's not thread safe, though thread-safety better be ensured on a callers site
+    //TODO: it's not thread safe, though thread-safety might be better to ensure on a callers site
     static var appleSecRequirement: SecRequirement? = {
         var isApple: SecRequirement?
         SecRequirementCreateWithString("anchor apple" as CFString,
