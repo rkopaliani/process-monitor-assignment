@@ -15,6 +15,8 @@ enum ProcessMonitorEvent {
 
 typealias ProcessMonitorCallback = (ProcessMonitorEvent) -> Void
 
+//TODO: We can't use es_new_client_result_t. But we need to add monitoring for non-NSRunninApplication. "/dev/auditpipe" might be a viable way to go forward but my time is up.
+
 final class ProcessMonitor {
     private let callback: ProcessMonitorCallback
     private let observer: Observer<NSWorkspace>
