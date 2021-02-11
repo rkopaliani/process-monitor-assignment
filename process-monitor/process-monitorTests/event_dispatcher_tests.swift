@@ -8,7 +8,7 @@
 import XCTest
 @testable import process_monitor
 
-protocol MockEventHandlerType: EventHandler {}
+protocol MockEventHandlerType: EventHandlerType {}
 
 class MockEventHandler: MockEventHandlerType {
     typealias Event = Int
