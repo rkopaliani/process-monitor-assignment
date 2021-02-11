@@ -9,29 +9,44 @@ import Cocoa
 
 final class ProcessesListViewController: NSViewController, StoryboardInstantiatable {
     //TODO: Force unwrapping is unfortunate here. With Storyboard + < macOS 15.0 that's quickiest way, but it's dirty.
-    var viewModel: ProcessesListViewModel!
+    var viewModel: ProcessesListViewModel! {
+        didSet {
+            viewModel.onProcessListUpdate = callUnowned(self, ProcessesListViewController.handle)
+        }
+    }
     
     @IBOutlet private weak var tableView: NSTableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.reloadData()
+//        tableView.reloadData()
+    }
+    
+    private func handle(_ update: ListDiff) {
+        tableView.beginUpdates()
+        tableView.removeRows(at: update.removedIdx, withAnimation: .effectFade)
+        tableView.insertRows(at: update.addedIdx, withAnimation: .effectFade)
+        tableView.endUpdates()
     }
 }
 
-//TODO: Extract in a separete class and cover with tests, same goes for NSTableViewDelegate
+//TODO: Extract in a separate class and cover with tests, same goes for NSTableViewDelegate
 extension ProcessesListViewController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        viewModel.sortedProcesses.count
+        let count = viewModel.sortedProcesses.count
+        print(count)
+        return count
     }
     
     func tableView(_ tableView: NSTableView,
                    viewFor tableColumn: NSTableColumn?,
                    row: Int) -> NSView? {
         guard let columnId = tableColumn?.identifier else { return nil }
-        guard let process = viewModel?.sortedProcesses[row] else { return nil }
+        guard row < viewModel.sortedProcesses.count else { return nil }
     
+        let process = viewModel.sortedProcesses[row]
+        
         switch columnId.rawValue {
         case "nameCell":
             let cell = tableView.makeView(withIdentifier: columnId, owner: self) as! NSTableCellView

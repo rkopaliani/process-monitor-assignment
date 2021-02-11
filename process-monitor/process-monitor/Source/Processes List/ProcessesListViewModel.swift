@@ -7,7 +7,16 @@
 
 import Foundation
 
+struct ListDiff {
+    let addedIdx: IndexSet
+    let removedIdx: IndexSet
+}
+
+typealias ListUpdateHandle = (ListDiff) -> ()
+
 final class ProcessesListViewModel {
+    
+    var onProcessListUpdate: ListUpdateHandle?
     
     private let monitorObserver: EventObserver<ProcessMonitorEvent>
     private let displayEventHandler: DisplayEventHandler
@@ -34,7 +43,14 @@ final class ProcessesListViewModel {
     func handle(_ event: ProcessMonitorEvent) {
         switch event {
         case .update(let added, let removed):
+            let addedSet = Set(added).subtracting(processes)
+            let removedSet = Set(removed).intersection(processes)
+            let removedIdx = IndexSet(removedSet.map({ sortedProcesses.firstIndex(of: $0)! }))
             processes = processes.subtracting(removed).union(added)
+            let addedIdx = IndexSet(addedSet.map({ sortedProcesses.firstIndex(of: $0)! }))
+            guard removedIdx.count > 0 || addedIdx.count > 0 else { return }
+            guard let update = onProcessListUpdate else { return }
+            update(ListDiff(addedIdx: addedIdx, removedIdx: removedIdx))
         case .failure(let error):
             fatalError("Bam \(error)")
         }

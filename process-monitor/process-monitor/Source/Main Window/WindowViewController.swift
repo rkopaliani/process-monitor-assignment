@@ -33,4 +33,8 @@ final class WindowViewController: NSViewController, StoryboardInstantiatable {
         killButton.isEnabled = viewModel.killButtonEnaled
         totalProcessLabel.stringValue = viewModel.totalProcessText
     }
+    
+    @IBAction func killButtonTapped(_ sender: NSButton) {
+        viewModel.killProcess()
+    }
 }
