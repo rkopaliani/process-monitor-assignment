@@ -17,7 +17,8 @@ final class WindowViewModel: EventHandlingViewModel {
     
     let monitor: ProcessMonitor
     let eventsDispatcher: EventDispatcher<EventHandlingViewModel>
-    init(monitor: ProcessMonitor, dispatcher: EventDispatcher<EventHandlingViewModel>) {
+    init(monitor: ProcessMonitor,
+         dispatcher: EventDispatcher<EventHandlingViewModel>) {
         self.monitor = monitor
         self.eventsDispatcher = dispatcher
         super.init()
@@ -27,6 +28,10 @@ final class WindowViewModel: EventHandlingViewModel {
     var killButtonEnaled: Bool = true
     var totalProcessText: String {
         return ""
+    }
+    
+    func killSelectedProcess() {
+        
     }
     
     override func handle(_ event: ProcessMonitorEvent) {}

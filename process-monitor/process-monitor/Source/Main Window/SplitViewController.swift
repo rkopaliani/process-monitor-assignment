@@ -7,6 +7,18 @@
 
 import Cocoa
 
+enum SplitViewEvent {
+    case select(ProcessData)
+}
+
+protocol SplitViewEventHandler: AnyObject, Hashable {
+    func handle(_ event: SplitViewEvent)
+}
+
+protocol SplitViewControllerDelegate: AnyObject {
+    func splitViewController(_ controller: SplitViewController,
+                             didSelect process:ProcessData)
+}
 
 final class SplitViewController: NSSplitViewController, StoryboardInstantiatable {
 
@@ -33,7 +45,8 @@ final class SplitViewController: NSSplitViewController, StoryboardInstantiatable
 }
 
 extension SplitViewController: ProcessesListViewControllerDelegate {
-    func processList(_ sender: ProcessesListViewController, didSelect process: ProcessData) {
+    func processList(_ sender: ProcessesListViewController,
+                     didSelect process: ProcessData) {
         detailsViewController?.viewModel.process = process
     }
 }
