@@ -7,15 +7,10 @@
 
 import Cocoa
 
-protocol ProcessesListViewControllerDelegate: AnyObject {
-    func processList(_ sender: ProcessesListViewController, didSelect process: ProcessData)
-}
-
 final class ProcessesListViewController: NSViewController, StoryboardInstantiatable {
 
     //TODO: Force unwrapping is unfortunate here. With Storyboard + < macOS 15.0 that's quickiest way, but it's dirty.
     var viewModel: ProcessesListViewModel!
-    weak var delegate: ProcessesListViewControllerDelegate?
     
     @IBOutlet private weak var tableView: NSTableView!
     
@@ -60,7 +55,6 @@ extension ProcessesListViewController: NSTableViewDataSource {
 
 extension ProcessesListViewController: NSTableViewDelegate {
     func tableViewSelectionDidChange(_ notification: Notification) {
-        let index = tableView.selectedRow
-        delegate?.processList(self, didSelect: viewModel.sortedProcesses[index])
+        viewModel.didSelect(viewModel.sortedProcesses[tableView.selectedRow])
     }
 }

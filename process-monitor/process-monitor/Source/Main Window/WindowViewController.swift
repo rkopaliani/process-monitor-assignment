@@ -18,9 +18,8 @@ final class WindowViewController: NSViewController, StoryboardInstantiatable {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let selectionEventDispatcher = EventDispatcher<SplitViewEventHandler>()
         let splitViewModel = SplitViewModel(monitor: viewModel.monitor,
-                                            dispatcher: viewModel.eventsDispatcher)
+                                            monitorEventsDispatcher: viewModel.eventsDispatcher)
         let splitViewController = SplitViewController.instaniate { $0.viewModel = splitViewModel }
         embed(splitViewController, in: containerView)
         
@@ -34,7 +33,7 @@ extension WindowViewController: WindowViewModelDelegate {
     }
     
     private func handleViewModelUpdate(_ viewModel: WindowViewModel) {
-        killButton.isEnabled = viewModel.killButtonEnaled
-        totalProcessLabel.stringValue = viewModel.totalProcessText
+//        killButton.isEnabled = viewModel.killButtonEnaled
+//        totalProcessLabel.stringValue = viewModel.totalProcessText
     }
 }

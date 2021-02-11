@@ -7,46 +7,33 @@
 
 import Cocoa
 
-enum SplitViewEvent {
-    case select(ProcessData)
-}
-
-protocol SplitViewEventHandler: AnyObject, Hashable {
-    func handle(_ event: SplitViewEvent)
-}
-
-protocol SplitViewControllerDelegate: AnyObject {
-    func splitViewController(_ controller: SplitViewController,
-                             didSelect process:ProcessData)
-}
 
 final class SplitViewController: NSSplitViewController, StoryboardInstantiatable {
 
     var viewModel: SplitViewModel!
     var listViewController: ProcessesListViewController?
     var detailsViewController: ProcessDetailsViewController?
+    let displayEventDispatcher: EventDispatcher<DisplayEventObserver> = EventDispatcher()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let listViewModel = ProcessesListViewModel(with: viewModel.processMonitor.processes)
-        viewModel.dispatcher.add(listViewModel)
-
+        let observer = MonitorEventObserver()
+        viewModel.monitorEventsDispatcher.add(observer)
+        let listViewModel = ProcessesListViewModel(with: viewModel.processMonitor.processes,
+                                                   monitorObserver: observer,
+                                                   displayDispatch: displayEventDispatcher.dispatch)
+        
         let listViewController = ProcessesListViewController.instaniate { $0.viewModel = listViewModel }
-        listViewController.delegate = self
+
         addSplitViewItem(NSSplitViewItem(contentListWithViewController: listViewController))
         self.listViewController = listViewController
         
-        let detailsViewModel = ProcessDetailsViewModel()
+        let displayObserver = DisplayEventObserver()
+        displayEventDispatcher.add(displayObserver)
+        let detailsViewModel = ProcessDetailsViewModel(observer: displayObserver)
         let detailsViewController = ProcessDetailsViewController.instaniate { $0.viewModel = detailsViewModel }
         addSplitViewItem(NSSplitViewItem(contentListWithViewController: detailsViewController))
         self.detailsViewController = detailsViewController
-    }
-}
-
-extension SplitViewController: ProcessesListViewControllerDelegate {
-    func processList(_ sender: ProcessesListViewController,
-                     didSelect process: ProcessData) {
-        detailsViewController?.viewModel.process = process
     }
 }

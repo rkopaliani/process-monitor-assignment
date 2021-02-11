@@ -11,9 +11,15 @@ protocol ProcessDetailsViewModelDelegate: AnyObject {
     func processDetailsDidUpdate(_ viewModel: ProcessDetailsViewModel)
 }
 
-final class ProcessDetailsViewModel: EventHandlingViewModel {
+final class ProcessDetailsViewModel {
     
     weak var delegate: ProcessDetailsViewModelDelegate?
+    
+    let displayObserver: DisplayEventObserver!
+    init(observer: DisplayEventObserver) {
+        self.displayObserver = observer
+        displayObserver.onReceivedEvent = callUnowned(self, ProcessDetailsViewModel.handle)
+    }
     
     private(set) var name: String = ""
     private(set) var pid: String = ""
@@ -22,7 +28,7 @@ final class ProcessDetailsViewModel: EventHandlingViewModel {
     private(set) var team: String = ""
     private(set) var bundleId: String = ""
     
-    var process: ProcessData? {
+    private var process: ProcessData? {
         didSet {
             guard let process = process else { return }
             name = process.displayName
@@ -35,7 +41,10 @@ final class ProcessDetailsViewModel: EventHandlingViewModel {
         }
     }
     
-    override func handle(_ event: ProcessMonitorEvent) {
-        //TODO: nothing here yet, but implement when some update event for the exisiting process is added
+    private func handle(_ event: ProcessDisplayEvent) {
+        switch event {
+        case .didSelect(let process):
+            self.process = process
+        }
     }
 }

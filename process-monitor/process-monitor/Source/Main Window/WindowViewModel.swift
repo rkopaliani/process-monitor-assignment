@@ -11,28 +11,19 @@ protocol WindowViewModelDelegate: AnyObject {
     func windowViewModelDidUpdate(_ viewModel: WindowViewModel)
 }
 
-final class WindowViewModel: EventHandlingViewModel {
+final class WindowViewModel {
 
     weak var delegate: WindowViewModelDelegate?
     
     let monitor: ProcessMonitor
-    let eventsDispatcher: EventDispatcher<EventHandlingViewModel>
-    init(monitor: ProcessMonitor,
-         dispatcher: EventDispatcher<EventHandlingViewModel>) {
+    let eventsDispatcher: EventDispatcher<MonitorEventObserver>
+    init(monitor: ProcessMonitor, dispatcher: EventDispatcher<MonitorEventObserver>) {
         self.monitor = monitor
         self.eventsDispatcher = dispatcher
-        super.init()
-        dispatcher.add(self)
     }
     
     var killButtonEnaled: Bool = true
     var totalProcessText: String {
         return ""
     }
-    
-    func killSelectedProcess() {
-        
-    }
-    
-    override func handle(_ event: ProcessMonitorEvent) {}
 }
