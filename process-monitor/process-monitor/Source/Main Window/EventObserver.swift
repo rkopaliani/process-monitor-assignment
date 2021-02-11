@@ -33,3 +33,18 @@ func callUnowned<T: AnyObject, U, V>(_ instance: T, _ classFunction: @escaping (
     }
 }
 
+
+func callUnowned<T: AnyObject>(_ instance: T, _ classFunction: @escaping (T) -> () -> ()) -> () -> () {
+    return { [unowned instance]  in
+        let instanceFunction = classFunction(instance)
+        return instanceFunction()
+    }
+}
+
+func callWeak<T: AnyObject>(_ instance: T, _ classFunction: @escaping (T) -> () -> ()) -> () -> () {
+    return { [weak instance]  in
+        guard let instance = instance else { return }
+        let instanceFunction = classFunction(instance)
+        return instanceFunction()
+    }
+}

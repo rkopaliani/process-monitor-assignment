@@ -7,6 +7,8 @@
 
 import Cocoa
 
+typealias DisplayEventHandler = (ProcessDisplayEvent) -> ()
+
 enum ProcessDisplayEvent {
     case didSelect(ProcessData)
 }

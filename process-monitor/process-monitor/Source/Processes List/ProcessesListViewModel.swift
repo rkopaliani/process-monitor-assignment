@@ -10,14 +10,14 @@ import Foundation
 final class ProcessesListViewModel {
     
     private let monitorObserver: EventObserver<ProcessMonitorEvent>
-    private let displayEventsDispatch: (ProcessDisplayEvent) -> ()
+    private let displayEventHandler: DisplayEventHandler
     
     init(with processes: Set<ProcessData>,
          monitorObserver: MonitorEventObserver,
-         displayDispatch: @escaping (ProcessDisplayEvent) -> ()) {
+         displayDispatch: @escaping DisplayEventHandler) {
         self.processes = processes
         self.monitorObserver = monitorObserver
-        self.displayEventsDispatch = displayDispatch
+        self.displayEventHandler = displayDispatch
         
         //TODO: it's ugly, find a better way
         monitorObserver.onReceivedEvent = callUnowned(self, ProcessesListViewModel.handle)
@@ -45,7 +45,7 @@ final class ProcessesListViewModel {
     }
     
     func didSelect(_ process: ProcessData) {
-        displayEventsDispatch(.didSelect(process))
+        displayEventHandler(.didSelect(process))
     }
 }
 

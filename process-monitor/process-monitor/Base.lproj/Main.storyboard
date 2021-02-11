@@ -214,6 +214,10 @@
                                                     </prototypeCellViews>
                                                 </tableColumn>
                                             </tableColumns>
+                                            <connections>
+                                                <outlet property="dataSource" destination="1qR-Sb-PCV" id="ZVY-8O-Cbt"/>
+                                                <outlet property="delegate" destination="1qR-Sb-PCV" id="KKx-F5-rjN"/>
+                                            </connections>
                                         </tableView>
                                     </subviews>
                                 </clipView>

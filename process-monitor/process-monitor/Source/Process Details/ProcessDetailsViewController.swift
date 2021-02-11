@@ -11,7 +11,7 @@ final class ProcessDetailsViewController: NSViewController, StoryboardInstantiat
 
     var viewModel: ProcessDetailsViewModel! {
         didSet {
-            viewModel.delegate = self
+            viewModel.onModelUpdate = callWeak(self, ProcessDetailsViewController.applyViewModelChanges)
         }
     }
     
@@ -34,11 +34,5 @@ final class ProcessDetailsViewController: NSViewController, StoryboardInstantiat
         pathLabel.stringValue = viewModel.path
         teamCertLabel.stringValue = viewModel.team
         bundleIdLabel.stringValue = viewModel.bundleId
-    }
-}
-
-extension ProcessDetailsViewController: ProcessDetailsViewModelDelegate {
-    func processDetailsDidUpdate(_ viewModel: ProcessDetailsViewModel) {
-        applyViewModelChanges()
     }
 }

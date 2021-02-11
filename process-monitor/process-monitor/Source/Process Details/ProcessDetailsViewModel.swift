@@ -7,18 +7,14 @@
 
 import Foundation
 
-protocol ProcessDetailsViewModelDelegate: AnyObject {
-    func processDetailsDidUpdate(_ viewModel: ProcessDetailsViewModel)
-}
-
 final class ProcessDetailsViewModel {
     
-    weak var delegate: ProcessDetailsViewModelDelegate?
-    
+    var onModelUpdate: (() -> ())?
     let displayObserver: DisplayEventObserver!
+    
     init(observer: DisplayEventObserver) {
         self.displayObserver = observer
-        displayObserver.onReceivedEvent = callUnowned(self, ProcessDetailsViewModel.handle)
+        observer.onReceivedEvent = callUnowned(self, ProcessDetailsViewModel.handle)
     }
     
     private(set) var name: String = ""
@@ -37,7 +33,7 @@ final class ProcessDetailsViewModel {
             path = process.displayPath
             team = process.signingInfo?.teamIdentifier ?? ""
             bundleId = process.bundleId ?? ""
-            delegate?.processDetailsDidUpdate(self)
+            onModelUpdate?()
         }
     }
     
