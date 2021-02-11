@@ -8,19 +8,19 @@
 import Cocoa
 
 final class ProcessesListViewController: NSViewController, StoryboardInstantiatable {
-
     //TODO: Force unwrapping is unfortunate here. With Storyboard + < macOS 15.0 that's quickiest way, but it's dirty.
     var viewModel: ProcessesListViewModel!
+    
     @IBOutlet private weak var tableView: NSTableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.reloadData()
-        
-        
     }
 }
 
+//TODO: Extract in a separete class and cover with tests, same goes for NSTableViewDelegate
 extension ProcessesListViewController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
         viewModel.sortedProcesses.count

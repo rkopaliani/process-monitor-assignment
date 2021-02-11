@@ -30,7 +30,7 @@ final class WindowViewController: NSViewController, StoryboardInstantiatable {
     }
     
     private func update() {
-//        killButton.isEnabled = viewModel.killButtonEnaled
-//        totalProcessLabel.stringValue = viewModel.totalProcessText
+        killButton.isEnabled = viewModel.killButtonEnaled
+        totalProcessLabel.stringValue = viewModel.totalProcessText
     }
 }
