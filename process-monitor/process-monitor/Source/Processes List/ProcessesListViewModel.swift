@@ -18,9 +18,14 @@ final class ProcessesListViewModel {
     weak var delegate: ProcessesListViewModelDelegate?
     
     private let monitorObserver: EventObserver<ProcessMonitorEvent>
-    init(with processes: Set<ProcessData>, monitorObserver: EventObserver<ProcessMonitorEvent>) {
+    private let displayEventsDispatcher: EventDispatcher<DisplayEventObserver>
+    
+    init(with processes: Set<ProcessData>,
+         monitorObserver: MonitorEventObserver,
+         displayDispatcher: EventDispatcher<DisplayEventObserver>) {
         self.processes = processes
         self.monitorObserver = monitorObserver
+        self.displayEventsDispatcher = displayDispatcher
         //TODO: it's ugly, find a better way
         monitorObserver.onReceivedEvent = callUnowned(self, ProcessesListViewModel.handle)
         resortProcesses(processes)
@@ -45,6 +50,10 @@ final class ProcessesListViewModel {
     
     private func resortProcesses(_ processes: Set<ProcessData>) {
         sortedProcesses = Array(processes).sorted(by: \.pid)
+    }
+    
+    func didSelect(_ process: ProcessData) {
+        displayEventsDispatcher.dispatch(.didSelect(process))
     }
 }
 

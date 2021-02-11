@@ -55,7 +55,6 @@ extension ProcessesListViewController: NSTableViewDataSource {
 
 extension ProcessesListViewController: NSTableViewDelegate {
     func tableViewSelectionDidChange(_ notification: Notification) {
-        let index = tableView.selectedRow
-        delegate?.processList(self, didSelect: viewModel.sortedProcesses[index])
+        viewModel.didSelect(viewModel.sortedProcesses[tableView.selectedRow])
     }
 }
