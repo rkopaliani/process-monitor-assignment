@@ -34,9 +34,15 @@ extension ProcessData {
 }
 
 extension ProcessData: Hashable {
-    //TODO: not the smartest decision, but it's a quickfix
+    //TODO: not the best decision, but it's a quickfix
     func hash(into hasher: inout Hasher) {
         hasher.combine(self.pid)
+    }
+}
+
+extension ProcessData: Equatable {
+    static func ==(_ lhs: ProcessData, _ rhs: ProcessData) -> Bool {
+        return lhs.pid == rhs.pid && lhs.bundleId == rhs.bundleId
     }
 }
 

@@ -12,6 +12,7 @@ enum ProcessListColumnId: String {
     case pid = "pid"
     case uid = "uid"
     case path = "path"
+    case name = "name"
 }
 
 extension NSTableView {
@@ -46,6 +47,9 @@ final class ProcessesListViewController: NSViewController, StoryboardInstantiata
     }
     
     private func localize() {
+        tableView.setTitle(NSLocalizedString("process-list.table.header.key.pid",
+                                             comment: "Name Column Header"),
+                           for: .name)
         tableView.setTitle(NSLocalizedString("process-list.table.header.key.pid",
                                              comment: "ProcessID Column Header"),
                            for: .pid)
@@ -86,6 +90,11 @@ extension ProcessesListViewController: NSTableViewDataSource {
         
         let process = viewModel.sortedProcesses[row]
         switch columndIdentifier {
+        case .name:
+            let cell = tableView.makeView(withIdentifier: columnId, owner: self) as! NSTableCellView
+            cell.textField?.stringValue = "\(process.displayName)"
+            return cell
+
         case .pid:
             let cell = tableView.makeView(withIdentifier: columnId, owner: self) as! NSTableCellView
             cell.textField?.stringValue = "\(process.pid)"

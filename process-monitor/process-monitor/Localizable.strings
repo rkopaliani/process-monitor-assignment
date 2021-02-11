@@ -9,4 +9,5 @@
 "process-list.table.header.key.pid" = "PID";
 "process-list.table.header.key.uid" = "UID";
 "process-list.table.header.key.path" = "Path";
+"process-list.table.header.key.name" = "Process Name";
 "window.bottom-container.button.kill" = "Kill Process";

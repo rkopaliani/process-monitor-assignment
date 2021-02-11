@@ -20,12 +20,15 @@ typealias ProcessMonitorCallback = (ProcessMonitorEvent) -> Void
 final class ProcessMonitor {
     private let callback: ProcessMonitorCallback
     private let observer: Observer<NSWorkspace>
+    private let processingQueue = DispatchQueue(label: "com.romankopaliani.assignment.monitor")
     init(_ observer: Observer<NSWorkspace>, callback: @escaping ProcessMonitorCallback) {
         self.callback = callback
         self.observer = observer
         observer.subscribe(\.runningApplications) { [weak self] (added, removed) in
             guard let self = self else { return }
-            self.process(added, removed: removed)
+            self.processingQueue.async {
+                self.process(added, removed: removed)
+            }
         }
     }
     

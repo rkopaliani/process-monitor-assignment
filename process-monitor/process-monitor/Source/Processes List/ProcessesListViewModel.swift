@@ -67,6 +67,7 @@ final class ProcessesListViewModel {
             else { return nil }
             
             switch identifier {
+            case .name: return SortDescriptor.sorted(by: \.displayName, ascending: descriptor.ascending)
             case .pid: return SortDescriptor.sorted(by: \.pid, ascending: descriptor.ascending)
             case .uid: return SortDescriptor.sorted(by: \.uid, ascending: descriptor.ascending)
             case .path: return SortDescriptor.sorted(by: \.displayPath, ascending: descriptor.ascending)

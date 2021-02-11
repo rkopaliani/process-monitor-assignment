@@ -45,6 +45,7 @@ extension ComparisonResult {
     }
 }
 
+
 extension Comparable {
     func compare(to: Self) -> ComparisonResult {
         if self < to {
@@ -57,19 +58,15 @@ extension Comparable {
     }
 }
 
+//TODO: It looks like swift doesn't want to call this one and always prefers a default. Unfortunately, don't have time to find a workaround for this one.
+extension Comparable where Self == String {
+    func compare(to: Self) -> ComparisonResult {
+        return self.caseInsensitiveCompare(to)
+    }
+}
+
 extension SortDescriptor {
     static func sorted<K: Comparable>(by keyPath: KeyPath<T, K>, ascending: Bool = true) -> SortDescriptor<T> {
         return .singular({ $0[keyPath: keyPath].compare(to: $1[keyPath: keyPath]) }, ascending)
     }
 }
-
-//extension SortDescriptor {
-//    static func descriptor(from sortDescriptor: NSSortDescriptor) -> SortDescriptor {
-//        return .sorted(by:sortDescriptor.comparator, ascending: sortDescriptor.ascending)
-//    }
-//
-//    static func descriptor(from sortDescriptors: [NSSortDescriptor]) -> SortDescriptor {
-//        let mapped = sortDescriptors.map(SortDescriptor.descriptor)
-//        return .multiple(mapped)
-//    }
-//}
