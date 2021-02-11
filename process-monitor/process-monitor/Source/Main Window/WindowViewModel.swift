@@ -40,6 +40,8 @@ final class WindowViewModel {
     }
     
     var killButtonEnaled: Bool = true
+    var processCount: Int { return monitor.processes.count }
+    
     var totalProcessText: String {
         return "\(monitor.processes.count) processes are running"
     }
