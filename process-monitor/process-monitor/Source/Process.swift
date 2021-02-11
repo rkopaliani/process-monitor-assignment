@@ -33,7 +33,12 @@ extension ProcessData {
     }
 }
 
-extension ProcessData: Hashable {}
+extension ProcessData: Hashable {
+    //TODO: not the smartest decision, but it's a quickfix
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.pid)
+    }
+}
 
 extension ProcessData {
     init?(_ app: NSRunningApplication) {

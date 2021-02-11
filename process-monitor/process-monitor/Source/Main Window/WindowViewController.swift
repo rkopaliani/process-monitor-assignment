@@ -9,7 +9,11 @@ import Cocoa
 
 final class WindowViewController: NSViewController, StoryboardInstantiatable {
 
-    var viewModel: WindowViewModel!
+    var viewModel: WindowViewModel! {
+        didSet {
+            viewModel.onUpdate = callWeak(self, WindowViewController.update)
+        }
+    }
     
     @IBOutlet private weak var killButton: NSButton!
     @IBOutlet private weak var totalProcessLabel: NSTextField!
@@ -19,21 +23,18 @@ final class WindowViewController: NSViewController, StoryboardInstantiatable {
         super.viewDidLoad()
 
         let splitViewModel = SplitViewModel(monitor: viewModel.monitor,
-                                            monitorEventsDispatcher: viewModel.eventsDispatcher)
+                                            monitorEventsDispatcher: viewModel.monitoringEventsDispatcher, displayDispatcher: viewModel.displayEventsDispatcher)
         let splitViewController = SplitViewController.instaniate { $0.viewModel = splitViewModel }
         embed(splitViewController, in: containerView)
-        
-        handleViewModelUpdate(viewModel)
-    }
-}
-
-extension WindowViewController: WindowViewModelDelegate {
-    func windowViewModelDidUpdate(_ viewModel: WindowViewModel) {
-        handleViewModelUpdate(viewModel)
+        update()
     }
     
-    private func handleViewModelUpdate(_ viewModel: WindowViewModel) {
-//        killButton.isEnabled = viewModel.killButtonEnaled
-//        totalProcessLabel.stringValue = viewModel.totalProcessText
+    private func update() {
+        killButton.isEnabled = viewModel.killButtonEnaled
+        totalProcessLabel.stringValue = viewModel.totalProcessText
+    }
+    
+    @IBAction func killButtonTapped(_ sender: NSButton) {
+        viewModel.killProcess()
     }
 }

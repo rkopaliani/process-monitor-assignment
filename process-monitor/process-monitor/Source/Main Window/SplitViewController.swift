@@ -13,7 +13,6 @@ final class SplitViewController: NSSplitViewController, StoryboardInstantiatable
     var viewModel: SplitViewModel!
     var listViewController: ProcessesListViewController?
     var detailsViewController: ProcessDetailsViewController?
-    let displayEventDispatcher: EventDispatcher<DisplayEventObserver> = EventDispatcher()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +21,7 @@ final class SplitViewController: NSSplitViewController, StoryboardInstantiatable
         viewModel.monitorEventsDispatcher.add(observer)
         let listViewModel = ProcessesListViewModel(with: viewModel.processMonitor.processes,
                                                    monitorObserver: observer,
-                                                   displayDispatch: displayEventDispatcher.dispatch)
+                                                   displayDispatch: viewModel.displayDispatcher.dispatch)
         
         let listViewController = ProcessesListViewController.instaniate { $0.viewModel = listViewModel }
 
@@ -30,7 +29,7 @@ final class SplitViewController: NSSplitViewController, StoryboardInstantiatable
         self.listViewController = listViewController
         
         let displayObserver = DisplayEventObserver()
-        displayEventDispatcher.add(displayObserver)
+        viewModel.displayDispatcher.add(displayObserver)
         let detailsViewModel = ProcessDetailsViewModel(observer: displayObserver)
         let detailsViewController = ProcessDetailsViewController.instaniate { $0.viewModel = detailsViewModel }
         addSplitViewItem(NSSplitViewItem(contentListWithViewController: detailsViewController))

@@ -7,23 +7,56 @@
 
 import Cocoa
 
-protocol WindowViewModelDelegate: AnyObject {
-    func windowViewModelDidUpdate(_ viewModel: WindowViewModel)
-}
+typealias ViewModelUpdate = () -> ()
 
 final class WindowViewModel {
 
-    weak var delegate: WindowViewModelDelegate?
+    var onUpdate: ViewModelUpdate?
     
     let monitor: ProcessMonitor
-    let eventsDispatcher: EventDispatcher<MonitorEventObserver>
-    init(monitor: ProcessMonitor, dispatcher: EventDispatcher<MonitorEventObserver>) {
+    let monitoringEventsDispatcher: EventDispatcher<MonitorEventObserver>
+    let displayEventsDispatcher: EventDispatcher<DisplayEventObserver>
+    
+    let monitoringObserver: MonitorEventObserver
+    let displayObserver: DisplayEventObserver
+    
+    private var selectedProcess: ProcessData?
+    
+    init(monitor: ProcessMonitor,
+         monitorDispatcher: EventDispatcher<MonitorEventObserver>,
+         displayDispatcher: EventDispatcher<DisplayEventObserver>) {
         self.monitor = monitor
-        self.eventsDispatcher = dispatcher
+        self.monitoringEventsDispatcher = monitorDispatcher
+        self.displayEventsDispatcher = displayDispatcher
+        
+        monitoringObserver = MonitorEventObserver()
+        displayObserver = DisplayEventObserver()
+
+        monitorDispatcher.add(monitoringObserver)
+        monitoringObserver.onReceivedEvent = callUnowned(self, WindowViewModel.handleMonitor)
+        
+        displayDispatcher.add(displayObserver)
+        displayObserver.onReceivedEvent = callUnowned(self, WindowViewModel.handleDisplay)
     }
     
     var killButtonEnaled: Bool = true
     var totalProcessText: String {
-        return ""
+        return "\(monitor.processes.count) processes are running"
+    }
+    
+    func killProcess() {
+        guard let process = selectedProcess else { return }
+        monitor.kill(process)
+    }
+    
+    private func handleMonitor(_ event: ProcessMonitorEvent) {
+        onUpdate?()
+    }
+    
+    private func handleDisplay(_ event: ProcessDisplayEvent) {
+        switch event {
+        case .didSelect(let process):
+            self.selectedProcess = process
+        }
     }
 }
