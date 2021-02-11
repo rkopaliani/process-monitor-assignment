@@ -53,8 +53,12 @@ extension ProcessMonitor {
             .intersection(processes)
         
         guard addedSet.count > 0 || removedSet.count > 0 else {  return }
-        processes = processes.subtracting(removedSet).union(addedSet)
-        callback(.update(added: Array(addedSet), removed: Array(removedSet)))
+        
+        //TODO: That's a last minute quickfix for threading issue in processes var
+        DispatchQueue.main.sync {
+            processes = processes.subtracting(removedSet).union(addedSet)
+            callback(.update(added: Array(addedSet), removed: Array(removedSet)))
+        }
     }
 }
 
