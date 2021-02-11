@@ -27,16 +27,21 @@ final class WindowViewController: NSViewController, StoryboardInstantiatable {
         let splitViewController = SplitViewController.instaniate { $0.viewModel = splitViewModel }
         embed(splitViewController, in: containerView)
         
-        killButton.title = NSLocalizedString("window.bottom-container.button.kill", comment: "Kill Button Title")
-        update()
-    }
-    
-    private func update() {
-        killButton.isEnabled = viewModel.killButtonEnaled
-        totalProcessLabel.stringValue = viewModel.totalProcessText
+        localize()
     }
     
     @IBAction func killButtonTapped(_ sender: NSButton) {
         viewModel.killProcess()
+    }
+    
+    private func update() {
+        killButton.isEnabled = viewModel.killButtonEnaled
+        let processFormat = NSLocalizedString("window.bottom-container.label.processes",
+                                              comment: "Window number of process label")
+        totalProcessLabel.stringValue = String.localizedStringWithFormat(processFormat, viewModel.processCount)
+    }
+
+    private func localize() {
+        killButton.title = NSLocalizedString("window.bottom-container.button.kill", comment: "Kill Button Title")
     }
 }

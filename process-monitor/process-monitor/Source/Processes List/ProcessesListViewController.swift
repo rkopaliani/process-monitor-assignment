@@ -37,7 +37,7 @@ final class ProcessesListViewController: NSViewController, StoryboardInstantiata
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        applyLocalization()
+        localize()
     }
     
     private func handle(_ update: ListDiff) {
@@ -47,7 +47,7 @@ final class ProcessesListViewController: NSViewController, StoryboardInstantiata
         tableView.endUpdates()
     }
     
-    private func applyLocalization() {
+    private func localize() {
         NSTableColumn.setTitle(NSLocalizedString("process-list.table.header.key.pid",
                                                  comment: "ProcessID Column Header"),
                                for: .pid,
@@ -68,9 +68,7 @@ final class ProcessesListViewController: NSViewController, StoryboardInstantiata
 //TODO: Extract in a separate class and cover with tests, same goes for NSTableViewDelegate
 extension ProcessesListViewController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        let count = viewModel.sortedProcesses.count
-        print(count)
-        return count
+        return viewModel.sortedProcesses.count
     }
     
     func tableView(_ tableView: NSTableView,
