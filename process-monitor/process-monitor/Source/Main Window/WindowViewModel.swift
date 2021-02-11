@@ -44,6 +44,11 @@ final class WindowViewModel {
         return "\(monitor.processes.count) processes are running"
     }
     
+    func killProcess() {
+        guard let process = selectedProcess else { return }
+        monitor.kill(process)
+    }
+    
     private func handleMonitor(_ event: ProcessMonitorEvent) {
         onUpdate?()
     }

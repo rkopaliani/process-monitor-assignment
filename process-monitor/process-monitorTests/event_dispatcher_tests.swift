@@ -29,8 +29,10 @@ extension MockEventHandler: Equatable {
 class event_dispatcher_tests: XCTestCase {
 
     var sut: EventDispatcher<MockEventHandler>!
+    var eventsQueue: DispatchQueue!
     override func setUpWithError() throws {
-        sut = EventDispatcher()
+        eventsQueue = DispatchQueue(label: "EventDispatcherTests")
+        sut = EventDispatcher(queue: eventsQueue)
     }
 
     func testThatEventDispatcherDispatchEvent() {
@@ -38,6 +40,7 @@ class event_dispatcher_tests: XCTestCase {
         let input = 2
         sut.add(mockHandler)
         sut.dispatch(input)
+        eventsQueue.sync {}
         XCTAssertEqual(mockHandler.event, input)
     }
     
@@ -47,6 +50,7 @@ class event_dispatcher_tests: XCTestCase {
         sut.add(mockHandler)
         let input = 2
         sut.dispatch(input)
+        eventsQueue.sync {}
         XCTAssertEqual(mockHandler.count, 1)
     }
     
@@ -61,6 +65,7 @@ class event_dispatcher_tests: XCTestCase {
         
         let input = 1
         sut.dispatch(input)
+        eventsQueue.sync {}
         XCTAssertEqual(anotherHandler.event, input)
     }
 }

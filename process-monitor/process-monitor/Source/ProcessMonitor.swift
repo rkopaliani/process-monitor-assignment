@@ -27,6 +27,10 @@ final class ProcessMonitor {
         }
     }
     
+    func kill(_ process: ProcessData) {
+        
+    }
+    
     private(set) var processes: Set<ProcessData> = []
 }
 
