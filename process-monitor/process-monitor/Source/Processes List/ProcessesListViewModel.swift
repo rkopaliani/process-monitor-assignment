@@ -13,13 +13,15 @@ protocol ProcessesListViewModelDelegate: AnyObject {
                    willRemove removed:[ProcessData])
 }
 
-final class ProcessesListViewModel: EventHandlingViewModel {
+final class ProcessesListViewModel {
 
     weak var delegate: ProcessesListViewModelDelegate?
     
-    init(with processes: Set<ProcessData>) {
+    let monitorObserver: EventObserver<ProcessMonitorEvent>
+    init(with processes: Set<ProcessData>, monitorObserver: EventObserver<ProcessMonitorEvent>) {
         self.processes = processes
-        super.init()
+        self.monitorObserver = monitorObserver
+        monitorObserver.onReceivedEvent = handle
         //TODO: it's ugly, find a better way
         resortProcesses(processes)
     }
@@ -31,7 +33,7 @@ final class ProcessesListViewModel: EventHandlingViewModel {
         }
     }
     
-    override func handle(_ event: ProcessMonitorEvent) {
+    private func handle(_ event: ProcessMonitorEvent) {
         switch event {
         case .update(let added, let removed):
             delegate?.viewModel(self, willAdd: added, willRemove: removed)

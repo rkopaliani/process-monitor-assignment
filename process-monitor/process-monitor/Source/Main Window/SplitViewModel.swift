@@ -7,13 +7,17 @@
 
 import Cocoa
 
+enum ProcessDisplayEvent {
+    case didSelect(ProcessData)
+}
+
 final class SplitViewModel {
-    let dispatcher: EventDispatcher<EventHandlingViewModel>
+    let monitorEventsDispatcher: EventDispatcher<ProcessMonitorEventObserver>
     let processMonitor: ProcessMonitor
     
     init(monitor: ProcessMonitor,
-         dispatcher: EventDispatcher<EventHandlingViewModel>) {
-        self.dispatcher = dispatcher
+         monitorEventsDispatcher: EventDispatcher<ProcessMonitorEventObserver>) {
+        self.monitorEventsDispatcher = monitorEventsDispatcher
         self.processMonitor = monitor
     }
 }

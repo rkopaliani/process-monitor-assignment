@@ -7,13 +7,21 @@
 
 import Foundation
 
-open class EventHandlingViewModel: EventHandler {
-    typealias Event = ProcessMonitorEvent
-    func handle(_ event: ProcessMonitorEvent) {}
+final class EventObserver<EventType>: EventHandlerType {
+    typealias Event = EventType
+    
+    var onReceivedEvent: ((EventType) -> ())?
+    
+    func handle(_ event: EventType) {
+        onReceivedEvent?(event)
+    }
 }
 
-extension EventHandlingViewModel: Equatable {
-    public static func ==(lhs: EventHandlingViewModel, rhs: EventHandlingViewModel) -> Bool {
+extension EventObserver: Equatable {
+    public static func ==(lhs: EventObserver, rhs: EventObserver) -> Bool {
         return lhs === rhs
     }
 }
+
+typealias ProcessMonitorEventObserver = EventObserver<ProcessMonitorEvent>
+typealias ProcessDisplayEventObserver = EventObserver<ProcessDisplayEvent>
