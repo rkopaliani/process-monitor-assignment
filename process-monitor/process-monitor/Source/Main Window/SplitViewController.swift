@@ -22,7 +22,7 @@ final class SplitViewController: NSSplitViewController, StoryboardInstantiatable
         viewModel.monitorEventsDispatcher.add(observer)
         let listViewModel = ProcessesListViewModel(with: viewModel.processMonitor.processes,
                                                    monitorObserver: observer,
-                                                   displayDispatcher: displayEventDispatcher)
+                                                   displayDispatch: displayEventDispatcher.dispatch)
         
         let listViewController = ProcessesListViewController.instaniate { $0.viewModel = listViewModel }
 

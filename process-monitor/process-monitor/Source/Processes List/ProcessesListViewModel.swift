@@ -7,25 +7,18 @@
 
 import Foundation
 
-protocol ProcessesListViewModelDelegate: AnyObject {
-    func viewModel(_ viewModel: ProcessesListViewModel,
-                   willAdd added: [ProcessData],
-                   willRemove removed:[ProcessData])
-}
-
 final class ProcessesListViewModel {
-
-    weak var delegate: ProcessesListViewModelDelegate?
     
     private let monitorObserver: EventObserver<ProcessMonitorEvent>
-    private let displayEventsDispatcher: EventDispatcher<DisplayEventObserver>
+    private let displayEventsDispatch: (ProcessDisplayEvent) -> ()
     
     init(with processes: Set<ProcessData>,
          monitorObserver: MonitorEventObserver,
-         displayDispatcher: EventDispatcher<DisplayEventObserver>) {
+         displayDispatch: @escaping (ProcessDisplayEvent) -> ()) {
         self.processes = processes
         self.monitorObserver = monitorObserver
-        self.displayEventsDispatcher = displayDispatcher
+        self.displayEventsDispatch = displayDispatch
+        
         //TODO: it's ugly, find a better way
         monitorObserver.onReceivedEvent = callUnowned(self, ProcessesListViewModel.handle)
         resortProcesses(processes)
@@ -41,7 +34,6 @@ final class ProcessesListViewModel {
     func handle(_ event: ProcessMonitorEvent) {
         switch event {
         case .update(let added, let removed):
-            delegate?.viewModel(self, willAdd: added, willRemove: removed)
             processes = processes.subtracting(removed).union(added)
         case .failure(let error):
             fatalError("Bam \(error)")
@@ -53,7 +45,7 @@ final class ProcessesListViewModel {
     }
     
     func didSelect(_ process: ProcessData) {
-        displayEventsDispatcher.dispatch(.didSelect(process))
+        displayEventsDispatch(.didSelect(process))
     }
 }
 

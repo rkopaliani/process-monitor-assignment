@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol EventHandlerType {
+protocol EventHandlerType: AnyObject {
     associatedtype Event
     func handle(_ event: Event)
 }
@@ -17,9 +17,15 @@ protocol EventDispatcherType: AnyObject {
     func dispatch(_ event: Event)
 }
 
-typealias EquatableEventHandlerType = EventHandlerType & Equatable & AnyObject
+protocol EventHandlerStoreType {
+    associatedtype Handler = EquatableEventHandlerType
+    func add(_ handler: Handler)
+    func delete(_ handler: Handler)
+}
 
-final class EventDispatcher<Handler: EquatableEventHandlerType>: EventDispatcherType {
+typealias EquatableEventHandlerType = EventHandlerType & Equatable
+
+final class EventDispatcher<Handler: EquatableEventHandlerType>: EventDispatcherType & EventHandlerStoreType {
     //ToDo: replace array with set, it should not be a bottleneck, but set makes sense much more here
     //ToDo: might be good idea to add sync queue for add/delete methods
     

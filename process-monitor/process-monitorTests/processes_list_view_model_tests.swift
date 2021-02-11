@@ -8,15 +8,13 @@
 import XCTest
 @testable import process_monitor
 
-class MockProcessesListViewModelDelegate: ProcessesListViewModelDelegate {
-    var added: [ProcessData]?
-    var removed: [ProcessData]?
-    
-    func viewModel(_ viewModel: ProcessesListViewModel,
-                   willAdd added: [ProcessData],
-                   willRemove removed: [ProcessData]) {
-        self.added = added
-        self.removed = removed
+class MockDisplayEventDispatch {
+    var selected: ProcessData?
+    func dispatch(_ event: ProcessDisplayEvent) {
+        switch event {
+        case .didSelect(let process):
+            selected = process
+        }
     }
 }
 
@@ -24,13 +22,17 @@ class processes_list_view_model_tests: XCTestCase {
 
     var sut: ProcessesListViewModel!
     var observer: MonitorEventObserver!
+    var dispatcher: MockDisplayEventDispatch!
     
     override func setUpWithError() throws {
         let foo = ProcessData(pid: 2, ppid: 1, uid:0 , path: URL(fileURLWithPath: "Library/foo/path"), bundleId: "foo.bundle")
         let bar = ProcessData(pid: 3, ppid: 1, uid:501 , path: URL(fileURLWithPath: "/Library/bar/path"), bundleId: "bar.bundle")
 
         observer = MonitorEventObserver()
-        sut = ProcessesListViewModel(with: Set([bar, foo]), monitorObserver: observer)
+        dispatcher = MockDisplayEventDispatch()
+        sut = ProcessesListViewModel(with: Set([bar, foo]),
+                                     monitorObserver: observer,
+                                     displayDispatch: dispatcher.dispatch)
     }
 
     func testThatViewModelInitialProcessesAreSorted() {
@@ -38,16 +40,9 @@ class processes_list_view_model_tests: XCTestCase {
         XCTAssertEqual(sut.sortedProcesses.first!.pid, 2)
     }
     
-    func testThatDelegateReceiveProperValuesFromViewModelOnUpdate() {
-        let delegate = MockProcessesListViewModelDelegate()
-        sut.delegate = delegate
-        
-        let added = ProcessData(pid: 4, ppid: 22, uid: 0, path: URL(fileURLWithPath:"/baz/path"), bundleId: "baz.bundle")
-        let removed = ProcessData(pid: 3, ppid: 1, uid:501 , path: URL(fileURLWithPath:"/bar/path"), bundleId: "bar.bundle")
-        observer.handle(.update(added: [added], removed: [removed]))
-        
-        XCTAssertEqual(sut.sortedProcesses.count, 3)
-        XCTAssertEqual(delegate.added!, [added])
-        XCTAssertEqual(delegate.removed!, [removed])
+    func testThatDispatcherPostEventOnDidSelect() {
+        let process = sut.sortedProcesses.last!
+        sut.didSelect(process)
+        XCTAssertEqual(dispatcher.selected!, process)
     }
 }
