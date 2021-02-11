@@ -16,7 +16,11 @@ final class WindowViewModel {
     let monitor: ProcessMonitor
     let monitoringEventsDispatcher: EventDispatcher<MonitorEventObserver>
     let displayEventsDispatcher: EventDispatcher<DisplayEventObserver>
-    let observer: MonitorEventObserver
+    
+    let monitoringObserver: MonitorEventObserver
+    let displayObserver: DisplayEventObserver
+    
+    private var selectedProcess: ProcessData?
     
     init(monitor: ProcessMonitor,
          monitorDispatcher: EventDispatcher<MonitorEventObserver>,
@@ -25,9 +29,14 @@ final class WindowViewModel {
         self.monitoringEventsDispatcher = monitorDispatcher
         self.displayEventsDispatcher = displayDispatcher
         
-        observer = MonitorEventObserver()
-        monitorDispatcher.add(observer)
-        observer.onReceivedEvent = callUnowned(self, WindowViewModel.handleMonitor)
+        monitoringObserver = MonitorEventObserver()
+        displayObserver = DisplayEventObserver()
+
+        monitorDispatcher.add(monitoringObserver)
+        monitoringObserver.onReceivedEvent = callUnowned(self, WindowViewModel.handleMonitor)
+        
+        displayDispatcher.add(displayObserver)
+        displayObserver.onReceivedEvent = callUnowned(self, WindowViewModel.handleDisplay)
     }
     
     var killButtonEnaled: Bool = true
@@ -37,5 +46,12 @@ final class WindowViewModel {
     
     private func handleMonitor(_ event: ProcessMonitorEvent) {
         onUpdate?()
+    }
+    
+    private func handleDisplay(_ event: ProcessDisplayEvent) {
+        switch event {
+        case .didSelect(let process):
+            self.selectedProcess = process
+        }
     }
 }

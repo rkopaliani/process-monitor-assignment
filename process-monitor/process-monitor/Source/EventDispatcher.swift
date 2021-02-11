@@ -20,8 +20,9 @@ protocol EventDispatcherType: AnyObject {
 typealias EquatableEventHandlerType = EventHandlerType & Equatable
 
 final class EventDispatcher<Handler: EquatableEventHandlerType>: EventDispatcherType {
-    //ToDo: replace array with set, it should not be a bottleneck, but set makes sense much more here
-    //ToDo: might be good idea to add sync queue for add/delete methods
+    //TODO: replace array with set, it should not be a bottleneck, but set makes sense much more here
+    //TODO: might be good idea to add sync queue for add/delete methods
+    //TODO: this class doesn't make sence now after all the refactoring, need to rethink interface
     
     private var handlers: WeakArray<Handler> = WeakArray([])
     
