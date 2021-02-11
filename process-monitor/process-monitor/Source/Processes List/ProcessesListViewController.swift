@@ -17,12 +17,6 @@ final class ProcessesListViewController: NSViewController, StoryboardInstantiata
     
     @IBOutlet private weak var tableView: NSTableView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-//        tableView.reloadData()
-    }
-    
     private func handle(_ update: ListDiff) {
         tableView.beginUpdates()
         tableView.removeRows(at: update.removedIdx, withAnimation: .effectFade)
