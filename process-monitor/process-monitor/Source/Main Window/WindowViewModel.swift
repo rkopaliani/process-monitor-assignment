@@ -7,19 +7,20 @@
 
 import Cocoa
 
-protocol WindowViewModelDelegate: AnyObject {
-    func windowViewModelDidUpdate(_ viewModel: WindowViewModel)
-}
-
+typealias ViewModelUpdate = () -> ()
 final class WindowViewModel {
 
-    weak var delegate: WindowViewModelDelegate?
+    var onUpdate: ViewModelUpdate?
     
     let monitor: ProcessMonitor
-    let eventsDispatcher: EventDispatcher<MonitorEventObserver>
-    init(monitor: ProcessMonitor, dispatcher: EventDispatcher<MonitorEventObserver>) {
+    let monitoringEventsDispatcher: EventDispatcher<MonitorEventObserver>
+    let displayEventsDispatcher: EventDispatcher<DisplayEventObserver>
+    init(monitor: ProcessMonitor,
+         monitorDispatcher: EventDispatcher<MonitorEventObserver>,
+         displayDispatcher: EventDispatcher<DisplayEventObserver>) {
         self.monitor = monitor
-        self.eventsDispatcher = dispatcher
+        self.monitoringEventsDispatcher = monitorDispatcher
+        self.displayEventsDispatcher = displayDispatcher
     }
     
     var killButtonEnaled: Bool = true
