@@ -14,17 +14,6 @@ enum ProcessListColumnId: String {
     case path = "path"
 }
 
-extension NSTableColumn {
-    static func setTitle(_ title: String,
-                         for columnId: ProcessListColumnId,
-                         in table: NSTableView) {
-        guard let column = table.tableColumn(withIdentifier: NSUserInterfaceItemIdentifier(columnId.rawValue)) else {
-            return
-        }
-        column.headerCell.title = title
-    }
-}
-
 extension NSTableView {
     func setTitle(_ title: String, for columnId: ProcessListColumnId) {
         guard let column = tableColumn(withIdentifier: NSUserInterfaceItemIdentifier(columnId.rawValue)) else { return }
@@ -45,6 +34,7 @@ final class ProcessesListViewController: NSViewController, StoryboardInstantiata
     override func viewDidLoad() {
         super.viewDidLoad()
         localize()
+        setupSorting()
         updateSelection()
     }
     
@@ -67,7 +57,14 @@ final class ProcessesListViewController: NSViewController, StoryboardInstantiata
                            for: .path)
     }
     
+    private func setupSorting() {
+        tableView.tableColumns.forEach { column in
+            column.sortDescriptorPrototype = NSSortDescriptor(key: column.identifier.rawValue, ascending: true)
+        }
+    }
+    
     private func updateSelection() {
+        guard tableView.selectedRow >= 0 else { return }
         viewModel.didSelect(viewModel.sortedProcesses[tableView.selectedRow])
     }
 }
@@ -102,6 +99,11 @@ extension ProcessesListViewController: NSTableViewDataSource {
             cell.textField?.stringValue = process.displayPath
             return cell
         }
+    }
+    
+    func tableView(_ tableView: NSTableView, sortDescriptorsDidChange oldDescriptors: [NSSortDescriptor]) {
+        viewModel.sort(by: tableView.sortDescriptors)
+        tableView.reloadData()
     }
 }
 

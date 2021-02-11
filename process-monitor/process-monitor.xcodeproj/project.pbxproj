@@ -27,6 +27,7 @@
 		5E55B72825CDBA5C0066859A /* ProcessesListViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B72725CDBA5C0066859A /* ProcessesListViewState.swift */; };
 		5E6F4AA125D5752A00FCD75D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E6F4AA025D5752A00FCD75D /* Localizable.strings */; };
 		5E6F4AA625D57A3000FCD75D /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 5E6F4AA525D57A3000FCD75D /* Localizable.stringsdict */; };
+		5E6F4AAE25D58B1200FCD75D /* SortDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6F4AAD25D58B1200FCD75D /* SortDescriptor.swift */; };
 		5E7DC31A25D3E4A100FCE57F /* NSViewController+Instaniate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7DC31925D3E4A100FCE57F /* NSViewController+Instaniate.swift */; };
 		5E7DC33025D43FEA00FCE57F /* ProcessDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7DC32F25D43FEA00FCE57F /* ProcessDetailsViewModel.swift */; };
 		5E7DC33825D4476100FCE57F /* SplitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7DC33725D4476100FCE57F /* SplitViewModel.swift */; };
@@ -83,6 +84,7 @@
 		5E55B72725CDBA5C0066859A /* ProcessesListViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessesListViewState.swift; sourceTree = "<group>"; };
 		5E6F4AA025D5752A00FCD75D /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		5E6F4AA525D57A3000FCD75D /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
+		5E6F4AAD25D58B1200FCD75D /* SortDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortDescriptor.swift; sourceTree = "<group>"; };
 		5E7DC31925D3E4A100FCE57F /* NSViewController+Instaniate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSViewController+Instaniate.swift"; sourceTree = "<group>"; };
 		5E7DC32F25D43FEA00FCE57F /* ProcessDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessDetailsViewModel.swift; sourceTree = "<group>"; };
 		5E7DC33725D4476100FCE57F /* SplitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewModel.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 			children = (
 				5E55B70725CDA1910066859A /* ProcessesListViewController.swift */,
 				5E55B71B25CDB4AB0066859A /* ProcessesListViewModel.swift */,
+				5E6F4AAD25D58B1200FCD75D /* SortDescriptor.swift */,
 				5E55B72725CDBA5C0066859A /* ProcessesListViewState.swift */,
 			);
 			name = "Processes List";
@@ -383,6 +386,7 @@
 				5E4CFCF125D16BCC00C263B9 /* EventDispatcher.swift in Sources */,
 				5E55B6C425CD6DFC0066859A /* WindowController.swift in Sources */,
 				5E7DC34025D44B0400FCE57F /* WindowViewModel.swift in Sources */,
+				5E6F4AAE25D58B1200FCD75D /* SortDescriptor.swift in Sources */,
 				5E55B72825CDBA5C0066859A /* ProcessesListViewState.swift in Sources */,
 				5EBAC38D25D18E2A00106D5B /* Observer.swift in Sources */,
 				5E4CFCCF25D14A6F00C263B9 /* ProcessMonitor.swift in Sources */,

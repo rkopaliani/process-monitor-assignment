@@ -21,6 +21,8 @@ final class ProcessesListViewModel {
     private let monitorObserver: EventObserver<ProcessMonitorEvent>
     private let displayEventHandler: DisplayEventHandler
     
+    private var sortDescriptors: [SortDescriptor<ProcessData>] = [SortDescriptor.sorted(by: \.pid)]
+    
     init(with processes: Set<ProcessData>,
          monitorObserver: MonitorEventObserver,
          displayDispatch: @escaping DisplayEventHandler) {
@@ -30,14 +32,12 @@ final class ProcessesListViewModel {
         
         //TODO: it's ugly, find a better way
         monitorObserver.onReceivedEvent = callUnowned(self, ProcessesListViewModel.handle)
-        resortProcesses(processes)
+        resort()
     }
     
     var sortedProcesses: [ProcessData] = []
     private var processes: Set<ProcessData> {
-        didSet {
-            resortProcesses(processes)
-        }
+        didSet { resort() }
     }
     
     func handle(_ event: ProcessMonitorEvent) {
@@ -55,18 +55,33 @@ final class ProcessesListViewModel {
             fatalError("Bam \(error)")
         }
     }
-    
-    private func resortProcesses(_ processes: Set<ProcessData>) {
-        sortedProcesses = Array(processes).sorted(by: \.pid)
-    }
-    
+        
     func didSelect(_ process: ProcessData) {
         displayEventHandler(.didSelect(process))
     }
-}
-
-extension Sequence {
-    func sorted<T: Comparable>(by keyPath: KeyPath<Element, T>) -> [Element] {
-        sorted { $0[keyPath: keyPath] < $1[keyPath: keyPath] }
+    
+    func sort(by descriptors: [NSSortDescriptor]) {
+        let sortDescriptors: [SortDescriptor<ProcessData>] = descriptors.compactMap { descriptor in
+            guard let key = descriptor.key,
+                  let identifier = ProcessListColumnId(rawValue: key)
+            else { return nil }
+            
+            switch identifier {
+            case .pid: return SortDescriptor.sorted(by: \.pid, ascending: descriptor.ascending)
+            case .uid: return SortDescriptor.sorted(by: \.uid, ascending: descriptor.ascending)
+            case .path: return SortDescriptor.sorted(by: \.displayPath, ascending: descriptor.ascending)
+            }
+        }
+        sort(by: sortDescriptors)
+    }
+    
+    private func sort(by sortDescriptors: [SortDescriptor<ProcessData>]) {
+        let finalDescriptor = SortDescriptor.multiple(sortDescriptors)
+        sortedProcesses = processes.sorted(by: finalDescriptor.orderedAscending)
+        self.sortDescriptors = sortDescriptors
+    }
+    
+    private func resort() {
+        sort(by: sortDescriptors)
     }
 }
