@@ -17,12 +17,12 @@ final class ProcessesListViewModel {
 
     weak var delegate: ProcessesListViewModelDelegate?
     
-    let monitorObserver: EventObserver<ProcessMonitorEvent>
+    private let monitorObserver: EventObserver<ProcessMonitorEvent>
     init(with processes: Set<ProcessData>, monitorObserver: EventObserver<ProcessMonitorEvent>) {
         self.processes = processes
         self.monitorObserver = monitorObserver
-        monitorObserver.onReceivedEvent = handle
         //TODO: it's ugly, find a better way
+        monitorObserver.onReceivedEvent = callUnowned(self, ProcessesListViewModel.handle)
         resortProcesses(processes)
     }
     
@@ -33,7 +33,7 @@ final class ProcessesListViewModel {
         }
     }
     
-    private func handle(_ event: ProcessMonitorEvent) {
+    func handle(_ event: ProcessMonitorEvent) {
         switch event {
         case .update(let added, let removed):
             delegate?.viewModel(self, willAdd: added, willRemove: removed)

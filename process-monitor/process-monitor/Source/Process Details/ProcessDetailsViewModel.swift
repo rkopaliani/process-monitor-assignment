@@ -18,7 +18,7 @@ final class ProcessDetailsViewModel {
     let displayObserver: DisplayEventObserver!
     init(observer: DisplayEventObserver) {
         self.displayObserver = observer
-        displayObserver.onReceivedEvent = handle
+        displayObserver.onReceivedEvent = callUnowned(self, ProcessDetailsViewModel.handle)
     }
     
     private(set) var name: String = ""
@@ -28,7 +28,7 @@ final class ProcessDetailsViewModel {
     private(set) var team: String = ""
     private(set) var bundleId: String = ""
     
-    var process: ProcessData? {
+    private var process: ProcessData? {
         didSet {
             guard let process = process else { return }
             name = process.displayName
