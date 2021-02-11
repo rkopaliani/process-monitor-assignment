@@ -25,6 +25,13 @@ extension NSTableColumn {
     }
 }
 
+extension NSTableView {
+    func setTitle(_ title: String, for columnId: ProcessListColumnId) {
+        guard let column = tableColumn(withIdentifier: NSUserInterfaceItemIdentifier(columnId.rawValue)) else { return }
+        column.headerCell.title = title
+    }
+}
+
 final class ProcessesListViewController: NSViewController, StoryboardInstantiatable {
     //TODO: Force unwrapping is unfortunate here. With Storyboard + < macOS 15.0 that's quickiest way, but it's dirty.
     var viewModel: ProcessesListViewModel! {
@@ -49,20 +56,15 @@ final class ProcessesListViewController: NSViewController, StoryboardInstantiata
     }
     
     private func localize() {
-        NSTableColumn.setTitle(NSLocalizedString("process-list.table.header.key.pid",
-                                                 comment: "ProcessID Column Header"),
-                               for: .pid,
-                               in: tableView)
-        
-        NSTableColumn.setTitle(NSLocalizedString("process-list.table.header.key.uid",
-                                                 comment: "UserID Column Header"),
-                               for: .uid,
-                               in: tableView)
-        
-        NSTableColumn.setTitle(NSLocalizedString("process-list.table.header.key.path",
-                                                 comment: "Path Column Header"),
-                               for: .path,
-                               in: tableView)
+        tableView.setTitle(NSLocalizedString("process-list.table.header.key.pid",
+                                             comment: "ProcessID Column Header"),
+                           for: .pid)
+        tableView.setTitle(NSLocalizedString("process-list.table.header.key.uid",
+                                             comment: "UserID Column Header"),
+                           for: .uid)
+        tableView.setTitle(NSLocalizedString("process-list.table.header.key.path",
+                                             comment: "Path Column Header"),
+                           for: .path)
     }
     
     private func updateSelection() {
