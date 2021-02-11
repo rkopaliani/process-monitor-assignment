@@ -127,17 +127,17 @@
             <objects>
                 <viewController storyboardIdentifier="ProcessesListViewController" id="1qR-Sb-PCV" customClass="ProcessesListViewController" customModule="process_monitor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="VJ5-TP-byC">
-                        <rect key="frame" x="0.0" y="0.0" width="273" height="358"/>
+                        <rect key="frame" x="0.0" y="0.0" width="420" height="400"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wvd-se-2LO">
-                                <rect key="frame" x="0.0" y="0.0" width="273" height="358"/>
+                                <rect key="frame" x="0.0" y="0.0" width="420" height="400"/>
                                 <clipView key="contentView" id="wMM-fB-FsC">
-                                    <rect key="frame" x="1" y="0.0" width="271" height="357"/>
+                                    <rect key="frame" x="1" y="0.0" width="418" height="399"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="hTP-R4-uKF" viewBased="YES" id="ZhG-E4-N7b">
-                                            <rect key="frame" x="0.0" y="0.0" width="423" height="332"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="423" height="374"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -247,8 +247,8 @@
                                         </tableView>
                                     </subviews>
                                 </clipView>
-                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="GtK-mz-W5r">
-                                    <rect key="frame" x="1" y="341" width="271" height="16"/>
+                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.20000000000000001" horizontal="YES" id="GtK-mz-W5r">
+                                    <rect key="frame" x="1" y="383" width="418" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="H6P-jG-7S0">

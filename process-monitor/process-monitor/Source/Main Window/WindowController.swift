@@ -12,6 +12,8 @@ final class WindowController: NSWindowController {
     private let workspaceObserver = Observer(NSWorkspace.shared)
 
     override func windowDidLoad() {
+        window?.title = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as! String
+        
         let monitoringDispatcher = EventDispatcher<MonitorEventObserver>()
         let displayEventDispatcher = EventDispatcher<DisplayEventObserver>()
 
