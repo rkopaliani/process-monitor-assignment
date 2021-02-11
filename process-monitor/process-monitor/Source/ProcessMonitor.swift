@@ -28,6 +28,7 @@ final class ProcessMonitor {
     }
     
     //TODO: Extract in a separate class and handle when there is no NSRunningApplication
+    //TODO: Also handle a situation when process is not responding
     func kill(_ process: ProcessData) {
         guard let app = NSRunningApplication(processIdentifier: process.pid) else { return }
         app.terminate()

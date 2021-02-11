@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  process-monitor
+
+  Created by Roman Kopaliani on 11.02.2021.
+  
+*/
+
+"process-list.table.header.key.pid" = "PID";
+"process-list.table.header.key.uid" = "UID";
+"process-list.table.header.key.path" = "Path";
+"window.bottom-container.button.kill" = "Kill Process";

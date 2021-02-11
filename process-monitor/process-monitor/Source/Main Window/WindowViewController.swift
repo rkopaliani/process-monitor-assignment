@@ -26,6 +26,8 @@ final class WindowViewController: NSViewController, StoryboardInstantiatable {
                                             monitorEventsDispatcher: viewModel.monitoringEventsDispatcher, displayDispatcher: viewModel.displayEventsDispatcher)
         let splitViewController = SplitViewController.instaniate { $0.viewModel = splitViewModel }
         embed(splitViewController, in: containerView)
+        
+        killButton.title = NSLocalizedString("window.bottom-container.button.kill", comment: "Kill Button Title")
         update()
     }
     

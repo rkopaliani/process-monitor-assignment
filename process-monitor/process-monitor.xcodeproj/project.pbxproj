@@ -25,6 +25,7 @@
 		5E55B71C25CDB4AB0066859A /* ProcessesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B71B25CDB4AB0066859A /* ProcessesListViewModel.swift */; };
 		5E55B72125CDB4D50066859A /* processes_list_view_model_tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B72025CDB4D50066859A /* processes_list_view_model_tests.swift */; };
 		5E55B72825CDBA5C0066859A /* ProcessesListViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E55B72725CDBA5C0066859A /* ProcessesListViewState.swift */; };
+		5E6F4AA125D5752A00FCD75D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E6F4AA025D5752A00FCD75D /* Localizable.strings */; };
 		5E7DC31A25D3E4A100FCE57F /* NSViewController+Instaniate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7DC31925D3E4A100FCE57F /* NSViewController+Instaniate.swift */; };
 		5E7DC33025D43FEA00FCE57F /* ProcessDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7DC32F25D43FEA00FCE57F /* ProcessDetailsViewModel.swift */; };
 		5E7DC33825D4476100FCE57F /* SplitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7DC33725D4476100FCE57F /* SplitViewModel.swift */; };
@@ -79,6 +80,7 @@
 		5E55B71B25CDB4AB0066859A /* ProcessesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessesListViewModel.swift; sourceTree = "<group>"; };
 		5E55B72025CDB4D50066859A /* processes_list_view_model_tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = processes_list_view_model_tests.swift; sourceTree = "<group>"; };
 		5E55B72725CDBA5C0066859A /* ProcessesListViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessesListViewState.swift; sourceTree = "<group>"; };
+		5E6F4AA025D5752A00FCD75D /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		5E7DC31925D3E4A100FCE57F /* NSViewController+Instaniate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSViewController+Instaniate.swift"; sourceTree = "<group>"; };
 		5E7DC32F25D43FEA00FCE57F /* ProcessDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessDetailsViewModel.swift; sourceTree = "<group>"; };
 		5E7DC33725D4476100FCE57F /* SplitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewModel.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				5EBAC3AF25D28E8600106D5B /* Process.swift */,
 				5EBAC38C25D18E2A00106D5B /* Observer.swift */,
 				5E4CFD0F25D17FDA00C263B9 /* Helpers */,
+				5E6F4AA025D5752A00FCD75D /* Localizable.strings */,
 			);
 			path = "process-monitor";
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E224CB425CADD4D007DAAAA /* Assets.xcassets in Resources */,
+				5E6F4AA125D5752A00FCD75D /* Localizable.strings in Resources */,
 				5E224CB725CADD4D007DAAAA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
